@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title || 'About Us - FushidaLanka' %></title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <%- include('partials/header') %>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <video autoplay loop muted playsinline class="hero-background-video">
+      <source src="/images/vdo123.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div class="hero-overlay"></div>
+    <div class="container position-relative">
+      <div class="row align-items-center justify-content-center">
+        <div class="col-lg-8 text-center">
+          <h1 class="display-4 fw-bold mb-4 text-white">About FushidaLanka</h1>
+          <p class="lead mb-4 text-white-75">Leading the solar revolution with over a decade of experience in sustainable energy solutions.</p>
+          <a href="#story" class="btn btn-light btn-lg">Our Story</a>
+        </div>
+        <!-- The image column is removed as the video now serves as the background -->
+      </div>
+    </div>
+
+  </section>
+
+  <!-- Our Story Section -->
+  <section id="story" class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto text-center">
+          <h2 class="mb-4">Our Story</h2>
+          <p class="lead mb-4">Founded in 2010, FushidaLanka began as a small hardware shop with a vision to provide quality tools and materials. Today, we are a comprehensive hardware supplier serving residential, commercial, and industrial clients across the region.</p>
+          <p>Our journey has been driven by a commitment to quality, innovation, and customer satisfaction. We have successfully installed thousands of solar systems, helping our clients reduce their carbon footprint and energy costs while contributing to a sustainable future.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission & Vision -->
+  <section class="py-5 bg-light">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 mb-4">
+          <div class="card h-100 border-0 shadow">
+            <div class="card-body text-center p-5">
+              <i class="fas fa-bullseye text-primary fa-3x mb-3"></i>
+              <h3 class="card-title">Our Mission</h3>
+              <p class="card-text">To accelerate the transition to renewable energy by providing affordable, reliable, and efficient solar solutions that empower communities and businesses to achieve energy independence.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 mb-4">
+          <div class="card h-100 border-0 shadow">
+            <div class="card-body text-center p-5">
+              <i class="fas fa-eye text-success fa-3x mb-3"></i>
+              <h3 class="card-title">Our Vision</h3>
+              <p class="card-text">To be the leading solar energy company in the region, recognized for our expertise, innovation, and commitment to creating a sustainable energy future for generations to come.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team Section -->
+  <section class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center mb-5">
+          <h2>Meet Our Team</h2>
+          <p class="lead">Experienced professionals dedicated to your solar success</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-4 mb-4">
+          <div class="card text-center border-0 shadow">
+            <img src="/images/team-1.jpg" class="card-img-top" alt="Team Member" onerror="this.src='https://via.placeholder.com/300x300/6c757d/ffffff?text=John+Doe'">
+            <div class="card-body">
+              <h5 class="card-title">John Doe</h5>
+              <p class="card-text text-muted">CEO & Founder</p>
+              <p class="card-text">With over 15 years in renewable energy, John leads our vision for a sustainable future.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 mb-4">
+          <div class="card text-center border-0 shadow">
+            <img src="/images/team-2.jpg" class="card-img-top" alt="Team Member" onerror="this.src='https://via.placeholder.com/300x300/6c757d/ffffff?text=Jane+Smith'">
+            <div class="card-body">
+              <h5 class="card-title">Jane Smith</h5>
+              <p class="card-text text-muted">Technical Director</p>
+              <p class="card-text">Jane oversees all technical operations and ensures the highest quality installations.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 mb-4">
+          <div class="card text-center border-0 shadow">
+            <img src="/images/team-3.jpg" class="card-img-top" alt="Team Member" onerror="this.src='https://via.placeholder.com/300x300/6c757d/ffffff?text=Mike+Johnson'">
+            <div class="card-body">
+              <h5 class="card-title">Mike Johnson</h5>
+              <p class="card-text text-muted">Sales Manager</p>
+              <p class="card-text">Mike helps clients find the perfect solar solution for their specific needs and budget.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <%- include('partials/footer') %>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+<style>
+  .hero-section {
+    position: relative;
+    height: 80vh; /* Adjust height as needed */
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    color: white; /* Default text color for content over the video */
+  }
+
+  .hero-background-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: 1; /* Places the video behind the content and overlay */
+    transform: translate(-50%, -50%); /* Centers the video */
+    object-fit: cover; /* Ensures the video covers the entire section without distortion */
+  }
+
+  .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Dark overlay for text readability */
+    z-index: 2; /* Placed above the video */
+  }
+
+  .hero-section .container {
+    z-index: 3; /* Ensures content is on top of the overlay and video */
+  }
+</style>
+  <script src="/js/main.js"></script>
+</body>
+</html>

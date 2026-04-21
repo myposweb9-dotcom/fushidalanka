@@ -1,0 +1,524 @@
+<!-- Premium Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-light premium-navbar sticky-top" style="background: linear-gradient(135deg, #ffffff 0%, #f8fafb 50%, #f0f4f8 100%); backdrop-filter: blur(15px); border-bottom: 2px solid rgba(102, 126, 234, 0.15); box-shadow: 0 2px 20px rgba(0,0,0,0.06);">
+  <div class="container-fluid px-4 px-lg-5">
+    <!-- Logo Section -->
+    <a class="navbar-brand d-flex align-items-center fw-bold logo-section" href="/">
+      <img src="/images/FushidaLankaLogo.png" alt="FushidaLanka Logo" class="navbar-logo me-3" style="height: 55px; width: auto; max-width: 350px; object-fit: contain; transition: transform 0.3s ease;">
+      <span class="text-dark d-none d-xl-inline" style="font-size: 18px; letter-spacing: 0.5px;">FUSHIDA LANKA</span>
+    </a>
+
+    <!-- Mobile Toggle Button -->
+    <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navigation Menu -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav mx-auto gap-2">
+        <li class="nav-item">
+          <a class="nav-link nav-item-enhanced px-3 py-2 rounded-3 text-dark fw-600 d-flex align-items-center <%= currentPath === '/' ? 'active' : '' %>" href="/">
+            <i class="fas fa-home me-2 nav-icon"></i>Home
+          </a>
+        </li>
+        <li class="nav-item nav-submenu">
+          <a class="nav-link nav-item-enhanced px-3 py-2 rounded-3 text-dark fw-600 d-flex align-items-center <%= currentPath === '/about' || currentPath === '/our-partners' || currentPath === '/awards-recognition' ? 'active' : '' %>" href="#">
+            <i class="fas fa-building me-2 nav-icon"></i>About <i class="fas fa-chevron-down submenu-arrow ms-1" style="font-size: 12px;"></i>
+          </a>
+          <ul class="submenu-items premium-submenu">
+            <li><a class="submenu-item premium-submenu-item" href="/about"><i class="fas fa-info-circle me-2 text-primary"></i><span>About Us</span><i class="fas fa-arrow-right ms-2 text-muted"></i></a></li>
+            <li><a class="submenu-item premium-submenu-item" href="/our-partners"><i class="fas fa-handshake me-2 text-primary"></i><span>Our Partners</span><i class="fas fa-arrow-right ms-2 text-muted"></i></a></li>
+            <li><a class="submenu-item premium-submenu-item" href="/awards-recognition"><i class="fas fa-trophy me-2 text-primary"></i><span>Awards & Recognition</span><i class="fas fa-arrow-right ms-2 text-muted"></i></a></li>
+          </ul>
+        </li>
+        <li class="nav-item nav-submenu">
+          <a class="nav-link nav-item-enhanced px-3 py-2 rounded-3 text-dark fw-600 d-flex align-items-center <%= currentPath === '/services' ? 'active' : '' %>" href="#">
+            <i class="fas fa-cog me-2 nav-icon"></i>Services <i class="fas fa-chevron-down submenu-arrow ms-1" style="font-size: 12px;"></i>
+          </a>
+          <ul class="submenu-items premium-submenu">
+            <li><a class="submenu-item premium-submenu-item" href="/services#assessment"><i class="fas fa-map-marker-alt me-2 text-primary"></i><span>Site Assessment</span><i class="fas fa-arrow-right ms-2 text-muted"></i></a></li>
+            <li><a class="submenu-item premium-submenu-item" href="/services#design"><i class="fas fa-drafting-compass me-2 text-primary"></i><span>System Design</span><i class="fas fa-arrow-right ms-2 text-muted"></i></a></li>
+            <li><a class="submenu-item premium-submenu-item" href="/services#installation"><i class="fas fa-tools me-2 text-primary"></i><span>Installation</span><i class="fas fa-arrow-right ms-2 text-muted"></i></a></li>
+            <li><a class="submenu-item premium-submenu-item" href="/services#support"><i class="fas fa-headset me-2 text-primary"></i><span>Support & Maintenance</span><i class="fas fa-arrow-right ms-2 text-muted"></i></a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link nav-item-enhanced px-3 py-2 rounded-3 text-dark fw-600 d-flex align-items-center <%= currentPath === '/projects' ? 'active' : '' %>" href="/projects">
+            <i class="fas fa-project-diagram me-2 nav-icon"></i>Projects
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link nav-item-enhanced px-3 py-2 rounded-3 text-dark fw-600 d-flex align-items-center <%= currentPath === '/news' ? 'active' : '' %>" href="/news">
+            <i class="fas fa-newspaper me-2 nav-icon"></i>News
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link nav-item-enhanced px-3 py-2 rounded-3 text-dark fw-600 d-flex align-items-center <%= currentPath === '/team' ? 'active' : '' %>" href="/team">
+            <i class="fas fa-users me-2 nav-icon"></i>Team
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link nav-item-enhanced px-3 py-2 rounded-3 text-dark fw-600 d-flex align-items-center <%= currentPath === '/contact' ? 'active' : '' %>" href="/contact">
+            <i class="fas fa-envelope me-2 nav-icon"></i>Contact
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Action Buttons (Right Side) -->
+    <ul class="navbar-nav d-flex gap-2 align-items-center">
+      <li class="nav-item d-none d-lg-block">
+        <a class="nav-link action-btn explore-btn text-white fw-bold px-4 py-2 rounded-pill d-flex align-items-center" href="/products" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); white-space: nowrap;">
+          <i class="fas fa-search me-2"></i>Explore Products
+        </a>
+      </li>
+      <% if (typeof user !== 'undefined' && user) { %>
+        <li class="nav-item dropdown d-none d-lg-block">
+          <a class="nav-link dropdown-toggle user-dropdown-btn px-3 py-2 rounded-pill d-flex align-items-center text-dark fw-600" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <div class="user-avatar me-2 d-flex align-items-center justify-content-center" style="width: 36px; height: 36px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 50%; color: white; font-size: 14px; font-weight: bold; box-shadow: 0 2px 8px rgba(102, 126, 234, 0.4);">
+              <%= user.name.charAt(0).toUpperCase() %>
+            </div>
+            <span class="d-none d-xl-inline"><%= user.name %></span>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end border-0 shadow-lg mt-2 premium-dropdown">
+            <li class="dropdown-header px-3 py-2 bg-light rounded-top-2"><strong><%= user.name %></strong></li>
+            <li><hr class="dropdown-divider my-1"></li>
+            <li><a class="dropdown-item py-2 px-3 premium-dropdown-item" href="/user/dashboard"><i class="fas fa-tachometer-alt me-2 text-primary"></i>Dashboard</a></li>
+            <% if (user.role === 'admin') { %>
+              <li><a class="dropdown-item py-2 px-3 premium-dropdown-item" href="/admin/dashboard"><i class="fas fa-cog me-2 text-primary"></i>Admin Panel</a></li>
+            <% } %>
+            <li><hr class="dropdown-divider my-1"></li>
+            <li><a class="dropdown-item py-2 px-3 text-danger premium-dropdown-item logout-item" href="/user/logout"><i class="fas fa-sign-out-alt me-2"></i>Logout</a></li>
+          </ul>
+        </li>
+        <li class="nav-item d-lg-none">
+          <a class="nav-link px-3 py-2 rounded-pill text-dark fw-600" href="/user/dashboard"><i class="fas fa-tachometer-alt me-2"></i>Dashboard</a>
+        </li>
+        <li class="nav-item d-lg-none">
+          <a class="nav-link px-3 py-2 rounded-pill text-danger fw-600" href="/user/logout"><i class="fas fa-sign-out-alt me-2"></i>Logout</a>
+        </li>
+      <% } else { %>
+        <li class="nav-item dropdown d-none d-lg-block">
+          <a class="nav-link dropdown-toggle action-btn auth-btn text-white fw-bold px-4 py-2 rounded-pill d-flex align-items-center" href="#" id="loginDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); white-space: nowrap;">
+            <i class="fas fa-sign-in-alt me-1"></i>Login
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end border-0 shadow-lg mt-2 premium-dropdown">
+            <li><a class="dropdown-item py-2 px-3 premium-dropdown-item" href="/user/login"><i class="fas fa-user me-2 text-primary"></i><strong>User Login</strong></a></li>
+            <li><a class="dropdown-item py-2 px-3 premium-dropdown-item" href="/admin/login"><i class="fas fa-lock me-2 text-primary"></i><strong>Admin Login</strong></a></li>
+          </ul>
+        </li>
+        <li class="nav-item d-none d-lg-block">
+          <a class="nav-link action-btn register-btn text-white fw-bold px-4 py-2 rounded-pill d-flex align-items-center" href="/user/register" style="background: linear-gradient(135deg, #34c759 0%, #00d084 100%); white-space: nowrap;">
+            <i class="fas fa-user-plus me-1"></i>Register
+          </a>
+        </li>
+        <li class="nav-item d-lg-none dropdown">
+          <a class="nav-link dropdown-toggle px-3 py-2 rounded-pill text-dark fw-600" href="#" id="mobileAuthDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fas fa-sign-in-alt me-2"></i>Login
+          </a>
+          <ul class="dropdown-menu border-0 shadow-lg premium-dropdown">
+            <li><a class="dropdown-item py-2 px-3 premium-dropdown-item" href="/user/login"><i class="fas fa-user me-2 text-primary"></i>User Login</a></li>
+            <li><a class="dropdown-item py-2 px-3 premium-dropdown-item" href="/admin/login"><i class="fas fa-lock me-2 text-primary"></i>Admin Login</a></li>
+            <li><hr class="dropdown-divider my-1"></li>
+            <li><a class="dropdown-item py-2 px-3 premium-dropdown-item" href="/user/register"><i class="fas fa-user-plus me-2 text-success"></i>Register</a></li>
+          </ul>
+        </li>
+      <% } %>
+    </ul>
+  </div>
+</nav>
+
+<!-- Premium Navigation Styling -->
+<style>
+/* Reset all BS defaults for underlines */
+a.nav-link {
+  text-decoration: none !important;
+  border-bottom: none !important;
+  outline: none !important;
+}
+
+a.nav-link:hover,
+a.nav-link:active,
+a.nav-link:focus {
+  text-decoration: none !important;
+  border-bottom: none !important;
+  outline: none !important;
+}
+
+/* Global nav link reset */
+.navbar-nav .nav-link {
+  text-decoration: none !important;
+  border: none !important;
+  border-bottom: none !important;
+  outline: none !important;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link:active,
+.navbar-nav .nav-link:focus {
+  text-decoration: none !important;
+  border: none !important;
+  border-bottom: none !important;
+  outline: none !important;
+}
+
+/* Premium Navbar Styling */
+.premium-navbar {
+  padding: 12px 0;
+}
+
+.logo-section {
+  transition: all 0.3s ease;
+}
+
+.logo-section:hover img {
+  transform: scale(1.08);
+}
+
+/* Enhanced Navigation Items */
+.nav-item-enhanced {
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+  position: relative;
+  font-size: 15px;
+  letter-spacing: 0.3px;
+  font-weight: 600;
+  text-decoration: none !important;
+  border: none !important;
+  border-bottom: none !important;
+  outline: none !important;
+}
+
+.nav-item-enhanced::after,
+.nav-item-enhanced::before {
+  content: none !important;
+  display: none !important;
+  border: none !important;
+}
+
+.nav-item-enhanced .nav-icon {
+  font-size: 16px;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.nav-item-enhanced:hover {
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.12) 0%, rgba(118, 75, 162, 0.08) 100%);
+  color: #667eea !important;
+  transform: translateY(-3px) scale(1.02);
+  text-decoration: none !important;
+  border: none !important;
+  border-bottom: none !important;
+  outline: none !important;
+}
+
+.nav-item-enhanced:hover .nav-icon {
+  transform: scale(1.15) rotate(5deg);
+  color: #667eea;
+}
+
+.nav-item-enhanced:active,
+.nav-item-enhanced:focus {
+  text-decoration: none !important;
+  border: none !important;
+  border-bottom: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.nav-item-enhanced.active {
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.15) 0%, rgba(118, 75, 162, 0.1) 100%);
+  color: #667eea !important;
+  transform: scale(1.02);
+  text-decoration: none !important;
+  border: none !important;
+  border-bottom: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.nav-item-enhanced.active::after {
+  content: none !important;
+  display: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.nav-item-enhanced.active .nav-icon {
+  color: #667eea;
+  animation: iconPulse 0.6s ease;
+}
+
+@keyframes iconPulse {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+  }
+  50% {
+    transform: scale(1.15) rotate(5deg);
+  }
+}
+
+/* Submenu Styling */
+.nav-submenu {
+  position: relative;
+}
+
+.submenu-arrow {
+  transition: transform 0.3s ease;
+  font-size: 12px;
+}
+
+.nav-submenu:hover .submenu-arrow {
+  transform: rotate(180deg);
+  color: #667eea !important;
+}
+
+.premium-submenu {
+  background: white;
+  border: 1px solid rgba(102, 126, 234, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  padding: 8px 0;
+  min-width: 240px;
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.premium-submenu-item {
+  transition: all 0.3s ease !important;
+  cursor: pointer;
+  display: flex !important;
+  align-items: center !important;
+  padding: 10px 16px !important;
+  border-radius: 8px;
+  margin: 0 6px !important;
+  color: #333 !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  text-decoration: none !important;
+}
+
+.premium-submenu-item:hover {
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.08) 100%) !important;
+  padding-left: 20px !important;
+  color: #667eea !important;
+}
+
+.premium-submenu-item i:first-child {
+  min-width: 20px;
+}
+
+.premium-submenu-item i:last-child {
+  transition: all 0.3s ease;
+  opacity: 0;
+}
+
+.premium-submenu-item:hover i:last-child {
+  opacity: 1;
+  transform: translateX(5px);
+}
+
+/* Action Buttons */
+.action-btn {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+  border: none;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.action-btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+  z-index: 0;
+}
+
+.action-btn:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.action-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.5);
+}
+
+.explore-btn {
+  animation: gentle-pulse 2.5s infinite;
+}
+
+@keyframes gentle-pulse {
+  0%, 100% {
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+    transform: scale(1.02);
+  }
+}
+
+.explore-btn:hover {
+  animation: none;
+}
+
+.auth-btn {
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.auth-btn:hover {
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.register-btn {
+  box-shadow: 0 4px 15px rgba(52, 199, 89, 0.3);
+  transition: all 0.3s ease;
+}
+
+.register-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(52, 199, 89, 0.5);
+}
+
+/* User Dropdown */
+.user-dropdown-btn {
+  transition: all 0.3s ease;
+  background: transparent;
+}
+
+.user-dropdown-btn:hover {
+  background: rgba(102, 126, 234, 0.08);
+}
+
+.user-avatar {
+  animation: pulse-avatar 2s infinite;
+}
+
+@keyframes pulse-avatar {
+  0%, 100% {
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.4);
+  }
+  50% {
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.6);
+  }
+}
+
+/* Premium Dropdown Styling */
+.premium-dropdown {
+  border-radius: 12px;
+  overflow: hidden;
+  animation: slideDown 0.3s ease;
+}
+
+.premium-dropdown .dropdown-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 12px 12px 0 0;
+}
+
+.premium-dropdown-item {
+  transition: all 0.3s ease !important;
+  cursor: pointer;
+  color: #333 !important;
+  font-size: 14px !important;
+}
+
+.premium-dropdown-item:hover {
+  background: rgba(102, 126, 234, 0.1) !important;
+  padding-left: 20px !important;
+  color: #667eea !important;
+}
+
+.logout-item:hover {
+  background: rgba(220, 53, 69, 0.15) !important;
+  color: #dc3545 !important;
+}
+
+/* Navbar Toggler */
+.navbar-toggler {
+  border: none;
+  box-shadow: none;
+  padding: 8px 12px;
+  transition: all 0.3s ease;
+}
+
+.navbar-toggler:focus {
+  box-shadow: none;
+  background: rgba(102, 126, 234, 0.1);
+  border-radius: 8px;
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23667eea' stroke-linecap='round' stroke-linejoin='round' stroke-width='2.5' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+  width: 24px;
+  height: 24px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 991.98px) {
+  .navbar-collapse {
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafb 100%);
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    margin-top: 16px;
+    padding: 20px;
+    border: 1px solid rgba(102, 126, 234, 0.1);
+  }
+
+  .nav-item-enhanced {
+    padding: 10px 12px !important;
+    margin: 4px 0 !important;
+  }
+
+  .premium-submenu {
+    background: rgba(102, 126, 234, 0.05);
+    border: 1px solid rgba(102, 126, 234, 0.1);
+    margin-top: 8px;
+    padding: 8px 0;
+  }
+
+  .explore-btn {
+    width: 100%;
+    justify-content: center;
+    margin: 8px 0;
+    animation: none;
+  }
+
+  .action-btn {
+    width: 100%;
+    justify-content: center;
+    margin: 8px 0;
+  }
+
+  .register-btn {
+    width: 100%;
+  }
+
+  .auth-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* Font Weight Helper */
+.fw-600 {
+  font-weight: 600;
+}
+</style>

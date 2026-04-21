@@ -1,0 +1,126 @@
+<!-- Scrolling Logos Bar -->
+<%- include('./logos-bar') %>
+
+<!-- Footer -->
+  <footer style="background: linear-gradient(135deg, #0F1F13 0%, #1F3D24 100%);" class="text-light py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 mb-4">
+          <h5 style="color: #4CAF50; font-weight: bold;">🔧 FushidaLanka Hardware</h5>
+          <p>Your one-stop destination for premium tools, building materials, and hardware solutions. Quality products, expert service, and unbeatable prices since 2010.</p>
+          <p class="mb-2"><strong>Contact: +94 77 370 5820</strong></p>
+          <div class="social-links">
+            <a href="#" class="text-light me-3"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="text-light me-3"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="text-light me-3"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="text-light me-3"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/944437058200" target="_blank" class="text-light"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-2 mb-4">
+          <h6 style="color: #4CAF50;">Quick Links</h6>
+          <ul class="list-unstyled">
+            <li><a href="/" class="text-light">Home</a></li>
+            <li><a href="/products" class="text-light">Shop</a></li>
+            <li><a href="/services" class="text-light">Services</a></li>
+            <li><a href="/contact" class="text-light">Contact</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-3 mb-4">
+          <h6 style="color: #4CAF50;">Categories</h6>
+          <ul class="list-unstyled">
+            <li><a href="/products?category=tools" class="text-light">Tools & Equipment</a></li>
+            <li><a href="/products?category=materials" class="text-light">Building Materials</a></li>
+            <li><a href="/products?category=electrical" class="text-light">Electrical</a></li>
+            <li><a href="/products?category=safety" class="text-light">Safety Gear</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-3 mb-4">
+          <h6 style="color: #4CAF50;">Store Hours</h6>
+          <ul class="list-unstyled">
+            <li><i class="fas fa-map-marker-alt me-2"></i>No.24 1/2, Messenger Street, Colombo 12, Sri Lanka</li>
+            <li><i class="fas fa-phone me-2"></i>+94 77 370 5820</li>
+            <li><i class="fas fa-envelope me-2"></i>aman@fushidalanka.com</li>
+            <li><i class="fas fa-clock me-2"></i>Mon-Fri: 8AM-6PM | Sat: 9AM-4PM</li>
+          </ul>
+        </div>
+      </div>
+      <hr class="my-4">
+      <div class="row align-items-center">
+        <div class="col-md-6">
+          <p class="mb-0">&copy; 2025 FushidaLanka Hardware. All rights reserved.</p>
+        </div>
+        <div class="col-md-6 text-md-end">
+          <a href="/privacy" class="text-light me-3">Privacy Policy</a>
+          <a href="/terms" class="text-light">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+<!-- Floating WhatsApp Button -->
+<div class="whatsapp-float">
+  <a href="https://wa.me/94774116702" target="_blank" class="whatsapp-btn">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+</div>
+
+<style>
+.whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.whatsapp-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  background: #25d366;
+  color: white;
+  border-radius: 50%;
+  text-decoration: none;
+  font-size: 28px;
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+  transition: all 0.3s ease;
+  animation: pulse 2s infinite;
+}
+
+.whatsapp-btn:hover {
+  background: #128c7e;
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+  }
+  50% {
+    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.5);
+  }
+  100% {
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+  }
+}
+
+@media (max-width: 768px) {
+  .whatsapp-float {
+    bottom: 15px;
+    right: 15px;
+  }
+
+  .whatsapp-btn {
+    width: 55px;
+    height: 55px;
+    font-size: 24px;
+  }
+}
+</style>
+
+
+
+

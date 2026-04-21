@@ -1,0 +1,1198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/css/style.css">
+  <meta name="description" content="FushidaLanka Hardware - Premium tools, building materials, and hardware solutions. Best prices, expert service, and quality guaranteed.">
+  <meta name="keywords" content="hardware shop, tools, building materials, hardware supplies, tools online, colombo hardware">
+</head>
+<body>
+  <!-- Flying Solar Components -->
+  <div class="flying-components" id="flying-components">
+    <!-- Components will be loaded dynamically -->
+  </div>
+  <%- include('partials/header') %>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <video muted playsinline class="hero-background-video" id="heroVideo">
+      <source src="/images/vdo123.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div class="hero-overlay" style="background-color: rgba(0, 0, 0, 0.2);"></div>
+    <div class="container position-relative">
+      <div class="row align-items-center justify-content-centers">
+        <div class="col-lg-8 text-start">
+          <div class="typing-container mb-4">
+            <h1 class="display-4 fw-bold text-white typing-text" id="typingText"></h1>
+          </div>
+          <p class="lead mb-4 text-white-75">
+            Your trusted destination for premium tools, building materials, and hardware solutions. Quality products, expert service, and unbeatable prices since 2010.
+          </p>
+          <div class="d-flex flex-column flex-sm-row gap-3">
+            <a href="#products-section" class="btn btn-hero btn-lg">Shop Now</a>
+            <a href="/contact" class="btn btn-outline-light btn-lg">Get Help</a>
+            <a href="tel:+94773705820" class="btn btn-outline-light btn-lg">Call Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="section" style="background: linear-gradient(135deg, #f0f5f2 0%, #e8f1eb 100%); padding: 80px 0;">
+    <div class="container">
+      <div class="row text-center mb-5">
+        <div class="col-12">
+          <h2 class="section-title" style="font-size: 2.5rem;">Why Choose FushidaLanka?</h2>
+          <p class="text-muted" style="font-size: 1.1rem;">Premium quality, competitive prices, and exceptional customer service for all your hardware needs.</p>
+        </div>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card h-100 border-0 shadow-md" style="border-top: 4px solid #1F3D24; transition: all 0.3s ease;">
+            <div class="card-body text-center p-5">
+              <div class="feature-icon mb-4">
+                <i class="fas fa-tools text-warning floating-element" style="font-size: 3.5rem;"></i>
+              </div>
+              <h5 class="card-title fw-bold mb-3">Quality Tools</h5>
+              <p class="card-text text-muted">All our tools are genuine, durable, and backed by manufacturer warranties.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card h-100 border-0 shadow-md" style="border-top: 4px solid #1F3D24; transition: all 0.3s ease;">
+            <div class="card-body text-center p-5">
+              <div class="feature-icon mb-4">
+                <i class="fas fa-dollar-sign text-danger floating-element" style="font-size: 3.5rem; animation-delay: 0.3s;"></i>
+              </div>
+              <h5 class="card-title fw-bold mb-3">Best Prices</h5>
+              <p class="card-text text-muted">Competitive pricing with regular discounts and bulk buying options available.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card h-100 border-0 shadow-md" style="border-top: 4px solid #1976d2; transition: all 0.3s ease;">
+            <div class="card-body text-center p-5">
+              <div class="feature-icon mb-4">
+                <i class="fas fa-headset text-primary floating-element" style="font-size: 3.5rem; animation-delay: 0.6s;"></i>
+              </div>
+              <h5 class="card-title fw-bold mb-3">Expert Support</h5>
+              <p class="card-text text-muted">Our experienced staff provides professional advice and product recommendations.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- Services Section -->
+  <section class="section" style="background: white; padding: 80px 0;">
+    <div class="container">
+      <div class="row text-center mb-5">
+        <div class="col-12">
+          <h2 class="section-title" style="font-size: 2.5rem;">Our Services</h2>
+          <p class="text-muted" style="font-size: 1.1rem;">Quality products, professional assistance, and reliable support for all your projects.</p>
+        </div>
+      </div>
+      <div class="row g-4">
+        <div class="col-lg-3 col-md-6">
+          <div class="card h-100 border-0 shadow-md" style="background: linear-gradient(135deg, rgba(13, 110, 253, 0.05) 0%, rgba(13, 110, 253, 0.01) 100%); overflow: hidden; position: relative;">
+            <div class="card-body p-5 text-center">
+              <i class="fas fa-boxes text-primary mb-4 floating-element" style="font-size: 2.5rem;"></i>
+              <h5 class="card-title fw-bold mb-3">Wide Selection</h5>
+              <p class="card-text text-muted">Complete range of tools and materials for any project or trade.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <div class="card h-100 border-0 shadow-md" style="background: linear-gradient(135deg, rgba(31, 61, 36, 0.08) 0%, rgba(31, 61, 36, 0.02) 100%); overflow: hidden; position: relative;">
+            <div class="card-body p-5 text-center">
+              <i class="fas fa-truck text-warning mb-4 floating-element" style="font-size: 2.5rem; animation-delay: 0.2s;"></i>
+              <h5 class="card-title fw-bold mb-3">Fast Delivery</h5>
+              <p class="card-text text-muted">Same-day delivery available for orders in Colombo area.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <div class="card h-100 border-0 shadow-md" style="background: linear-gradient(135deg, rgba(25, 135, 84, 0.05) 0%, rgba(25, 135, 84, 0.01) 100%); overflow: hidden; position: relative;">
+            <div class="card-body p-5 text-center">
+              <i class="fas fa-user-tie text-success mb-4 floating-element" style="font-size: 2.5rem; animation-delay: 0.4s;"></i>
+              <h5 class="card-title fw-bold mb-3">Expert Advice</h5>
+              <p class="card-text text-muted">Professional guidance on product selection and project planning.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <div class="card h-100 border-0 shadow-md" style="background: linear-gradient(135deg, rgba(31, 61, 36, 0.08) 0%, rgba(31, 61, 36, 0.02) 100%); overflow: hidden; position: relative;">
+            <div class="card-body p-5 text-center">
+              <i class="fas fa-redo text-danger mb-4 floating-element" style="font-size: 2.5rem; animation-delay: 0.6s;"></i>
+              <h5 class="card-title fw-bold mb-3">Easy Returns</h5>
+              <p class="card-text text-muted">30-day returns policy on all products for your peace of mind.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FushidaLanka by Numbers Section -->
+  <section class="section" style="background: linear-gradient(135deg, #1F3D24 0%, #0F1F13 100%); padding: 80px 0; color: white;">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="section-title" style="font-size: 2.5rem; color: white;">FushidaLanka by Numbers</h2>
+        <p style="font-size: 1.1rem; color: rgba(255,255,255,0.9);">Our achievements in serving the community</p>
+      </div>
+      
+      <div class="row g-4">
+        <div class="col-lg-3 col-md-6 text-center">
+          <div class="mb-4">
+            <div style="font-size: 3.5rem; font-weight: bold; color: #66BB6A; margin-bottom: 10px;">15+</div>
+            <h5 class="fw-bold mb-2" style="color: white;">Years of Service</h5>
+            <p style="font-size: 0.95rem; color: rgba(255,255,255,0.9);">Trusted by countless customers since 2010</p>
+          </div>
+        </div>
+        
+        <div class="col-lg-3 col-md-6 text-center">
+          <div class="mb-4">
+            <div style="font-size: 3.5rem; font-weight: bold; color: #4CAF50; margin-bottom: 10px;">10K+</div>
+            <h5 class="fw-bold mb-2" style="color: white;">Happy Customers</h5>
+            <p style="font-size: 0.95rem; color: rgba(255,255,255,0.9);">Serving satisfied clients across the country</p>
+          </div>
+        </div>
+        
+        <div class="col-lg-3 col-md-6 text-center">
+          <div class="mb-4">
+            <div style="font-size: 3.5rem; font-weight: bold; color: #43A047; margin-bottom: 10px;">500+</div>
+            <h5 class="fw-bold mb-2" style="color: white;">Projects Completed</h5>
+            <p style="font-size: 0.95rem; color: rgba(255,255,255,0.9);">Successfully delivered on countless projects</p>
+          </div>
+        </div>
+        
+        <div class="col-lg-3 col-md-6 text-center">
+          <div class="mb-4">
+            <div style="font-size: 3.5rem; font-weight: bold; color: #2E7D32; margin-bottom: 10px;">24/7</div>
+            <h5 class="fw-bold mb-2" style="color: white;">Support Available</h5>
+            <p style="font-size: 0.95rem; color: rgba(255,255,255,0.9);">Round-the-clock customer assistance</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="row g-4 mt-5">
+        <div class="col-lg-3 col-md-6 text-center">
+          <div class="mb-4">
+            <div style="font-size: 3.5rem; font-weight: bold; color: #66BB6A; margin-bottom: 10px;">99%</div>
+            <h5 class="fw-bold mb-2" style="color: white;">Satisfaction Rate</h5>
+            <p style="font-size: 0.95rem; color: rgba(255,255,255,0.9);">High customer satisfaction and loyalty</p>
+          </div>
+        </div>
+        
+        <div class="col-lg-3 col-md-6 text-center">
+          <div class="mb-4">
+            <div style="font-size: 3.5rem; font-weight: bold; color: #4CAF50; margin-bottom: 10px;">50+</div>
+            <h5 class="fw-bold mb-2" style="color: white;">Team Members</h5>
+            <p style="font-size: 0.95rem; color: rgba(255,255,255,0.9);">Skilled professionals dedicated to excellence</p>
+          </div>
+        </div>
+        
+        <div class="col-lg-3 col-md-6 text-center">
+          <div class="mb-4">
+            <div style="font-size: 3.5rem; font-weight: bold; color: #43A047; margin-bottom: 10px;">40+</div>
+            <h5 class="fw-bold mb-2" style="color: white;">Partner Companies</h5>
+            <p style="font-size: 0.95rem; color: rgba(255,255,255,0.9);">Strategic partnerships for better service</p>
+          </div>
+        </div>
+        
+        <div class="col-lg-3 col-md-6 text-center">
+          <div class="mb-4">
+            <div style="font-size: 3.5rem; font-weight: bold; color: #2E7D32; margin-bottom: 10px;">Award</div>
+            <h5 class="fw-bold mb-2" style="color: white;">Award Winning</h5>
+            <p style="font-size: 0.95rem; color: rgba(255,255,255,0.9);">Recognized for excellence and innovation</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Products Section -->
+  <section class="section" id="products-section" style="background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%); padding: 100px 0;">
+    <div class="container">
+      <div class="row text-center mb-5">
+        <div class="col-12">
+          <h2 class="section-title" style="font-size: 2.5rem;">Our Products & Categories</h2>
+          <p class="text-muted" style="font-size: 1.1rem;">Browse our collection of premium tools, materials, and equipment for all your projects.</p>
+        </div>
+      </div>
+
+      <!-- Shop by Category Section -->
+      <div style="background: linear-gradient(135deg, #1F3D24 0%, #0F1F13 100%); padding: 60px 0; margin: 0 -9999px; padding-left: calc(9999px + 0); padding-right: calc(9999px + 0);">
+        <div class="container">
+          <div class="text-center mb-5">
+            <h3 class="section-title" style="font-size: 2rem; color: white;">Shop by Category</h3>
+          </div>
+          <div class="categories-grid" id="categories-grid">
+            <!-- Categories will be loaded dynamically -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Featured Products Grid -->
+      <div class="text-center mb-4">
+        <h3 id="selected-category-title" class="mb-4" style="display: none; font-size: 1.8rem;"></h3>
+      </div>
+      <div class="row g-4" id="products-grid">
+        <% if (featuredProducts && featuredProducts.length > 0) { %>
+          <% featuredProducts.slice(0, 12).forEach((product, index) => { %>
+            <div class="col-lg-4 col-md-6">
+              <div class="card h-100 product-card shadow-md" style="border: 1px solid rgba(31, 61, 36, 0.1); transition: all 0.3s ease; animation: slideInUp 0.6s ease-out <% if(index < 3) { %><%= index * 0.1 %>s<% } %>;">
+                <div class="position-relative overflow-hidden" style="height: 220px; background: linear-gradient(135deg, #e8f1eb 0%, #d4e8dc 100%);">
+                  <% if (product.images && product.images.length > 0) { %>
+                    <img src="<%= product.images[0] %>" class="card-img-top" alt="<%= product.name %>" style="height: 100%; width: 100%; object-fit: cover; transition: transform 0.4s ease;">
+                  <% } else { %>
+                    <div style="height: 100%; width: 100%; display: flex; align-items: center; justify-content: center; font-size: 3rem; color: rgba(31, 61, 36, 0.3);"><i class="fas fa-cube"></i></div>
+                  <% } %>
+                  <div class="position-absolute top-0 end-0 m-3">
+                    <span class="badge" style="background: linear-gradient(135deg, #1F3D24, #ffffff); padding: 8px 12px; color: white; font-weight: 600;">NEW</span>
+                  </div>
+                </div>
+                <div class="card-body d-flex flex-column" style="padding: 1.5rem;">
+                  <h5 class="card-title fw-bold mb-2" style="color: #2c3e50; font-size: 1.1rem;"><%= product.name %></h5>
+                  <p class="card-text text-muted" style="font-size: 0.9rem; line-height: 1.5;"><%= product.description ? product.description.substring(0, 70) + '...' : 'Premium quality product' %></p>
+                  <div class="mt-auto pt-3">
+                    <p class="gradient-text mb-3" style="font-size: 1.2rem; font-weight: 700; color: #1F3D24;">LKR <%= product.price ? product.price.toLocaleString('en-US') : 'Contact' %></p>
+                    <a href="/products/<%= product.id %>" class="product-view-btn" style="width: 100%;">
+                      <i class="fas fa-eye me-2"></i>View Details
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% }); %>
+        <% } %>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="section">
+    <div class="container">
+      <div class="row text-center mb-5">
+        <div class="col-12">
+          <h2 class="section-title">What Our Customers Say</h2>
+          <p class="text-muted">Hear from satisfied customers who have chosen FushidaLanka for their hardware needs.</p>
+        </div>
+      </div>
+      <div class="row g-4" id="featured-testimonials">
+        <!-- Testimonials will be loaded dynamically -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Partners Section -->
+  <section class="section">
+    <div class="container">
+      <div class="row text-center mb-5">
+        <div class="col-12">
+          <h2 class="section-title">Trusted Partners</h2>
+          <p class="text-muted">We work with industry-leading manufacturers and partners to deliver quality solar solutions.</p>
+        </div>
+      </div>
+      <div class="row g-4 align-items-center">
+        <div class="col-lg-2 col-md-3 col-6">
+          <div class="partner-logo text-center">
+            <img src="https://via.placeholder.com/150x80/007bff/ffffff?text=Partner+1" alt="Partner 1" class="img-fluid">
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-3 col-6">
+          <div class="partner-logo text-center">
+            <img src="https://via.placeholder.com/150x80/28a745/ffffff?text=Partner+2" alt="Partner 2" class="img-fluid">
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-3 col-6">
+          <div class="partner-logo text-center">
+            <img src="https://via.placeholder.com/150x80/f39c12/ffffff?text=Partner+3" alt="Partner 3" class="img-fluid">
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-3 col-6">
+          <div class="partner-logo text-center">
+            <img src="https://via.placeholder.com/150x80/6c757d/ffffff?text=Partner+4" alt="Partner 4" class="img-fluid">
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-3 col-6">
+          <div class="partner-logo text-center">
+            <img src="https://via.placeholder.com/150x80/e74c3c/ffffff?text=Partner+5" alt="Partner 5" class="img-fluid">
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-3 col-6">
+          <div class="partner-logo text-center">
+            <img src="https://via.placeholder.com/150x80/9b59b6/ffffff?text=Partner+6" alt="Partner 6" class="img-fluid">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section bg-light">
+    <div class="container">
+      <div class="row text-center mb-5">
+        <div class="col-12">
+          <h2 class="section-title">Frequently Asked Questions</h2>
+          <p class="text-muted">Find answers to common questions about FushidaLanka Hardware products and services.</p>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="accordion" id="faqAccordion">
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1" aria-expanded="true" aria-controls="faq1">
+                  Do you offer same-day delivery?
+                </button>
+              </h2>
+              <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  Yes! We offer same-day delivery for orders placed in the Colombo area before 2 PM. For orders outside Colombo, we provide fast delivery within 2-3 business days. Contact us for delivery details at +94 77 370 5820.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2" aria-expanded="false" aria-controls="faq2">
+                  What is your return policy?
+                </button>
+              </h2>
+              <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  We offer a 30-day return policy on all products. Items must be in original condition with packaging intact. For defective or damaged products, we provide replacements or full refunds within 14 days of purchase.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3" aria-expanded="false" aria-controls="faq3">
+                  Are your products genuine and warranted?
+                </button>
+              </h2>
+              <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  All our products are 100% genuine and sourced directly from authorized manufacturers. We provide manufacturer warranties on all items. Our team ensures quality by verifying authenticity before dispatch. Extended warranty options are also available.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4" aria-expanded="false" aria-controls="faq4">
+                  Do you offer bulk discounts?
+                </button>
+              </h2>
+              <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  Yes! We offer competitive bulk discounts for corporate orders and contractors. Contact our sales team for custom quotes. We can provide special pricing for projects and regular bulk purchases. Call +94 77 370 5820 for bulk inquiry.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5" aria-expanded="false" aria-controls="faq5">
+                  What payment methods do you accept?
+                </button>
+              </h2>
+              <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  We accept all major credit cards, debit cards, bank transfers, and cash on delivery for selected areas. Installment payment plans are available for large orders. Contact us for payment arrangement options.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section bg-primary text-white" style="background: linear-gradient(135deg, #1F3D24 0%, #2A5A32 100%);!important">
+    <div class="container text-center">
+      <h2 class="mb-4" style="color: white;">Need Quality Tools?</h2>
+      <p class="lead mb-4" style="color: rgba(255,255,255,0.95);">Visit FushidaLanka Hardware for premium tools, materials, and expert advice. Same-day delivery available!</p>
+      <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center">
+        <a href="/products" class="btn btn-light btn-lg">Shop Now</a>
+        <a href="tel:+94773705820" class="btn btn-outline-light btn-lg">Call Now</a>
+      </div>
+    </div>
+  </section>
+
+  <%- include('partials/footer') %>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/js/main.js"></script>
+  <script>
+
+
+
+
+
+
+    // Load featured testimonials
+    function loadFeaturedTestimonials() {
+      fetch('/api/testimonials?featured=true')
+        .then(response => response.json())
+        .then(data => {
+          const container = document.getElementById('featured-testimonials');
+          if (data.length === 0) {
+            container.innerHTML = '<div class="col-12"><p class="text-center text-muted">Testimonials coming soon...</p></div>';
+            return;
+          }
+
+          container.innerHTML = data.map(testimonial => `
+            <div class="col-lg-6">
+              <div class="testimonial-card">
+                <div class="d-flex mb-3">
+                  <div class="flex-shrink-0">
+                    <img src="${testimonial.image || 'https://via.placeholder.com/60x60/007bff/ffffff?text=' + testimonial.name.charAt(0)}" alt="${testimonial.name}" class="rounded-circle">
+                  </div>
+                  <div class="flex-grow-1 ms-3">
+                    <div class="d-flex justify-content-between align-items-center">
+                      <h6 class="mb-0">${testimonial.name}</h6>
+                      <div class="text-warning">
+                        ${'★'.repeat(testimonial.rating || 5)}
+                      </div>
+                    </div>
+                    <small class="text-muted">${testimonial.position || testimonial.company || 'Customer'}</small>
+                  </div>
+                </div>
+                <p class="testimonial-content">"${testimonial.content}"</p>
+              </div>
+            </div>
+          `).join('');
+        })
+        .catch(error => {
+          console.error('Error loading testimonials:', error);
+          const container = document.getElementById('featured-testimonials');
+          container.innerHTML = '<div class="col-12"><p class="text-center text-muted">Unable to load testimonials at this time.</p></div>';
+        });
+    }
+
+    // Category icons mapping
+    const categoryIcons = {
+      'all': 'fas fa-th-large',
+      'panels': 'fas fa-solar-panel',
+      'inverters': 'fas fa-plug',
+      'batteries': 'fas fa-battery-full',
+      'accessories': 'fas fa-tools',
+      'controllers': 'fas fa-tachometer-alt',
+      'cables': 'fas fa-network-wired',
+      'mounting': 'fas fa-cogs',
+      'monitoring': 'fas fa-chart-line',
+      'tools': 'fas fa-hammer',
+      'materials': 'fas fa-cubes',
+      'electrical': 'fas fa-bolt',
+      'safety': 'fas fa-shield-alt'
+    };
+
+    // Load categories
+    function loadCategories() {
+      const categoriesGrid = document.getElementById('categories-grid');
+      fetch('/api/categories')
+        .then(response => response.json())
+        .then(categories => {
+          if (categories.length === 0) {
+            categoriesGrid.innerHTML = '<p class="text-center text-muted">No categories available</p>';
+            return;
+          }
+          
+          categoriesGrid.innerHTML = categories.map(category => {
+            const icon = categoryIcons[category.name.toLowerCase()] || 'fas fa-box';
+            return `
+              <div class="category-card" onclick="filterProductsByCategory('${category.id}', '${category.name}')">
+                <div class="category-overlay"></div>
+                <div class="category-icon"><i class="${icon}"></i></div>
+                <div class="category-content">
+                  <h5 class="category-title">${category.name}</h5>
+                  <p class="category-description">${category.description || 'Shop this category'}</p>
+                </div>
+              </div>
+            `;
+          }).join('');
+        })
+        .catch(error => console.error('Error loading categories:', error));
+    }
+
+    // Load all products
+    function loadAllProducts() {
+      const productsGrid = document.getElementById('products-grid');
+      fetch('/api/products?status=active')
+        .then(response => response.json())
+        .then(data => {
+          displayProducts(data.products || data || []);
+        })
+        .catch(error => {
+          console.error('Error loading products:', error);
+          productsGrid.innerHTML = '<p class="text-center text-muted col-12">Unable to load products</p>';
+        });
+    }
+
+    // Display products
+    function displayProducts(products) {
+      const productsGrid = document.getElementById('products-grid');
+      if (!products || products.length === 0) {
+        productsGrid.innerHTML = `
+          <div class="col-12 text-center py-5">
+            <p class="text-muted mb-3" style="font-size: 1.1rem;">No products available yet.</p>
+            <p class="text-muted">Products will appear here soon. Check back later!</p>
+          </div>
+        `;
+        return;
+      }
+      
+      productsGrid.innerHTML = products.map((product, index) => `
+        <div class="col-lg-4 col-md-6">
+          <div class="card h-100 product-card shadow-md" style="border: 1px solid rgba(31, 61, 36, 0.1); transition: all 0.3s ease;">
+            <div class="position-relative overflow-hidden" style="height: 220px; background: linear-gradient(135deg, #e8f1eb 0%, #d4e8dc 100%);">
+              ${product.images && product.images.length > 0 
+                ? `<img src="${product.images[0]}" class="card-img-top" alt="${product.name}" style="height: 100%; width: 100%; object-fit: cover; transition: transform 0.4s ease;">` 
+                : `<div style="height: 100%; width: 100%; display: flex; align-items: center; justify-content: center; font-size: 3rem; color: rgba(31, 61, 36, 0.3);"><i class="fas fa-cube"></i></div>`
+              }
+              <div class="position-absolute top-0 end-0 m-3">
+                <span class="badge" style="background: linear-gradient(135deg, #1F3D24, #2A5A32); padding: 8px 12px; color: white; font-weight: 600;">NEW</span>
+              </div>
+            </div>
+            <div class="card-body d-flex flex-column" style="padding: 1.5rem;">
+              <h5 class="card-title fw-bold mb-2" style="color: #2c3e50; font-size: 1.1rem;">${product.name}</h5>
+              <p class="card-text text-muted" style="font-size: 0.9rem; line-height: 1.5;">${(product.description || 'Premium quality product').substring(0, 70)}...</p>
+              <div class="mt-auto pt-3">
+                <p class="gradient-text mb-3" style="font-size: 1.2rem; font-weight: 700; color: #1F3D24;">LKR ${product.price ? product.price.toLocaleString('en-US') : 'Contact'}</p>
+                <a href="/products/${product.id}" class="product-view-btn" style="width: 100%;">
+                  <i class="fas fa-eye me-2"></i>View Details
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // Filter products by category
+    function filterProductsByCategory(categoryId, categoryName) {
+      const productsGrid = document.getElementById('products-grid');
+      const titleElement = document.getElementById('selected-category-title');
+      
+      fetch(`/api/products?status=active&categoryId=${categoryId}`)
+        .then(response => response.json())
+        .then(data => {
+          titleElement.textContent = `${categoryName} Products`;
+          titleElement.style.display = 'block';
+          displayProducts(data.products || data || []);
+          
+          // Smooth scroll to products grid after a slight delay
+          setTimeout(() => {
+            const productsGrid = document.getElementById('products-grid');
+            if (productsGrid) {
+              // Scroll so products grid is at the top of viewport
+              const yOffset = -80; // Offset for header
+              const y = productsGrid.getBoundingClientRect().top + window.pageYOffset + yOffset;
+              window.scrollTo({ top: y, behavior: 'smooth' });
+            }
+          }, 150);
+        })
+        .catch(error => {
+          console.error('Error loading category products:', error);
+          productsGrid.innerHTML = '<p class="text-center text-muted col-12">Unable to load products</p>';
+        });
+    }
+
+
+
+
+
+
+
+
+
+    // Initialize statistics counter
+    function initStatsCounter() {
+      const statsNumbers = document.querySelectorAll('.stats-number');
+
+      const counter = (element) => {
+        const target = parseInt(element.getAttribute('data-target'));
+        const text = element.textContent;
+        const increment = target / 200;
+        let current = 0;
+
+        const timer = setInterval(() => {
+          current += increment;
+          if (current >= target) {
+            element.textContent = target.toLocaleString();
+            clearInterval(timer);
+          } else {
+            element.textContent = Math.floor(current).toLocaleString();
+          }
+        }, 10);
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            counter(entry.target);
+            observer.unobserve(entry.target);
+          }
+        });
+      });
+
+      statsNumbers.forEach(stat => observer.observe(stat));
+    }
+
+
+
+    // Load flying solar components with admin product images
+    function loadFlyingComponents() {
+      fetch('/api/admin-products?limit=8')
+        .then(response => response.json())
+        .then(data => {
+          const container = document.getElementById('flying-components');
+          if (data.products && data.products.length > 0) {
+            const components = data.products.map((product, index) => {
+              const imageUrl = product.images && product.images.length > 0 ? product.images[0] : '/images/placeholder-product.jpg';
+              const componentType = index % 3 === 0 ? 'solar-panel' : index % 3 === 1 ? 'inverter' : 'battery';
+              return `<div class="flying-component ${componentType}" style="background-image: url('${imageUrl}');" data-product-id="${product.id}" title="${product.name}"></div>`;
+            }).join('');
+
+            container.innerHTML = components;
+          } else {
+            // Fallback to default components if no admin products
+            container.innerHTML = `
+              <div class="flying-component solar-panel"></div>
+              <div class="flying-component inverter"></div>
+              <div class="flying-component battery"></div>
+              <div class="flying-component solar-panel"></div>
+              <div class="flying-component inverter"></div>
+              <div class="flying-component battery"></div>
+              <div class="flying-component solar-panel"></div>
+              <div class="flying-component inverter"></div>
+            `;
+          }
+        })
+        .catch(error => {
+          console.error('Error loading flying components:', error);
+          // Fallback to default components
+          const container = document.getElementById('flying-components');
+          container.innerHTML = `
+            <div class="flying-component solar-panel"></div>
+            <div class="flying-component inverter"></div>
+            <div class="flying-component battery"></div>
+            <div class="flying-component solar-panel"></div>
+            <div class="flying-component inverter"></div>
+            <div class="flying-component battery"></div>
+            <div class="flying-component solar-panel"></div>
+            <div class="flying-component inverter"></div>
+          `;
+        });
+    }
+
+    // Load all dynamic content on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      loadFeaturedTestimonials();
+      loadFlyingComponents();
+      initStatsCounter();
+      loadCategories();
+      loadAllProducts();
+    });
+  </script>
+  <style>
+    /* Enhanced Hero Section with Parallax */
+    .hero-section {
+      position: relative;
+      height: 80vh;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      color: white;
+    }
+
+    .hero-background-video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      z-index: 1;
+      transform: translate(-50%, -50%);
+      object-fit: cover;
+      transition: transform 0.1s ease-out;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 100%);
+      z-index: 2;
+    }
+
+    .hero-section .container {
+      z-index: 3;
+      animation: fadeInUp 1.5s ease-out;
+    }
+
+    .typing-cursor {
+      color: white;
+      font-weight: bold;
+    }
+
+    @keyframes blink {
+      0%, 50% { opacity: 1; }
+      51%, 100% { opacity: 0; }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes slideInRight {
+      from {
+        opacity: 0;
+        transform: translateX(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes bounceIn {
+      0% {
+        opacity: 0;
+        transform: scale(0.3);
+      }
+      50% {
+        opacity: 1;
+        transform: scale(1.05);
+      }
+      70% {
+        transform: scale(0.9);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    /* Section Animations */
+    .section {
+      animation: fadeIn 1s ease-out;
+      animation-fill-mode: both;
+    }
+
+    .section:nth-child(odd) {
+      animation-delay: 0.2s;
+    }
+
+    .section:nth-child(even) {
+      animation-delay: 0.4s;
+    }
+
+    /* Card Hover Effects */
+    .card {
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    }
+
+    .feature-icon {
+      transition: all 0.3s ease;
+    }
+
+    .card:hover .feature-icon {
+      transform: scale(1.2);
+      color: #007bff !important;
+    }
+
+    /* Button Animations */
+    .btn {
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.5s;
+    }
+
+    .btn:hover:before {
+      left: 100%;
+    }
+
+    .btn-hero {
+      background: linear-gradient(45deg, #007bff, #0056b3);
+      border: none;
+      animation: pulse 2s infinite;
+    }
+
+    /* Statistics Counter Animation */
+    .stats-card {
+      animation: slideInLeft 1s ease-out;
+      animation-fill-mode: both;
+    }
+
+    .stats-card:nth-child(2) { animation-delay: 0.2s; }
+    .stats-card:nth-child(3) { animation-delay: 0.4s; }
+    .stats-card:nth-child(4) { animation-delay: 0.6s; }
+
+    /* Partner Logos Animation */
+    .partner-logo {
+      animation: fadeIn 1s ease-out;
+      animation-fill-mode: both;
+      transition: transform 0.3s ease;
+    }
+
+    .partner-logo:hover {
+      transform: scale(1.1);
+    }
+
+    .partner-logo:nth-child(1) { animation-delay: 0.1s; }
+    .partner-logo:nth-child(2) { animation-delay: 0.2s; }
+    .partner-logo:nth-child(3) { animation-delay: 0.3s; }
+    .partner-logo:nth-child(4) { animation-delay: 0.4s; }
+    .partner-logo:nth-child(5) { animation-delay: 0.5s; }
+    .partner-logo:nth-child(6) { animation-delay: 0.6s; }
+
+    /* Floating Animation for Icons */
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .feature-icon i {
+      animation: float 3s ease-in-out infinite;
+    }
+
+    .feature-icon:nth-child(1) i { animation-delay: 0s; }
+    .feature-icon:nth-child(2) i { animation-delay: 1s; }
+    .feature-icon:nth-child(3) i { animation-delay: 2s; }
+
+    /* Testimonial Cards Animation */
+    .testimonial-card {
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      border-radius: 15px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      animation: slideInRight 1s ease-out;
+      animation-fill-mode: both;
+      transition: transform 0.3s ease;
+    }
+
+    .testimonial-card:hover {
+      transform: translateX(10px);
+    }
+
+    /* Section Titles Animation */
+    .section-title {
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 3px;
+      bottom: -10px;
+      left: 50%;
+      background: linear-gradient(45deg, #007bff, #0056b3);
+      transition: all 0.5s ease;
+    }
+
+    .section-title:hover::after {
+      width: 100%;
+      left: 0;
+    }
+
+    /* Background Particles */
+    .particles-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .particle {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .particle:nth-child(odd) {
+      animation-duration: 8s;
+      animation-delay: -2s;
+    }
+
+    .particle:nth-child(even) {
+      animation-duration: 10s;
+      animation-delay: -4s;
+    }
+
+    /* Smooth Scroll */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Loading Animation */
+    .loading-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      animation: fadeOut 1s ease-out 2s forwards;
+    }
+
+    .spinner {
+      width: 50px;
+      height: 50px;
+      border: 3px solid #f3f3f3;
+      border-top: 3px solid #007bff;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    @keyframes fadeOut {
+      to { opacity: 0; visibility: hidden; }
+    }
+
+    /* Responsive Enhancements */
+    @media (max-width: 768px) {
+      .hero-section {
+        height: 70vh;
+      }
+
+      .card:hover {
+        transform: none;
+      }
+
+      .btn-hero {
+        animation: none;
+      }
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(45deg, #007bff, #0056b3);
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(45deg, #0056b3, #004085);
+    }
+
+    /* Categories Grid Styles */
+    .categories-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      padding: 2rem 0;
+    }
+
+    .category-card {
+      position: relative;
+      background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+      border-radius: 20px;
+      padding: 2rem;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      border: 2px solid transparent;
+      overflow: hidden;
+    }
+
+    .category-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,193,7,0.1), transparent);
+      transition: left 0.5s;
+    }
+
+    .category-card:hover::before {
+      left: 100%;
+    }
+
+    .category-card:hover {
+      transform: translateY(-10px) scale(1.05);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+      border-color: #ffc107;
+    }
+
+    .category-icon {
+      font-size: 3rem;
+      color: #6c757d;
+      margin-bottom: 1rem;
+      transition: all 0.3s ease;
+      position: relative;
+      z-index: 2;
+    }
+
+    .category-card:hover .category-icon {
+      color: #ffc107;
+      transform: scale(1.2) rotate(5deg);
+    }
+
+    .category-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .category-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #343a40;
+      margin-bottom: 0.5rem;
+      transition: color 0.3s ease;
+    }
+
+    .category-card:hover .category-title {
+      color: #495057;
+    }
+
+    .category-description {
+      font-size: 0.9rem;
+      color: #6c757d;
+      margin: 0;
+      transition: color 0.3s ease;
+    }
+
+    .category-card:hover .category-description {
+      color: #495057;
+    }
+
+    .category-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(255,193,7,0.05) 0%, rgba(255,193,7,0.1) 100%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      border-radius: 20px;
+    }
+
+    .category-card:hover .category-overlay {
+      opacity: 1;
+    }
+
+    @media (max-width: 768px) {
+      .categories-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+        padding: 1rem 0;
+      }
+
+      .category-card {
+        padding: 1.5rem;
+      }
+
+      .category-icon {
+        font-size: 2.5rem;
+      }
+
+      .category-title {
+        font-size: 1.1rem;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .categories-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .category-card {
+        padding: 1.25rem;
+      }
+
+      .category-icon {
+        font-size: 2.2rem;
+      }
+
+      .category-title {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</body>
+</html>

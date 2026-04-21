@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="d-flex">
+    <!-- Sidebar -->
+    <div class="admin-sidebar" style="width: 250px; background: #f8f9fa; padding: 20px; border-right: 1px solid #dee2e6;">
+      <h4 style="margin-bottom: 30px;"><i class="fas fa-package"></i> Product Manager</h4>
+      <nav class="nav flex-column">
+        <a href="/user/products" class="nav-link" style="padding: 10px 15px; margin-bottom: 10px; color: #666; border-radius: 5px;">
+          <i class="fas fa-box me-2"></i> My Products
+        </a>
+        <a href="/user/add-product" class="nav-link active" style="padding: 10px 15px; margin-bottom: 10px; color: #333; border-radius: 5px;">
+          <i class="fas fa-plus-circle me-2"></i> Add Product
+        </a>
+        <a href="/user/dashboard" class="nav-link" style="padding: 10px 15px; margin-bottom: 10px; color: #666; border-radius: 5px;">
+          <i class="fas fa-home me-2"></i> Dashboard
+        </a>
+        <a href="/user/profile" class="nav-link" style="padding: 10px 15px; margin-bottom: 10px; color: #666; border-radius: 5px;">
+          <i class="fas fa-user me-2"></i> Profile
+        </a>
+        <a href="/user/logout" class="nav-link" style="padding: 10px 15px; color: #666; border-radius: 5px;">
+          <i class="fas fa-sign-out-alt me-2"></i> Logout
+        </a>
+      </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="flex-grow-12" style="flex: 1; overflow: auto;">
+      <!-- Header -->
+      <div style="background: white; padding: 30px 40px; border-bottom: 1px solid #dee2e6; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+        <div class="d-flex justify-content-between align-items-center">
+          <div>
+            <h2 style="margin: 0; color: #212121;"><%= title %></h2>
+            <p style="margin: 5px 0 0 0; color: #999; font-size: 14px;">Add a new product to your inventory</p>
+          </div>
+          <a href="/user/products" class="btn btn-secondary" style="padding: 10px 20px;">
+            <i class="fas fa-arrow-left me-2"></i>Back to Products
+          </a>
+        </div>
+      </div>
+
+      <!-- Alerts -->
+      <% if (typeof messages !== 'undefined') { %>
+        <% if (messages.success && messages.success.length > 0) { %>
+          <div class="alert alert-success alert-dismissible fade show m-3" role="alert">
+            <strong>Success!</strong> <%= messages.success[0] %>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        <% } %>
+        <% if (messages.error && messages.error.length > 0) { %>
+          <div class="alert alert-danger alert-dismissible fade show m-3" role="alert">
+            <strong>Error!</strong> <%= messages.error[0] %>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        <% } %>
+      <% } %>
+
+      <!-- Form Content -->
+      <div style="padding: 30px 40px; max-width: 900px;">
+        <div class="card" style="border: 1px solid #e0e0e0; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
+          <div class="card-body p-4">
+            <form action="/api/products" method="POST" enctype="multipart/form-data" id="productForm">
+              <!-- Product Name -->
+              <div class="mb-4">
+                <label class="form-label fw-bold">Product Name <span class="text-danger">*</span></label>
+                <input type="text" name="name" class="form-control" required placeholder="e.g., Professional Power Drill Set">
+              </div>
+
+              <!-- Description -->
+              <div class="mb-4">
+                <label class="form-label fw-bold">Product Description <span class="text-danger">*</span></label>
+                <textarea name="description" class="form-control" rows="5" required placeholder="Detailed description of your product..."></textarea>
+              </div>
+
+              <!-- Category Row -->
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="mb-4">
+                    <label class="form-label fw-bold">Category <span class="text-danger">*</span></label>
+                    <select name="categoryId" class="form-control" required>
+                      <option value="">-- Select Category --</option>
+                      <% if (categories && categories.length > 0) { %>
+                        <% categories.forEach(category => { %>
+                          <option value="<%= category.id %>"><%= category.name %></option>
+                        <% }); %>
+                      <% } %>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="mb-4">
+                    <label class="form-label fw-bold">Price (Rs.) <span class="text-danger">*</span></label>
+                    <input type="number" name="price" class="form-control" step="0.01" required placeholder="0.00">
+                  </div>
+                </div>
+              </div>
+
+              <!-- Stock and Minimum Order Row -->
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="mb-4">
+                    <label class="form-label fw-bold">Stock Quantity <span class="text-danger">*</span></label>
+                    <input type="number" name="stock" class="form-control" required placeholder="0">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="mb-4">
+                    <label class="form-label fw-bold">Minimum Order Quantity</label>
+                    <input type="number" name="minOrder" class="form-control" value="1" placeholder="1">
+                  </div>
+                </div>
+              </div>
+
+              <!-- Warranty and WhatsApp -->
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="mb-4">
+                    <label class="form-label fw-bold">Warranty</label>
+                    <input type="text" name="warranty" class="form-control" placeholder="e.g., 1 Year Manufacturer">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="mb-4">
+                    <label class="form-label fw-bold">WhatsApp Link</label>
+                    <input type="text" name="whatsappLink" class="form-control" placeholder="https://wa.me/...">
+                  </div>
+                </div>
+              </div>
+
+              <!-- Product Image -->
+              <div class="mb-4">
+                <label class="form-label fw-bold">Product Image</label>
+                <div class="input-group">
+                  <input type="file" name="image" class="form-control" accept="image/*" id="imageInput">
+                  <span class="input-group-text"><i class="fas fa-image"></i></span>
+                </div>
+                <small class="form-text text-muted">Recommended: JPG, PNG (Max 5MB)</small>
+                <div id="imagePreview" style="margin-top: 10px;"></div>
+              </div>
+
+              <!-- Datasheet -->
+              <div class="mb-4">
+                <label class="form-label fw-bold">Product Datasheet (PDF)</label>
+                <div class="input-group">
+                  <input type="file" name="datasheet" class="form-control" accept=".pdf">
+                  <span class="input-group-text"><i class="fas fa-file-pdf"></i></span>
+                </div>
+                <small class="form-text text-muted">Optional: PDF file only (Max 10MB)</small>
+              </div>
+
+              <!-- Info Alert -->
+              <div class="alert alert-info" role="alert">
+                <i class="fas fa-info-circle me-2"></i>
+                <strong>Note:</strong> Your product will be listed as pending and requires admin approval before it appears on the main website.
+              </div>
+
+              <!-- Buttons -->
+              <div class="d-flex gap-3">
+                <button type="submit" class="btn btn-primary" style="background: #1F3D24; border: none; padding: 12px 40px;">
+                  <i class="fas fa-check me-2"></i>Submit Product
+                </button>
+                <a href="/user/products" class="btn btn-secondary" style="padding: 12px 40px;">
+                  <i class="fas fa-times me-2"></i>Cancel
+                </a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Image preview
+    document.getElementById('imageInput').addEventListener('change', function(e) {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(event) {
+          const preview = document.getElementById('imagePreview');
+          preview.innerHTML = `<img src="${event.target.result}" style="max-width: 200px; border-radius: 4px; margin-top: 10px;">`;
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+
+    // Form submission with file upload
+    document.getElementById('productForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      
+      const formData = new FormData(this);
+      
+      try {
+        const response = await fetch('/api/products', {
+          method: 'POST',
+          body: formData
+        });
+        
+        const data = await response.json();
+        
+        if (data.success) {
+          alert('Product submitted successfully! Redirecting...');
+          window.location.href = '/user/products';
+        } else {
+          alert('Error: ' + (data.error || 'Failed to create product'));
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        alert('Error: ' + error.message);
+      }
+    });
+  </script>
+  <script src="/js/main.js"></script>
+</body>
+</html>

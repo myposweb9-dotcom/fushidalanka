@@ -1,0 +1,30 @@
+<!-- Scrolling Logos Bar -->
+<% if (logos && logos.length > 0) { %>
+<div class="logos-bar bg-white border-top py-3">
+  <div class="container-fluid">
+    <div class="logos-slider">
+      <div class="logos-track">
+        <% logos.forEach(logo => { %>
+          <div class="logo-item">
+            <% if (logo.image) { %>
+              <img src="<%= logo.image %>" alt="<%= logo.title || 'Partner Logo' %>" class="logo-image">
+            <% } else { %>
+              <span class="logo-text"><%= logo.title || 'Logo' %></span>
+            <% } %>
+          </div>
+        <% }); %>
+        <!-- Duplicate logos for seamless scrolling -->
+        <% logos.forEach(logo => { %>
+          <div class="logo-item">
+            <% if (logo.image) { %>
+              <img src="<%= logo.image %>" alt="<%= logo.title || 'Partner Logo' %>" class="logo-image">
+            <% } else { %>
+              <span class="logo-text"><%= logo.title || 'Logo' %></span>
+            <% } %>
+          </div>
+        <% }); %>
+      </div>
+    </div>
+  </div>
+</div>
+<% } %>

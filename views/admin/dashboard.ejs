@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="d-flex">
+    <!-- Sidebar -->
+    <div class="admin-sidebar">
+      <h4><i class="fas fa-cog"></i> Admin Panel</h4>
+      <nav class="nav flex-column">
+        <a href="/admin/dashboard" class="nav-link active">
+          <i class="fas fa-tachometer-alt"></i> Dashboard
+        </a>
+        <a href="/admin/products" class="nav-link">
+          <i class="fas fa-box"></i> Products
+        </a>
+        <a href="/admin/categories" class="nav-link">
+          <i class="fas fa-tags"></i> Categories
+        </a>
+        <a href="/admin/users" class="nav-link">
+          <i class="fas fa-users"></i> Users
+        </a>
+        <a href="/admin/testimonials" class="nav-link">
+          <i class="fas fa-star"></i> Testimonials
+        </a>
+        <a href="/admin/content" class="nav-link">
+          <i class="fas fa-edit"></i> Content
+        </a>
+        <a href="/admin/logout" class="nav-link">
+          <i class="fas fa-sign-out-alt"></i> Logout
+        </a>
+      </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="flex-grow-12">
+      <div class="admin-header">
+        <div class="d-flex justify-content-between align-items-center">
+          <div>
+            <h2>Dashboard Overview</h2>
+            <p class="mb-0">RushidaLanka Hardware Shop Management</p>
+          </div>
+          <div class="d-flex align-items-center">
+            <span class="me-3 text-muted">
+              <i class="fas fa-user-circle me-2"></i>Welcome, Admin
+            </span>
+            <a href="/" class="btn btn-outline-primary btn-sm">
+              <i class="fas fa-external-link-alt me-1"></i>View Site
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="admin-content">
+        <!-- Stats Cards -->
+        <div class="admin-stats-grid">
+          <div class="admin-stats-card">
+            <h3><%= stats.products || 0 %></h3>
+            <p><i class="fas fa-box me-2"></i>Total Products</p>
+          </div>
+          <div class="admin-stats-card">
+            <h3><%= stats.users || 0 %></h3>
+            <p><i class="fas fa-users me-2"></i>Active Users</p>
+          </div>
+          <div class="admin-stats-card">
+            <h3><%= stats.orders || 0 %></h3>
+            <p><i class="fas fa-shopping-cart me-2"></i>Total Orders</p>
+          </div>
+          <div class="admin-stats-card">
+            <h3><%= stats.categories || 0 %></h3>
+            <p><i class="fas fa-tags me-2"></i>Categories</p>
+          </div>
+        </div>
+
+        <!-- Recent Activity -->
+        <div class="row mt-4">
+          <div class="col-md-8">
+            <div class="card">
+              <div class="card-header">
+                <h5><i class="fas fa-clock"></i> Recent Activity</h5>
+              </div>
+              <div class="card-body">
+                <div class="list-group list-group-flush">
+                  <div class="list-group-item">
+                    <div class="d-flex w-100 justify-content-between">
+                      <h6 class="mb-1">New product added</h6>
+                      <small>2 hours ago</small>
+                    </div>
+                    <p class="mb-1">Power Drill Set was added to inventory by admin.</p>
+                  </div>
+                  <div class="list-group-item">
+                    <div class="d-flex w-100 justify-content-between">
+                      <h6 class="mb-1">New order</h6>
+                      <small>3 hours ago</small>
+                    </div>
+                    <p class="mb-1">Order #1256 received from customer.</p>
+                  </div>
+                  <div class="list-group-item">
+                    <div class="d-flex w-100 justify-content-between">
+                      <h6 class="mb-1">Order shipped</h6>
+                      <small>5 hours ago</small>
+                    </div>
+                    <p class="mb-1">Order #1234 has been shipped successfully.</p>
+                  </div>
+                  <div class="list-group-item">
+                    <div class="d-flex w-100 justify-content-between">
+                      <h6 class="mb-1">Customer review received</h6>
+                      <small>1 day ago</small>
+                    </div>
+                    <p class="mb-1">New positive review submitted for Hand Tools category.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-header">
+                <h5><i class="fas fa-chart-pie"></i> Product Categories</h5>
+              </div>
+              <div class="card-body">
+                <div class="mb-3">
+                  <strong>Power Tools:</strong> <%= stats.powerTools || 0 %> items
+                  <div class="progress mt-1">
+                    <div class="progress-bar" style="width: <%= Math.min((stats.powerTools || 0) * 2, 100) + '%' %>"></div>
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <strong>Hand Tools:</strong> <%= stats.handTools || 0 %> items
+                  <div class="progress mt-1">
+                    <div class="progress-bar bg-primary" style="width: <%= Math.min((stats.handTools || 0) * 2, 100) + '%' %>"></div>
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <strong>Safety Equipment:</strong> <%= stats.safetyEq || 0 %> items
+                  <div class="progress mt-1">
+                    <div class="progress-bar bg-warning" style="width: <%= Math.min((stats.safetyEq || 0) * 2, 100) + '%' %>"></div>
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <strong>Hardware Accessories:</strong> <%= stats.accessories || 0 %> items
+                  <div class="progress mt-1">
+                    <div class="progress-bar bg-info" style="width: <%= Math.min((stats.accessories || 0) * 2, 100) + '%' %>"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card mt-3">
+              <div class="card-header">
+                <h5><i class="fas fa-bell"></i> Notifications</h5>
+              </div>
+              <div class="card-body">
+                <div class="alert alert-warning">
+                  <small>5 products are running low on stock</small>
+                </div>
+                <div class="alert alert-info">
+                  <small>12 new orders pending processing</small>
+                </div>
+                <div class="alert alert-success">
+                  <small>All daily orders shipped successfully!</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="card mt-4">
+          <div class="card-header">
+            <h5><i class="fas fa-plus"></i> Quick Actions</h5>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-3">
+                <a href="/admin/products" class="btn btn-primary w-100 mb-2">
+                  <i class="fas fa-plus"></i> Add Product
+                </a>
+              </div>
+              <div class="col-md-3">
+                <a href="/admin/users" class="btn btn-outline-primary w-100 mb-2">
+                  <i class="fas fa-users"></i> Manage Users
+                </a>
+              </div>
+              <div class="col-md-3">
+                <a href="/admin/testimonials" class="btn btn-outline-warning w-100 mb-2">
+                  <i class="fas fa-star"></i> Manage Reviews
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,168 @@
+<!-- Professional Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-light shadow-sm sticky-top" style="background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(248,250,255,0.95) 100%); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(31, 61, 36, 0.1);">
+  <div class="container-fluid px-4">
+    <!-- Logo Section -->
+    <a class="navbar-brand d-flex align-items-center" href="/">
+      <img src="/images/FushidaLankaLogo.png" alt="FushidaLanka Logo" class="navbar-logo" style="height: 50px; width: auto; max-width: 320px; object-fit: contain; margin-right: 15px;">
+      <div style="font-size: 18px; font-weight: 900; color: #1F3D24; text-transform: uppercase; letter-spacing: 1px; display: none;">
+        🔧 FushidaLanka
+      </div>
+    </a>
+
+    <!-- Mobile Toggle Button -->
+    <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navigation Menu -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item">
+          <a class="nav-link px-3 py-2 mx-1 rounded-pill text-dark fw-medium <%= currentPath === '/' ? 'active' : '' %>" href="/">Home</a>
+        </li>
+        <li class="nav-item nav-submenu">
+          <a class="nav-link px-3 py-2 mx-1 rounded-pill text-dark fw-medium <%= currentPath === '/about' || currentPath === '/our-partners' || currentPath === '/awards-recognition' ? 'active' : '' %>" href="#">
+            About <i class="fas fa-chevron-down submenu-arrow"></i>
+          </a>
+          <ul class="submenu-items">
+            <li><a class="submenu-item" href="/about"><i class="fas fa-info-circle me-2 text-primary"></i>About Us</a></li>
+            <li><a class="submenu-item" href="/our-partners"><i class="fas fa-handshake me-2 text-primary"></i>Our Partners</a></li>
+            <li><a class="submenu-item" href="/awards-recognition"><i class="fas fa-trophy me-2 text-primary"></i>Awards & Recognition</a></li>
+          </ul>
+        </li>
+        <li class="nav-item nav-submenu">
+          <a class="nav-link px-3 py-2 mx-1 rounded-pill text-dark fw-medium <%= currentPath === '/products' || currentPath.startsWith('/products') ? 'active' : '' %>" href="/products">
+            Products <i class="fas fa-chevron-down submenu-arrow"></i>
+          </a>
+          <ul class="submenu-items">
+            <li><a class="submenu-item" href="/products"><i class="fas fa-boxes me-2 text-primary"></i>All Products</a></li>
+            <li><a class="submenu-item" href="/products"><i class="fas fa-hammer me-2 text-primary"></i>Tools & Equipment</a></li>
+            <li><a class="submenu-item" href="/products"><i class="fas fa-cubes me-2 text-primary"></i>Building Materials</a></li>
+            <li><a class="submenu-item" href="/products"><i class="fas fa-bolt me-2 text-primary"></i>Electrical Supplies</a></li>
+            <li><a class="submenu-item" href="/products"><i class="fas fa-shield-alt me-2 text-primary"></i>Safety Gear</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link px-3 py-2 mx-1 rounded-pill text-dark fw-medium <%= currentPath === '/contact' ? 'active' : '' %>" href="/contact">Contact</a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Admin Login Button (Right Side) -->
+    <ul class="navbar-nav d-flex">
+      <li class="nav-item">
+        <a class="nav-link btn btn-danger text-white fw-bold px-4 py-2 rounded-pill" href="/admin/login">
+          <i class="fas fa-lock me-1"></i>Admin Login
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Custom CSS for enhanced navbar styling -->
+<style>
+/* REMOVE ALL UNDERLINES - CRITICAL */
+.navbar-nav .nav-link {
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+  text-decoration: none !important;
+  border: none !important;
+  border-bottom: none !important;
+  outline: none !important;
+}
+
+/* Completely remove the ::after underline pseudo-element */
+.navbar-nav .nav-link::after {
+  content: none !important;
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.navbar-nav .nav-link:hover::after,
+.navbar-nav .nav-link.active::after {
+  content: none !important;
+  display: none !important;
+  width: 0 !important;
+  box-shadow: none !important;
+}
+
+.navbar-nav .nav-link:hover {
+  background-color: rgba(102, 126, 234, 0.12);
+  color: #667eea !important;
+  transform: translateY(-3px) scale(1.02);
+  text-decoration: none !important;
+  border: none !important;
+}
+
+.navbar-nav .nav-link.active {
+  background-color: rgba(102, 126, 234, 0.15);
+  color: #667eea !important;
+  transform: scale(1.02);
+  text-decoration: none !important;
+  border: none !important;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+}
+
+.navbar-nav .nav-link:active,
+.navbar-nav .nav-link:focus {
+  text-decoration: none !important;
+  border: none !important;
+  border-bottom: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.navbar-toggler:focus {
+  box-shadow: none;
+}
+
+/* Explore Button */
+.explore-btn {
+  animation: gentle-pulse 2.5s infinite;
+  position: relative;
+  box-shadow: 0 4px 15px rgba(0, 123, 255, 0.4);
+  transition: all 0.3s ease;
+  border: none !important;
+  text-decoration: none !important;
+}
+
+@keyframes gentle-pulse {
+  0%, 100% {
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+    transform: scale(1.02);
+  }
+}
+
+.explore-btn:hover {
+  animation: none;
+  transform: scale(1.08);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+}
+
+@media (max-width: 991.98px) {
+  .navbar-nav .nav-link {
+    padding: 12px 16px;
+    margin: 4px 8px;
+  }
+
+  .navbar-collapse {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    margin-top: 16px;
+    padding: 16px;
+  }
+
+  .explore-btn {
+    animation: none;
+  }
+}
+</style>
+

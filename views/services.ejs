@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/css/style.css">
+  <meta name="description" content="FushidaLanka - Professional hardware and installation services including consultation, design, installation, and maintenance.">
+  <meta name="keywords" content="solar services, site assessment, system design, solar installation, maintenance, solar energy">
+</head>
+<body>
+<%- include('partials/header') %>
+
+<!-- Hero Section with Video -->
+<section class="hero-section">
+  <video muted playsinline class="hero-background-video" id="heroVideo">
+    <source src="/images/vdo123.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+  <div class="hero-overlay" style="background-color: rgba(0, 0, 0, 0.2);"></div>
+  <div class="container position-relative">
+    <div class="row align-items-center justify-content-center">
+      <div class="col-lg-8 text-center">
+        <h1 class="display-3 fw-bold text-white mb-3">Our Services</h1>
+        <p class="lead text-white-75">Comprehensive solutions designed to meet all your hardware and installation needs.</p>
+        <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center mt-4">
+          <a href="#services" class="btn btn-hero btn-lg">Explore Services</a>
+          <a href="/contact" class="btn btn-outline-light btn-lg">Get In Touch</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Services Section -->
+<section id="services" class="py-5">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h2 class="section-title" style="font-size: 2.5rem;">What We Offer</h2>
+      <p class="text-muted" style="font-size: 1.1rem;">Professional services to support your project from start to finish</p>
+    </div>
+
+    <div class="row">
+      <!-- Site Assessment Service -->
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="card h-100 shadow-sm border-light service-card" style="transition: all 0.3s ease;">
+          <div class="card-body text-center p-4">
+            <div class="service-icon mb-3" style="font-size: 3rem; color: #1F3D24;">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <h5 class="card-title fw-bold mb-3">Site Assessment</h5>
+            <p class="card-text text-muted mb-4">Comprehensive evaluation of your site to determine feasibility and optimal solutions.</p>
+            <ul class="list-unstyled text-start">
+              <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Site evaluation</li>
+              <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Feasibility analysis</li>
+              <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Resource assessment</li>
+              <li><i class="fas fa-check text-success me-2"></i>Cost estimation</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- System Design Service -->
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="card h-100 shadow-sm border-light service-card" style="transition: all 0.3s ease;">
+          <div class="card-body text-center p-4">
+            <div class="service-icon mb-3" style="font-size: 3rem; color: #1976d2;">
+              <i class="fas fa-drafting-compass"></i>
+            </div>
+            <h5 class="card-title fw-bold mb-3">System Design</h5>
+            <p class="card-text text-muted mb-4">Expert system design tailored to your specific requirements and site conditions.</p>
+            <ul class="list-unstyled text-start">
+              <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Custom sizing</li>
+              <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Component selection</li>
+              <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Technical specifications</li>
+              <li><i class="fas fa-check text-success me-2"></i>Performance modeling</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Installation Service -->
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="card h-100 shadow-sm border-light service-card" style="transition: all 0.3s ease;">
+          <div class="card-body text-center p-4">
+            <div class="service-icon mb-3" style="font-size: 3rem; color: #f57c00;">
+              <i class="fas fa-tools"></i>
+            </div>
+            <h5 class="card-title fw-bold mb-3">Installation</h5>
+            <p class="card-text text-muted mb-4">Professional installation by certified technicians with quality assurance.</p>
+            <ul class="list-unstyled text-start">
+              <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Expert installation</li>
+              <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Quality checks</li>
+              <li class="mb-2"><i class="fas fa-check text-success me-2"></i>System testing</li>
+              <li><i class="fas fa-check text-success me-2"></i>Final certification</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Maintenance Service -->
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="card h-100 shadow-sm border-light service-card" style="transition: all 0.3s ease;">
+          <div class="card-body text-center p-4">
+            <div class="service-icon mb-3" style="font-size: 3rem; color: #388e3c;">
+              <i class="fas fa-wrench"></i>
+            </div>
+            <h5 class="card-title fw-bold mb-3">Maintenance</h5>
+            <p class="card-text text-muted mb-4">Regular maintenance and support to keep your systems running optimally.</p>
+            <ul class="list-unstyled text-start">
+              <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Regular inspections</li>
+              <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Performance monitoring</li>
+              <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Preventive care</li>
+              <li><i class="fas fa-check text-success me-2"></i>Emergency repairs</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Consultation Service -->
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="card h-100 shadow-sm border-light service-card" style="transition: all 0.3s ease;">
+          <div class="card-body text-center p-4">
+            <div class="service-icon mb-3" style="font-size: 3rem; color: #7b1fa2;">
+              <i class="fas fa-comments"></i>
+            </div>
+            <h5 class="card-title fw-bold mb-3">Expert Consultation</h5>
+            <p class="card-text text-muted mb-4">Professional advice to help you make informed decisions for your projects.</p>
+            <ul class="list-unstyled text-start">
+              <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Technical guidance</li>
+              <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Best practices</li>
+              <li class="mb-2"><i class="fas fa-check text-success me-2"></i>ROI analysis</li>
+              <li><i class="fas fa-check text-success me-2"></i>Long-term planning</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Support Service -->
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="card h-100 shadow-sm border-light service-card" style="transition: all 0.3s ease;">
+          <div class="card-body text-center p-4">
+            <div class="service-icon mb-3" style="font-size: 3rem; color: #0097a7;">
+              <i class="fas fa-headset"></i>
+            </div>
+            <h5 class="card-title fw-bold mb-3">24/7 Support</h5>
+            <p class="card-text text-muted mb-4">Dedicated support team available around the clock for your needs.</p>
+            <ul class="list-unstyled text-start">
+              <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Quick response time</li>
+              <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Technical assistance</li>
+              <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Warranty support</li>
+              <li><i class="fas fa-check text-success me-2"></i>On-site help</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Why Choose Us Section -->
+<section class="py-5" style="background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h2 class="section-title" style="font-size: 2.5rem;">Why Choose FushidaLanka?</h2>
+      <p class="text-muted" style="font-size: 1.1rem;">We're committed to delivering excellence in every project</p>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 col-lg-3 mb-4 text-center">
+        <div class="mb-3" style="font-size: 2.5rem; color: #1F3D24;">
+          <i class="fas fa-award"></i>
+        </div>
+        <h5 class="fw-bold">15+ Years Experience</h5>
+        <p class="text-muted">Proven track record of successful installations</p>
+      </div>
+      <div class="col-md-6 col-lg-3 mb-4 text-center">
+        <div class="mb-3" style="font-size: 2.5rem; color: #1976d2;">
+          <i class="fas fa-users"></i>
+        </div>
+        <h5 class="fw-bold">Expert Team</h5>
+        <p class="text-muted">Certified professionals with extensive knowledge</p>
+      </div>
+      <div class="col-md-6 col-lg-3 mb-4 text-center">
+        <div class="mb-3" style="font-size: 2.5rem; color: #388e3c;">
+          <i class="fas fa-check-circle"></i>
+        </div>
+        <h5 class="fw-bold">Quality Assured</h5>
+        <p class="text-muted">100% satisfaction guarantee on all services</p>
+      </div>
+      <div class="col-md-6 col-lg-3 mb-4 text-center">
+        <div class="mb-3" style="font-size: 2.5rem; color: #f57c00;">
+          <i class="fas fa-phone"></i>
+        </div>
+        <h5 class="fw-bold">Always Available</h5>
+        <p class="text-muted">24/7 customer support and emergency assistance</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<section class="py-5" style="background: linear-gradient(135deg, #1F3D24 0%, #0F1F13 100%); color: white;">
+  <div class="container text-center">
+    <h2 class="mb-3 fw-bold">Ready to Get Started?</h2>
+    <p class="lead mb-4">Contact us today for a free consultation and let us help you with your next project.</p>
+    <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center">
+      <a href="/contact" class="btn btn-light btn-lg px-4">Contact Us</a>
+      <a href="tel:+94773705820" class="btn btn-outline-light btn-lg px-4">Call Now</a>
+    </div>
+  </div>
+</section>
+
+<%- include('partials/footer') %>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Auto-play hero video
+  const heroVideo = document.getElementById('heroVideo');
+  if (heroVideo) {
+    heroVideo.autoplay = true;
+    heroVideo.play().catch(err => {
+      console.log('Video autoplay prevented:', err);
+      document.addEventListener('click', () => {
+        heroVideo.play().catch(e => console.log('Play failed:', e));
+      }, { once: true });
+    });
+  }
+
+  // Add hover effect to service cards
+  const cards = document.querySelectorAll('.service-card');
+  cards.forEach(card => {
+    card.addEventListener('mouseenter', function() {
+      this.style.transform = 'translateY(-10px)';
+      this.style.boxShadow = '0 15px 40px rgba(0,0,0,0.15)';
+    });
+    card.addEventListener('mouseleave', function() {
+      this.style.transform = 'translateY(0)';
+      this.style.boxShadow = '0 1px 3px rgba(0,0,0,0.12)';
+    });
+  });
+});
+</script>
+  <script src="/js/main.js"></script>
+</body>
+</html>

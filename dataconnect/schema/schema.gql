@@ -1,0 +1,57 @@
+type User @table {
+  displayName: String!
+  email: String!
+  createdAt: Timestamp!
+  photoUrl: String
+  bio: String
+}
+
+type LanguageProfile @table {
+  user: User!
+  languageName: String!
+  fluencyLevel: String!
+  createdAt: Timestamp!
+  targetFluencyLevel: String
+  notes: String
+}
+
+type StudySession @table {
+  user: User!
+  languageProfile: LanguageProfile!
+  sessionDate: Date!
+  durationMinutes: Int!
+  createdAt: Timestamp!
+  description: String
+  topicsCovered: String
+}
+
+type VocabularyWord @table {
+  user: User!
+  languageProfile: LanguageProfile!
+  word: String!
+  definition: String!
+  createdAt: Timestamp!
+  exampleSentence: String
+  status: String
+}
+
+type GrammarConcept @table {
+  user: User!
+  languageProfile: LanguageProfile!
+  conceptName: String!
+  explanation: String!
+  createdAt: Timestamp!
+  exampleUsage: String
+  status: String
+}
+
+type LearningResource @table {
+  user: User!
+  languageProfile: LanguageProfile!
+  resourceName: String!
+  resourceType: String!
+  url: String!
+  createdAt: Timestamp!
+  description: String
+  tags: [String]
+}

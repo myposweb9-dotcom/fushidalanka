@@ -131,12 +131,13 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Session configuration
+const isProduction = process.env.NODE_ENV === 'production';
 app.use(session({
-  secret: process.env.SESSION_SECRET,
+  secret: process.env.SESSION_SECRET || 'default-secret-change-me',
   resave: false,
   saveUninitialized: true,
   cookie: {
-    secure: false, // Set to true in production with HTTPS
+    secure: isProduction, // true in production (HTTPS), false in dev (HTTP)
     maxAge: 24 * 60 * 60 * 1000 // 24 hours
   }
 }));

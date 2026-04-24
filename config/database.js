@@ -2,9 +2,28 @@ const { Sequelize } = require('sequelize');
 
 let sequelize;
 
-// Determine which database to use based on NODE_ENV
-if (process.env.NODE_ENV === 'production') {
-  // Production: Use MySQL with cPanel/Shared Hosting
+// Check for DATABASE_URL first (used by Render, Railway, Heroku, etc.)
+if (process.env.DATABASE_URL) {
+  // Production/Cloud: Use PostgreSQL via DATABASE_URL
+  sequelize = new Sequelize(process.env.DATABASE_URL, {
+    dialect: 'postgres',
+    protocol: 'postgres',
+    logging: false,
+    dialectOptions: {
+      ssl: {
+        require: true,
+        rejectUnauthorized: false // Required for some cloud providers
+      }
+    },
+    pool: {
+      max: 5,
+      min: 0,
+      acquire: 30000,
+      idle: 10000
+    }
+  });
+} else if (process.env.NODE_ENV === 'production') {
+  // Fallback production: Use MySQL with cPanel/Shared Hosting
   sequelize = new Sequelize({
     dialect: 'mysql',
     host: process.env.DB_HOST || 'localhost',
@@ -25,7 +44,7 @@ if (process.env.NODE_ENV === 'production') {
     }
   });
 } else {
-  // Development: Use MySQL locally
+  // Development: Use MySQL locally (or switch to sqlite3 for zero-config local dev)
   sequelize = new Sequelize({
     dialect: 'mysql',
     host: process.env.DB_HOST || 'localhost',
@@ -58,3 +77,4 @@ async function testConnection() {
 }
 
 module.exports = { sequelize, testConnection };
+

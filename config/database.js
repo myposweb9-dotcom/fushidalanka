@@ -22,14 +22,15 @@ if (process.env.DATABASE_URL) {
       idle: 10000
     }
   });
-} else if (process.env.NODE_ENV === 'production') {
-  // Fallback production: Use MySQL with cPanel/Shared Hosting
+} else if (process.env.DB_TYPE === 'postgres' || process.env.NODE_ENV === 'production') {
+  // PostgreSQL: Use for self-hosted or cloud deployments
+  const dialect = process.env.DB_TYPE === 'postgres' ? 'postgres' : 'postgres';
   sequelize = new Sequelize({
-    dialect: 'mysql',
+    dialect: dialect,
     host: process.env.DB_HOST || 'localhost',
-    port: process.env.DB_PORT || 3306,
+    port: process.env.DB_PORT || 5432,
     database: process.env.DB_NAME || 'fushidhalanka',
-    username: process.env.DB_USER || 'root',
+    username: process.env.DB_USER || 'postgres',
     password: process.env.DB_PASSWORD || '',
     logging: false,
     pool: {
@@ -39,18 +40,17 @@ if (process.env.DATABASE_URL) {
       idle: 10000
     },
     dialectOptions: {
-      charset: 'utf8mb4',
-      collate: 'utf8mb4_unicode_ci'
+      ssl: process.env.NODE_ENV === 'production' ? { require: true, rejectUnauthorized: false } : false
     }
   });
 } else {
-  // Development: Use MySQL locally (or switch to sqlite3 for zero-config local dev)
+  // Development: PostgreSQL locally
   sequelize = new Sequelize({
-    dialect: 'mysql',
+    dialect: 'postgres',
     host: process.env.DB_HOST || 'localhost',
-    port: process.env.DB_PORT || 3306,
+    port: process.env.DB_PORT || 5432,
     database: process.env.DB_NAME || 'fushidhalanka',
-    username: process.env.DB_USER || 'root',
+    username: process.env.DB_USER || 'postgres',
     password: process.env.DB_PASSWORD || '',
     logging: false,
     pool: {
@@ -58,10 +58,6 @@ if (process.env.DATABASE_URL) {
       min: 0,
       acquire: 30000,
       idle: 10000
-    },
-    dialectOptions: {
-      charset: 'utf8mb4',
-      collate: 'utf8mb4_unicode_ci'
     }
   });
 }

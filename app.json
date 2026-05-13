@@ -1,0 +1,75 @@
+{
+  "name": "FushidaLanka Hardware Shop",
+  "description": "Premium tools and hardware e-commerce platform",
+  "repository": "https://github.com/myposweb9-dotcom/fushidalanka",
+  "keywords": ["node", "express", "hardware", "ecommerce"],
+  "buildpack": {
+    "url": "heroku/nodejs"
+  },
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "free"
+    }
+  },
+  "addons": [
+    {
+      "plan": "heroku-postgresql:mini"
+    }
+  ],
+  "env": {
+    "NODE_ENV": {
+      "description": "Node environment",
+      "value": "production"
+    },
+    "PORT": {
+      "description": "Port for the application",
+      "value": "3000"
+    },
+    "SESSION_SECRET": {
+      "description": "Secret key for session encryption",
+      "generator": "secret"
+    },
+    "DB_HOST": {
+      "description": "Database host",
+      "value": "localhost"
+    },
+    "DB_PORT": {
+      "description": "Database port",
+      "value": "5432"
+    },
+    "DB_USER": {
+      "description": "Database user"
+    },
+    "DB_PASSWORD": {
+      "description": "Database password"
+    },
+    "DB_NAME": {
+      "description": "Database name",
+      "value": "fushidalanka"
+    },
+    "DB_TYPE": {
+      "value": "postgres"
+    },
+    "BASE_URL": {
+      "description": "Base URL for your application",
+      "value": ""
+    },
+    "EMAIL_USER": {
+      "description": "Email for sending password reset notifications"
+    },
+    "EMAIL_PASS": {
+      "description": "Email application password"
+    },
+    "ADMIN_EMAIL": {
+      "description": "Admin email",
+      "value": "admin@hienergy.com"
+    },
+    "ADMIN_PASSWORD": {
+      "description": "Admin password"
+    }
+  },
+  "scripts": {
+    "postdeploy": "node server.js"
+  }
+}

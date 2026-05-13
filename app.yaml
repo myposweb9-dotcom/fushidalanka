@@ -1,0 +1,48 @@
+name: fushidalanka
+services:
+- name: web
+  github:
+    repo: myposweb9-dotcom/fushidalanka
+    branch: main
+  build_command: npm ci
+  run_command: npm start
+  envs:
+  - key: NODE_ENV
+    value: production
+  - key: PORT
+    value: "3000"
+  - key: DB_HOST
+    scope: RUN_AND_BUILD_TIME
+  - key: DB_PORT
+    value: "5432"
+    scope: RUN_AND_BUILD_TIME
+  - key: DB_USER
+    scope: RUN_AND_BUILD_TIME
+  - key: DB_PASSWORD
+    scope: RUN_AND_BUILD_TIME
+  - key: DB_NAME
+    value: fushidalanka
+    scope: RUN_AND_BUILD_TIME
+  - key: DB_TYPE
+    value: postgres
+    scope: RUN_AND_BUILD_TIME
+  - key: SESSION_SECRET
+    scope: RUN_AND_BUILD_TIME
+  - key: BASE_URL
+    scope: RUN_AND_BUILD_TIME
+  - key: EMAIL_USER
+    scope: RUN_AND_BUILD_TIME
+  - key: EMAIL_PASS
+    scope: RUN_AND_BUILD_TIME
+  - key: ADMIN_EMAIL
+    value: admin@hienergy.com
+    scope: RUN_AND_BUILD_TIME
+  - key: ADMIN_PASSWORD
+    scope: RUN_AND_BUILD_TIME
+  http_port: 3000
+  source_dir: ./
+databases:
+- name: db
+  engine: PG
+  production: true
+  version: "14"

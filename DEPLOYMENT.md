@@ -178,6 +178,154 @@ Your app handles file uploads. For production:
 - [ ] Test contact forms
 - [ ] Verify responsive design
 
+## DigitalOcean Deployment (Recommended - Easiest)
+
+**Pros**: 
+- User-friendly interface
+- Affordable ($6-12/month)
+- PostgreSQL included
+- Auto-reload on code push
+- Free SSL certificates
+
+**URL**: https://www.digitalocean.com
+
+### Option A: App Platform (No Infrastructure Management)
+
+1. **Connect GitHub**
+   - Go to DigitalOcean Console → Apps
+   - Click "Create App"
+   - Select GitHub and authorize
+   - Choose `fushidalanka` repository, `main` branch
+   - Click "Next"
+
+2. **Configure Service**
+   - Build Command: `npm ci`
+   - Run Command: `npm start`
+   - HTTP Port: `3000`
+   - Click "Next"
+
+3. **Add Database**
+   - Click "Add Resource" → "Database"
+   - Select PostgreSQL 14
+   - Name: `db`
+   - Click "Create"
+
+4. **Environment Variables**
+   In App settings, set:
+   ```
+   NODE_ENV=production
+   PORT=3000
+   DB_TYPE=postgres
+   DB_NAME=fushidalanka
+   SESSION_SECRET=<generate-strong-secret>
+   BASE_URL=https://<your-app>.ondigitalocean.app
+   EMAIL_USER=<your-email>
+   EMAIL_PASS=<your-app-password>
+   ADMIN_EMAIL=admin@hienergy.com
+   ADMIN_PASSWORD=<secure-password>
+   ```
+   DB variables auto-populate from database connection
+
+5. **Deploy**
+   - Click "Deploy App"
+   - Wait 3-5 minutes
+   - App live at: `https://<app-name>.ondigitalocean.app`
+
+### Option B: Droplet (Full Control)
+
+1. **Create Ubuntu 22.04 Droplet** ($6-12/month)
+
+2. **SSH & Install**
+   ```bash
+   ssh root@<droplet-ip>
+   
+   # Update system
+   apt update && apt upgrade -y
+   
+   # Install Node, PostgreSQL, PM2
+   curl -fsSL https://deb.nodesource.com/setup_18.x | bash -
+   apt install -y nodejs postgresql postgresql-contrib nginx
+   npm install -g pm2
+   ```
+
+3. **Clone & Install App**
+   ```bash
+   cd /home
+   git clone https://github.com/myposweb9-dotcom/fushidalanka.git
+   cd fushidalanka
+   npm install
+   ```
+
+4. **Setup PostgreSQL Database**
+   ```bash
+   sudo -u postgres psql
+   ```
+   ```sql
+   CREATE DATABASE fushidalanka;
+   CREATE USER fushidapp WITH PASSWORD 'Sajas@42524385';
+   GRANT ALL PRIVILEGES ON DATABASE fushidalanka TO fushidapp;
+   \q
+   ```
+
+5. **Configure .env**
+   ```bash
+   nano .env
+   ```
+   ```
+   NODE_ENV=production
+   PORT=3000
+   DB_HOST=localhost
+   DB_PORT=5432
+   DB_USER=fushidapp
+   DB_PASSWORD=Sajas@42524385
+   DB_NAME=fushidalanka
+   SESSION_SECRET=<generate-strong-secret>
+   BASE_URL=https://<your-domain>
+   EMAIL_USER=<your-email>
+   EMAIL_PASS=<your-app-password>
+   ```
+
+6. **Start with PM2**
+   ```bash
+   pm2 start npm --name "fushidalanka" -- start
+   pm2 startup
+   pm2 save
+   ```
+
+7. **Setup Nginx & SSL**
+   ```bash
+   nano /etc/nginx/sites-available/fushidalanka
+   ```
+   Paste:
+   ```nginx
+   server {
+       listen 80;
+       server_name <your-domain>;
+       
+       location / {
+           proxy_pass http://localhost:3000;
+           proxy_set_header Host $host;
+           proxy_set_header X-Real-IP $remote_addr;
+       }
+   }
+   ```
+   
+   Enable & SSL:
+   ```bash
+   ln -s /etc/nginx/sites-available/fushidalanka /etc/nginx/sites-enabled/
+   apt install -y certbot python3-certbot-nginx
+   certbot --nginx -d <your-domain>
+   systemctl restart nginx
+   ```
+
+8. **Monitor**
+   ```bash
+   pm2 logs fushidalanka
+   pm2 monit
+   ```
+
+---
+
 ## Troubleshooting
 
 **Common Issues**:

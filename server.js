@@ -131,12 +131,16 @@ app.use(express.json());
 
 // Session configuration
 const isProduction = process.env.NODE_ENV === 'production';
+const isSecure = process.env.FORCE_SECURE_COOKIES === 'true' || (isProduction && req?.protocol === 'https');
+
 app.use(session({
   secret: process.env.SESSION_SECRET || 'default-secret-change-me',
   resave: false,
   saveUninitialized: true,
   cookie: {
-    secure: isProduction, // true in production (HTTPS), false in dev (HTTP)
+    secure: false, // Allow both HTTP and HTTPS for now (set to true when on HTTPS)
+    httpOnly: true, // Prevent client-side JS from accessing the session cookie
+    sameSite: 'lax', // CSRF protection
     maxAge: 24 * 60 * 60 * 1000 // 24 hours
   }
 }));

@@ -1,7 +1,6 @@
 require('dotenv').config();
 const express = require('express');
 const session = require('express-session');
-const bodyParser = require('body-parser');
 const path = require('path');
 const flash = require('connect-flash');
 const fileUpload = require('express-fileupload');
@@ -149,10 +148,6 @@ app.use(passport.session());
 // Flash messages
 app.use(flash());
 
-// Static files
-app.use(express.static('public'));
-app.use('/uploads', express.static(path.join(__dirname, 'public/uploads')));
-
 // Global variables for templates
 app.use(async (req, res, next) => {
   try {
@@ -207,6 +202,10 @@ app.use('/admin', require('./routes/admin'));
 // Admin Data API Routes (for fetching JSON data in admin panel) - SECURED
 app.use('/api/admin/categories', require('./routes/categories'));
 app.use('/api/admin/products', require('./routes/products'));
+
+// Static files - AFTER routes so routes take precedence
+app.use(express.static('public'));
+app.use('/uploads', express.static(path.join(__dirname, 'public/uploads')));
 
 app.use('/user', require('./routes/user'));
 app.use('/api', require('./routes/api'));

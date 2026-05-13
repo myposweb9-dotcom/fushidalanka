@@ -248,7 +248,8 @@
         <% if (featuredProducts && featuredProducts.length > 0) { %>
           <% featuredProducts.slice(0, 12).forEach((product, index) => { %>
             <div class="col-lg-4 col-md-6">
-              <div class="card h-100 product-card shadow-md" style="border: 1px solid rgba(31, 61, 36, 0.1); transition: all 0.3s ease; animation: slideInUp 0.6s ease-out <% if(index < 3) { %><%= index * 0.1 %>s<% } %>;">
+              <% const delay = index < 3 ? (index * 0.1).toFixed(1) : '0'; %>
+              <div class="card h-100 product-card shadow-md" style="border: 1px solid rgba(31, 61, 36, 0.1); transition: all 0.3s ease; animation: slideInUp 0.6s ease-out <%= delay %>s;">
                 <div class="position-relative overflow-hidden" style="height: 220px; background: linear-gradient(135deg, #e8f1eb 0%, #d4e8dc 100%);">
                   <% if (product.images && product.images.length > 0) { %>
                     <img src="<%= product.images[0] %>" class="card-img-top" alt="<%= product.name %>" style="height: 100%; width: 100%; object-fit: cover; transition: transform 0.4s ease;">

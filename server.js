@@ -131,7 +131,6 @@ app.use(express.json());
 
 // Session configuration
 const isProduction = process.env.NODE_ENV === 'production';
-const isSecure = process.env.FORCE_SECURE_COOKIES === 'true' || (isProduction && req?.protocol === 'https');
 
 app.use(session({
   secret: process.env.SESSION_SECRET || 'default-secret-change-me',

@@ -3439,6 +3439,25 @@ section {
   transform: scale(1.1);
 }
 
+/* Logo size on mobile - BIGGER */
+@media (max-width: 991.98px) {
+  .navbar-logo {
+    height: 70px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar-logo {
+    height: 75px !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .navbar-logo {
+    height: 80px !important;
+  }
+}
+
 .navbar-mobile-toggle:active {
   transform: scale(0.95);
 }

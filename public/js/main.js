@@ -570,6 +570,106 @@ function initAdminMobileMenu() {
   }
 }
 
+// Mobile Navigation Sidebar
+function initMobileNavigation() {
+  const toggleBtn = document.getElementById('mobileNavToggle');
+  const sidebar = document.getElementById('mobileNavbarSidebar');
+  const overlay = document.getElementById('mobileNavbarOverlay');
+  const navItems = sidebar ? sidebar.querySelectorAll('.mobile-nav-item') : [];
+  const submenuToggleItems = sidebar ? sidebar.querySelectorAll('[data-submenu]') : [];
+
+  if (!toggleBtn || !sidebar || !overlay) return;
+
+  // Toggle sidebar
+  toggleBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    toggleMobileSidebar();
+  });
+
+  // Close when overlay clicked
+  overlay.addEventListener('click', closeMobileSidebar);
+
+  // Close when a nav item (non-submenu) is clicked
+  navItems.forEach(item => {
+    if (!item.hasAttribute('data-submenu')) {
+      item.addEventListener('click', (e) => {
+        // Check if it's not a submenu toggle
+        if (!e.target.closest('[data-submenu]')) {
+          closeMobileSidebar();
+        }
+      });
+    }
+  });
+
+  // Handle submenu toggles
+  submenuToggleItems.forEach(item => {
+    item.addEventListener('click', (e) => {
+      e.preventDefault();
+      const submenuId = item.getAttribute('data-submenu');
+      const submenu = document.getElementById(`submenu-${submenuId}`);
+      
+      if (submenu) {
+        submenu.classList.toggle('show');
+        // Rotate the chevron
+        const chevron = item.querySelector('.fa-chevron-right');
+        if (chevron) {
+          chevron.style.transform = submenu.classList.contains('show') ? 'rotate(90deg)' : 'rotate(0deg)';
+        }
+      }
+    });
+  });
+
+  // Close on escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && sidebar.classList.contains('show')) {
+      closeMobileSidebar();
+    }
+  });
+
+  // Close on window resize (if going to desktop)
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 991.98 && sidebar.classList.contains('show')) {
+      closeMobileSidebar();
+    }
+  });
+}
+
+function toggleMobileSidebar() {
+  const sidebar = document.getElementById('mobileNavbarSidebar');
+  const overlay = document.getElementById('mobileNavbarOverlay');
+  const body = document.body;
+
+  if (!sidebar || !overlay) return;
+
+  sidebar.classList.toggle('show');
+  overlay.classList.toggle('show');
+  body.classList.toggle('mobile-sidebar-open');
+}
+
+function closeMobileSidebar() {
+  const sidebar = document.getElementById('mobileNavbarSidebar');
+  const overlay = document.getElementById('mobileNavbarOverlay');
+  const body = document.body;
+
+  if (!sidebar || !overlay) return;
+
+  sidebar.classList.remove('show');
+  overlay.classList.remove('show');
+  body.classList.remove('mobile-sidebar-open');
+
+  // Reset all submenus
+  const submenus = sidebar.querySelectorAll('.mobile-nav-submenu');
+  submenus.forEach(submenu => {
+    submenu.classList.remove('show');
+  });
+
+  // Reset chevrons
+  const chevrons = sidebar.querySelectorAll('.fa-chevron-right');
+  chevrons.forEach(chevron => {
+    chevron.style.transform = 'rotate(0deg)';
+  });
+}
+
 // Initialize on page load
 window.addEventListener('load', () => {
   enhanceFormInteractions();
@@ -577,4 +677,5 @@ window.addEventListener('load', () => {
   observeElements();
   // Initialize admin menu toggle if on admin page
   initAdminMobileMenu();
-});
+  // Initialize mobile navigation
+  initMobileNavigation();

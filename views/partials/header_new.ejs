@@ -1,13 +1,73 @@
+<!-- Mobile Navigation Overlay -->
+<div class="mobile-navbar-overlay" id="mobileNavbarOverlay"></div>
+
+<!-- Mobile Navigation Sidebar -->
+<div class="mobile-navbar-sidebar" id="mobileNavbarSidebar">
+  <a class="mobile-nav-item" href="/">
+    <i class="fas fa-home"></i>Home
+  </a>
+  <a class="mobile-nav-item" href="#" data-submenu="about">
+    <i class="fas fa-building"></i>About <i class="fas fa-chevron-right float-end"></i>
+  </a>
+  <div class="mobile-nav-submenu" id="submenu-about">
+    <a class="mobile-nav-item" href="/about"><i class="fas fa-info-circle"></i>About Us</a>
+    <a class="mobile-nav-item" href="/our-partners"><i class="fas fa-handshake"></i>Our Partners</a>
+    <a class="mobile-nav-item" href="/awards-recognition"><i class="fas fa-trophy"></i>Awards & Recognition</a>
+  </div>
+  <a class="mobile-nav-item" href="#" data-submenu="services">
+    <i class="fas fa-cog"></i>Services <i class="fas fa-chevron-right float-end"></i>
+  </a>
+  <div class="mobile-nav-submenu" id="submenu-services">
+    <a class="mobile-nav-item" href="/services#assessment"><i class="fas fa-map-marker-alt"></i>Site Assessment</a>
+    <a class="mobile-nav-item" href="/services#design"><i class="fas fa-drafting-compass"></i>System Design</a>
+    <a class="mobile-nav-item" href="/services#installation"><i class="fas fa-tools"></i>Installation</a>
+    <a class="mobile-nav-item" href="/services#support"><i class="fas fa-headset"></i>Support & Maintenance</a>
+  </div>
+  <a class="mobile-nav-item" href="/projects">
+    <i class="fas fa-project-diagram"></i>Projects
+  </a>
+  <a class="mobile-nav-item" href="/news">
+    <i class="fas fa-newspaper"></i>News
+  </a>
+  <a class="mobile-nav-item" href="/contact">
+    <i class="fas fa-envelope"></i>Contact
+  </a>
+  <hr style="border-color: rgba(255, 255, 255, 0.1);">
+  <a class="mobile-nav-item" href="/products">
+    <i class="fas fa-search"></i>Explore Products
+  </a>
+  <% if (typeof user !== 'undefined' && user) { %>
+    <a class="mobile-nav-item" href="/user/dashboard">
+      <i class="fas fa-tachometer-alt"></i>Dashboard
+    </a>
+    <a class="mobile-nav-item" href="/user/logout" style="color: #ff6b6b;">
+      <i class="fas fa-sign-out-alt"></i>Logout
+    </a>
+  <% } else { %>
+    <a class="mobile-nav-item" href="/user/login">
+      <i class="fas fa-sign-in-alt"></i>Login
+    </a>
+    <a class="mobile-nav-item" href="/user/register">
+      <i class="fas fa-user-plus"></i>Register
+    </a>
+  <% } %>
+</div>
+
 <!-- Premium Navigation Bar -->
 <nav class="navbar navbar-expand-lg navbar-light premium-navbar sticky-top" style="background: linear-gradient(135deg, #ffffff 0%, #f8fafb 50%, #f0f4f8 100%); backdrop-filter: blur(15px); border-bottom: 2px solid rgba(102, 126, 234, 0.15); box-shadow: 0 2px 20px rgba(0,0,0,0.06);">
   <div class="container-fluid px-4 px-lg-5">
+    <!-- Mobile Menu Toggle Button -->
+    <button class="navbar-mobile-toggle" id="mobileNavToggle" aria-label="Toggle mobile navigation">
+      <i class="fas fa-bars"></i>
+    </button>
+
     <!-- Logo Section -->
     <a class="navbar-brand d-flex align-items-center fw-bold logo-section" href="/">
       <img src="/images/FushidaLankaLogo.png" alt="FushidaLanka Logo" class="navbar-logo me-3" style="height: 55px; width: auto; max-width: 350px; object-fit: contain; transition: transform 0.3s ease;">
       <span class="text-dark d-none d-xl-inline" style="font-size: 18px; letter-spacing: 0.5px;">FUSHIDA LANKA</span>
     </a>
 
-    <!-- Mobile Toggle Button -->
+    <!-- Traditional Navbar Toggle Button (Hidden on Mobile via CSS) -->
     <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>

@@ -3559,21 +3559,8 @@ section {
     max-width: 50%;
   }
 
-  /* Category grid responsive */
-  .categories-grid {
-    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)) !important;
-    gap: 12px;
-    padding: 0 10px;
-  }
-
-  .category-item {
-    padding: 15px 10px !important;
-    font-size: 13px;
-  }
-
-  .category-item:hover {
-    transform: translateY(-8px);
-  }
+  /* Category grid responsive - moved to index.ejs for better mobile responsiveness */
+  /* Old category-item styles disabled - see index.ejs for updated .category-card styles */
 
   /* Service cards responsive */
   .service-card {
@@ -3699,22 +3686,8 @@ section {
     font-size: 13px;
   }
 
-  /* Categories grid mobile */
-  .categories-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 8px;
-    padding: 0 8px;
-  }
-
-  .category-item {
-    padding: 12px 8px !important;
-    font-size: 11px;
-  }
-
-  .category-item i {
-    font-size: 24px !important;
-    margin-bottom: 8px;
-  }
+  /* Categories grid mobile - moved to index.ejs for better responsive design */
+  /* Old category grid styles disabled - see index.ejs for responsive .category-card styles */
 
   /* Products grid mobile */
   .products-grid, 
@@ -3934,34 +3907,8 @@ section {
   }
 }
 
-/* ===== RESPONSIVE GRID ===== */
-@media (max-width: 768px) {
-  .categories-grid {
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)) !important;
-    gap: 12px;
-  }
-
-  .categories-grid .category-item {
-    padding: 15px 10px;
-    font-size: 13px;
-  }
-}
-
-@media (max-width: 576px) {
-  .categories-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 8px;
-  }
-
-  .categories-grid .category-item {
-    padding: 12px 8px;
-    font-size: 12px;
-  }
-
-  .categories-grid .category-item i {
-    font-size: 24px;
-  }
-}
+/* ===== RESPONSIVE GRID - MOVED TO INDEX.EJS ===== */
+/* Category responsive styles now defined in index.ejs for better mobile-first design */
 
 /* ===== RESPONSIVE STATS ===== */
 @media (max-width: 768px) {

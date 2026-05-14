@@ -523,9 +523,54 @@ function initVideoPlaylist() {
   });
 }
 
+// Admin sidebar mobile toggle
+function initAdminMobileMenu() {
+  const toggleBtn = document.getElementById('adminMenuToggle');
+  const sidebar = document.querySelector('.admin-sidebar');
+  const body = document.body;
+  
+  if (toggleBtn && sidebar) {
+    // Toggle sidebar on button click
+    toggleBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      sidebar.classList.toggle('show');
+    });
+    
+    // Close sidebar when a link is clicked
+    const sidebarLinks = sidebar.querySelectorAll('a');
+    sidebarLinks.forEach(link => {
+      link.addEventListener('click', function() {
+        // Close sidebar on mobile/tablet
+        if (window.innerWidth <= 991.98) {
+          sidebar.classList.remove('show');
+        }
+      });
+    });
+    
+    // Close sidebar when clicking outside of it
+    document.addEventListener('click', function(e) {
+      if (!sidebar.contains(e.target) && !toggleBtn.contains(e.target)) {
+        if (window.innerWidth <= 991.98) {
+          sidebar.classList.remove('show');
+        }
+      }
+    });
+    
+    // Close sidebar on escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && window.innerWidth <= 991.98) {
+        sidebar.classList.remove('show');
+      }
+    });
+  }
+}
+
 // Initialize on page load
 window.addEventListener('load', () => {
   enhanceFormInteractions();
   // Trigger any animations that might be missed
   observeElements();
+  // Initialize admin menu toggle if on admin page
+  initAdminMobileMenu();
 });

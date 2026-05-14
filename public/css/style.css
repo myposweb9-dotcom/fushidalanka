@@ -2841,6 +2841,11 @@ section {
 
 /* ===== ADMIN DASHBOARD RESPONSIVE ===== */
 
+/* Default: Hide admin menu toggle button on desktop */
+#adminMenuToggle {
+  display: none !important;
+}
+
 /* Default admin-content for desktop */
 .admin-content {
   margin-left: 250px;
@@ -3191,6 +3196,10 @@ section {
     left: 0;
     top: 0;
     display: flex;
+  }
+
+  #adminMenuToggle {
+    display: none !important;
   }
 
   .menu-toggle {

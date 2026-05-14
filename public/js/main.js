@@ -685,4 +685,4 @@ window.addEventListener('load', () => {
   // Initialize admin menu toggle if on admin page
   initAdminMobileMenu();
   // Initialize mobile navigation
-  initMobileNavigation();
+  initMobileNavigation();});

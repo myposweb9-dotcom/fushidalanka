@@ -3339,16 +3339,18 @@ section {
   height: 100vh;
   width: 280px;
   background: linear-gradient(135deg, #1F3D24 0%, #0F1F13 100%);
-  z-index: 1040;
+  z-index: 1055;
   overflow-y: auto;
-  transition: left 0.3s ease;
+  transition: left 0.3s ease, transform 0.3s ease;
   box-shadow: 2px 0 20px rgba(0, 0, 0, 0.3);
   padding-top: 70px;
+  will-change: left;
 }
 
 /* Show mobile sidebar when active */
 .mobile-navbar-sidebar.show {
   left: 0;
+  box-shadow: 2px 0 30px rgba(0, 0, 0, 0.5);
 }
 
 /* Mobile navbar items */
@@ -3398,10 +3400,11 @@ section {
   right: 0;
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.5);
-  z-index: 1039;
+  z-index: 1054;
   opacity: 0;
   visibility: hidden;
   transition: all 0.3s ease;
+  will-change: opacity;
 }
 
 .mobile-navbar-overlay.show {
@@ -3418,8 +3421,10 @@ section {
   font-size: 24px;
   cursor: pointer;
   padding: 8px 12px;
-  margin-right: 10px;
+  margin-right: auto;
   transition: all 0.3s ease;
+  z-index: 1055;
+  position: relative;
 }
 
 .navbar-mobile-toggle:hover {
@@ -3427,10 +3432,14 @@ section {
   transform: scale(1.1);
 }
 
+.navbar-mobile-toggle:active {
+  transform: scale(0.95);
+}
+
 /* Show mobile toggle on small screens */
 @media (max-width: 991.98px) {
   .navbar-mobile-toggle {
-    display: block;
+    display: block !important;
   }
 
   .navbar-collapse {

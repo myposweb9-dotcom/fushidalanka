@@ -582,6 +582,8 @@ function initMobileNavigation() {
 
   // Toggle sidebar
   toggleBtn.addEventListener('click', (e) => {
+    console.log('✅ Toggle button clicked!');
+    e.preventDefault();
     e.stopPropagation();
     toggleMobileSidebar();
   });
@@ -639,11 +641,16 @@ function toggleMobileSidebar() {
   const overlay = document.getElementById('mobileNavbarOverlay');
   const body = document.body;
 
-  if (!sidebar || !overlay) return;
+  if (!sidebar || !overlay) {
+    console.error('❌ Sidebar or overlay not found');
+    return;
+  }
 
   sidebar.classList.toggle('show');
   overlay.classList.toggle('show');
   body.classList.toggle('mobile-sidebar-open');
+  
+  console.log('✓ Sidebar toggled! Is open:', sidebar.classList.contains('show'));
 }
 
 function closeMobileSidebar() {

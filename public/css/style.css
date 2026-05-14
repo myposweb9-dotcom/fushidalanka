@@ -2875,9 +2875,11 @@ section {
   box-sizing: border-box;
 }
 
-/* Admin Menu Toggle Button */
+/* Admin Menu Toggle Button - VISIBLE on mobile by default */
 #adminMenuToggle {
-  display: none !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
   position: fixed !important;
   top: 15px !important;
   left: 15px !important;
@@ -2891,8 +2893,6 @@ section {
   cursor: pointer !important;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1) !important;
   transition: all 0.3s ease !important;
-  align-items: center !important;
-  justify-content: center !important;
   flex-direction: column !important;
   font-size: 0 !important;
 }
@@ -2933,19 +2933,21 @@ section {
     display: none !important;
   }
 
-  .admin-content {
+  .d-flex {
     margin-left: 250px !important;
     width: calc(100% - 250px) !important;
+    flex-wrap: wrap;
+  }
+
+  .admin-content {
+    margin-left: 0;
+    width: 100%;
     padding: 30px !important;
   }
 
   .flex-grow-1 {
-    margin-left: 250px !important;
-    width: calc(100% - 250px) !important;
-  }
-
-  body {
-    display: flex;
+    margin-left: 0;
+    width: 100%;
   }
 
   .admin-header {

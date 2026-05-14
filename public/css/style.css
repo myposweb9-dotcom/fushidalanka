@@ -24,6 +24,35 @@ body {
   line-height: 1.6;
   color: var(--dark-color);
   background-color: var(--light-color);
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
+}
+
+html {
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Prevent horizontal scroll on mobile */
+@media (max-width: 768px) {
+  body, html {
+    overflow-x: hidden !important;
+    width: 100vw;
+    max-width: 100vw;
+  }
+
+  body * {
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  img, picture, video, canvas, svg {
+    max-width: 100%;
+    display: block;
+    height: auto;
+  }
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -2082,6 +2111,25 @@ html {
   .container-fluid {
     padding-left: 12px;
     padding-right: 12px;
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  .row {
+    margin-left: -12px;
+    margin-right: -12px;
+    width: calc(100% + 24px);
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .row > * {
+    max-width: 100%;
+    padding-left: 12px;
+    padding-right: 12px;
   }
 
   /* Spacing Utilities */
@@ -2593,4 +2641,141 @@ picture img {
 /* Ensure smooth rendering */
 section {
   transform: translateZ(0);
+}
+
+/* ===== MOBILE VIEWPORT FIX - PREVENT HORIZONTAL SCROLL ===== */
+@media (max-width: 768px) {
+  /* Fix body and html overflow */
+  html, body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden !important;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Fix all containers */
+  .container, .container-fluid,
+  .navbar, .navbar-collapse,
+  .row, ul, ol, div {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  /* Ensure images don't overflow */
+  img, picture, video, canvas, svg {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* Fix navbar */
+  .navbar {
+    position: relative;
+    width: 100%;
+    padding: 0 0;
+    overflow-x: hidden;
+  }
+
+  .navbar-brand {
+    padding-left: 12px;
+    max-width: 60vw;
+    overflow: hidden;
+  }
+
+  .navbar-nav {
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
+  }
+
+  /* Fix hero section */
+  .hero-section {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+  }
+
+  .hero-section .container {
+    width: 100%;
+    padding: 0 12px;
+    margin: 0;
+  }
+
+  /* Fix sections */
+  section {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  /* Fix cards */
+  .card {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* Fix rows */
+  .row {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+  }
+
+  .col, .col-1, .col-2, .col-3, .col-4, .col-5, .col-6,
+  .col-7, .col-8, .col-9, .col-10, .col-11, .col-12,
+  .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6,
+  .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12,
+  .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6,
+  .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12,
+  .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6,
+  .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12 {
+    width: 100%;
+    max-width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  /* Fix buttons and links */
+  .btn, button, a {
+    max-width: calc(100% - 24px);
+  }
+
+  /* Fix forms */
+  form, .form-group {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .form-control, .form-select {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* Fix tables */
+  table {
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  /* Fix dropdowns */
+  .dropdown-menu {
+    max-width: calc(100vw - 24px);
+  }
+
+  /* No horizontal scroll allowed */
+  * {
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  a, button, input, select, textarea {
+    -webkit-user-select: text;
+    user-select: text;
+  }
 }

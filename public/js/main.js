@@ -535,6 +535,7 @@ function initAdminMobileMenu() {
       e.preventDefault();
       e.stopPropagation();
       sidebar.classList.toggle('show');
+      body.classList.toggle('sidebar-open');
     });
     
     // Close sidebar when a link is clicked
@@ -544,6 +545,7 @@ function initAdminMobileMenu() {
         // Close sidebar on mobile/tablet
         if (window.innerWidth <= 991.98) {
           sidebar.classList.remove('show');
+          body.classList.remove('sidebar-open');
         }
       });
     });
@@ -553,6 +555,7 @@ function initAdminMobileMenu() {
       if (!sidebar.contains(e.target) && !toggleBtn.contains(e.target)) {
         if (window.innerWidth <= 991.98) {
           sidebar.classList.remove('show');
+          body.classList.remove('sidebar-open');
         }
       }
     });
@@ -561,6 +564,7 @@ function initAdminMobileMenu() {
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape' && window.innerWidth <= 991.98) {
         sidebar.classList.remove('show');
+        body.classList.remove('sidebar-open');
       }
     });
   }

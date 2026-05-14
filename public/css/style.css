@@ -528,6 +528,15 @@ textarea.form-control {
   padding: 50px 0 20px;
 }
 
+@media (max-width: 991.98px) {
+  .flex-grow-12 {
+    margin-left: 0;
+    width: 100%;
+    padding: 15px;
+    padding-top: 80px;
+  }
+}
+
 /* Footer */
 .footer {
   background: var(--dark-color);
@@ -630,24 +639,44 @@ body {
 
 @media (max-width: 991.98px) {
   .admin-sidebar {
-    width: 100%;
-    height: auto;
+    width: 200px;
+    height: 100vh;
     position: fixed;
     top: 0;
     left: -100%;
-    bottom: auto;
+    bottom: 0;
     transition: left 0.3s ease;
     z-index: 1050;
-    flex-direction: row;
-    padding: 10px;
-    max-width: 200px;
-    height: 100vh;
     flex-direction: column;
+    padding: 10px;
+    overflow-y: auto;
   }
 
   .admin-sidebar.show {
     left: 0;
+    box-shadow: 2px 0 15px rgba(0, 0, 0, 0.3);
   }
+
+  /* Overlay background when sidebar is shown */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 1049;
+  }
+
+  body.sidebar-open::before {
+    opacity: 1;
+    visibility: visible;
+  }
+}
 }
 
 /* Custom scrollbar for WebKit browsers */

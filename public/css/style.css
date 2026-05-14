@@ -120,6 +120,13 @@ h1, h2, h3, h4, h5, h6 {
 
 .navbar-toggler {
   padding: 0.2rem 0.5rem;
+  display: none !important;
+}
+
+@media (min-width: 992px) {
+  .navbar-toggler {
+    display: none !important;
+  }
 }
 
 /* ===== TOUCH-FRIENDLY BUTTONS ===== */

@@ -572,68 +572,86 @@ function initAdminMobileMenu() {
 
 // Mobile Navigation Sidebar
 function initMobileNavigation() {
+  console.log('🚀 Initializing mobile navigation...');
+
   const toggleBtn = document.getElementById('mobileNavToggle');
   const sidebar = document.getElementById('mobileNavbarSidebar');
   const overlay = document.getElementById('mobileNavbarOverlay');
-  const navItems = sidebar ? sidebar.querySelectorAll('.mobile-nav-item') : [];
-  const submenuToggleItems = sidebar ? sidebar.querySelectorAll('[data-submenu]') : [];
 
-  if (!toggleBtn || !sidebar || !overlay) return;
-
-  // Toggle sidebar
-  toggleBtn.addEventListener('click', (e) => {
-    console.log('✅ Toggle button clicked!');
-    e.preventDefault();
-    e.stopPropagation();
-    toggleMobileSidebar();
+  console.log('Elements status:', {
+    toggleBtn: !!toggleBtn,
+    sidebar: !!sidebar,
+    overlay: !!overlay
   });
 
-  // Close when overlay clicked
-  overlay.addEventListener('click', closeMobileSidebar);
+  if (!toggleBtn || !sidebar || !overlay) {
+    console.error('❌ Required elements missing for mobile nav!');
+    return;
+  }
 
-  // Close when a nav item (non-submenu) is clicked
+  // Toggle button click handler
+  toggleBtn.addEventListener('click', function(e) {
+    console.log('✅ TOGGLE CLICKED!');
+    e.preventDefault();
+    e.stopPropagation();
+    
+    sidebar.classList.toggle('show');
+    overlay.classList.toggle('show');
+    document.body.classList.toggle('mobile-sidebar-open');
+    
+    console.log('Sidebar is now:', sidebar.classList.contains('show') ? 'OPEN' : 'CLOSED');
+  });
+
+  // Close on overlay click
+  overlay.addEventListener('click', function() {
+    console.log('Overlay clicked');
+    sidebar.classList.remove('show');
+    overlay.classList.remove('show');
+    document.body.classList.remove('mobile-sidebar-open');
+  });
+
+  // Close on nav link click (except submenu toggles)
+  const navItems = sidebar.querySelectorAll('a.mobile-nav-item');
   navItems.forEach(item => {
     if (!item.hasAttribute('data-submenu')) {
-      item.addEventListener('click', (e) => {
-        // Check if it's not a submenu toggle
-        if (!e.target.closest('[data-submenu]')) {
-          closeMobileSidebar();
-        }
+      item.addEventListener('click', function() {
+        sidebar.classList.remove('show');
+        overlay.classList.remove('show');
+        document.body.classList.remove('mobile-sidebar-open');
       });
     }
   });
 
-  // Handle submenu toggles
-  submenuToggleItems.forEach(item => {
-    item.addEventListener('click', (e) => {
+  // Submenu toggle handlers
+  const submenus = sidebar.querySelectorAll('[data-submenu]');
+  submenus.forEach(toggle => {
+    toggle.addEventListener('click', function(e) {
       e.preventDefault();
-      const submenuId = item.getAttribute('data-submenu');
+      const submenuId = this.getAttribute('data-submenu');
       const submenu = document.getElementById(`submenu-${submenuId}`);
       
       if (submenu) {
         submenu.classList.toggle('show');
-        // Rotate the chevron
-        const chevron = item.querySelector('.fa-chevron-right');
+        const chevron = this.querySelector('.fa-chevron-right');
         if (chevron) {
-          chevron.style.transform = submenu.classList.contains('show') ? 'rotate(90deg)' : 'rotate(0deg)';
+          chevron.style.transform = submenu.classList.contains('show') 
+            ? 'rotate(90deg)' 
+            : 'rotate(0deg)';
         }
       }
     });
   });
 
-  // Close on escape key
-  document.addEventListener('keydown', (e) => {
+  // Close on ESC key
+  document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape' && sidebar.classList.contains('show')) {
-      closeMobileSidebar();
+      sidebar.classList.remove('show');
+      overlay.classList.remove('show');
+      document.body.classList.remove('mobile-sidebar-open');
     }
   });
 
-  // Close on window resize (if going to desktop)
-  window.addEventListener('resize', () => {
-    if (window.innerWidth > 991.98 && sidebar.classList.contains('show')) {
-      closeMobileSidebar();
-    }
-  });
+  console.log('✓ Mobile navigation ready!');
 }
 
 function toggleMobileSidebar() {

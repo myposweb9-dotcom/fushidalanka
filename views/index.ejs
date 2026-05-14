@@ -645,55 +645,16 @@
 
 
 
-    // Load flying solar components with admin product images
-    function loadFlyingComponents() {
-      fetch('/api/admin-products?limit=8')
-        .then(response => response.json())
-        .then(data => {
-          const container = document.getElementById('flying-components');
-          if (data.products && data.products.length > 0) {
-            const components = data.products.map((product, index) => {
-              const imageUrl = product.images && product.images.length > 0 ? product.images[0] : '/images/placeholder-product.jpg';
-              const componentType = index % 3 === 0 ? 'solar-panel' : index % 3 === 1 ? 'inverter' : 'battery';
-              return `<div class="flying-component ${componentType}" style="background-image: url('${imageUrl}');" data-product-id="${product.id}" title="${product.name}"></div>`;
-            }).join('');
+    // Load flying solar components with admin product images - REMOVED
 
-            container.innerHTML = components;
-          } else {
-            // Fallback to default components if no admin products
-            container.innerHTML = `
-              <div class="flying-component solar-panel"></div>
-              <div class="flying-component inverter"></div>
-              <div class="flying-component battery"></div>
-              <div class="flying-component solar-panel"></div>
-              <div class="flying-component inverter"></div>
-              <div class="flying-component battery"></div>
-              <div class="flying-component solar-panel"></div>
-              <div class="flying-component inverter"></div>
-            `;
-          }
-        })
-        .catch(error => {
-          console.error('Error loading flying components:', error);
-          // Fallback to default components
-          const container = document.getElementById('flying-components');
-          container.innerHTML = `
-            <div class="flying-component solar-panel"></div>
-            <div class="flying-component inverter"></div>
-            <div class="flying-component battery"></div>
-            <div class="flying-component solar-panel"></div>
-            <div class="flying-component inverter"></div>
-            <div class="flying-component battery"></div>
-            <div class="flying-component solar-panel"></div>
-            <div class="flying-component inverter"></div>
-          `;
-        });
-    }
+
+
+
+
 
     // Load all dynamic content on page load
     document.addEventListener('DOMContentLoaded', function() {
       loadFeaturedTestimonials();
-      loadFlyingComponents();
       initStatsCounter();
       loadCategories();
       loadAllProducts();

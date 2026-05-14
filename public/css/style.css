@@ -2841,9 +2841,32 @@ section {
 
 /* ===== ADMIN DASHBOARD RESPONSIVE ===== */
 
-/* Default: Hide admin menu toggle button on desktop */
+/* Admin Menu Toggle Button - Hidden by default on large screens */
 #adminMenuToggle {
   display: none !important;
+  position: fixed !important;
+  top: 20px !important;
+  left: 20px !important;
+  width: 44px !important;
+  height: 44px !important;
+  padding: 0 !important;
+  z-index: 1061 !important;
+  border: 1px solid #dee2e6 !important;
+  background-color: #fff !important;
+  border-radius: 50% !important;
+  cursor: pointer !important;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1) !important;
+  transition: all 0.3s ease !important;
+}
+
+#adminMenuToggle i {
+  color: #333 !important;
+  font-size: 18px !important;
+}
+
+#adminMenuToggle:hover {
+  background-color: #f8f9fa !important;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15) !important;
 }
 
 /* Default admin-content for desktop */
@@ -2851,14 +2874,13 @@ section {
   margin-left: 250px;
 }
 
-/* Tablet & Below (767px) */
+/* Tablet & Below (767px) - SHOW THE TOGGLE BUTTON */
 @media (max-width: 991.98px) {
   /* Show admin menu toggle button on tablet and below */
   #adminMenuToggle {
     display: flex !important;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
+    align-items: center !important;
+    justify-content: center !important;
   }
 
   #adminMenuToggle:hover {

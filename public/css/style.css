@@ -6,6 +6,11 @@
 /* Import Font Awesome */
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
 
+/* Universal Box Sizing */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 /* Custom Variables - Hardware Shop Theme */
 :root {
   --primary-color: #1F3D24;    /* Dark Green - Primary Theme */
@@ -25,8 +30,10 @@ body {
   color: var(--dark-color);
   background-color: var(--light-color);
   overflow-x: hidden;
+  overflow-y: auto;
   width: 100%;
-  max-width: 100%;
+  max-width: 100vw;
+  box-sizing: border-box;
 }
 
 body.mobile-sidebar-open {
@@ -35,8 +42,10 @@ body.mobile-sidebar-open {
 
 html {
   overflow-x: hidden;
+  overflow-y: auto;
   width: 100%;
-  max-width: 100%;
+  max-width: 100vw;
+  box-sizing: border-box;
 }
 
 /* Prevent horizontal scroll on mobile */

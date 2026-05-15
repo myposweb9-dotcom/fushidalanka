@@ -18,23 +18,20 @@ const Enquiry = require('./models/Enquiry');
 // Import authentication middleware
 const { passport, isAuthenticated, isAdmin, isVendorOrAdmin } = require('./middleware/auth');
 
-// Define associations after all models are imported
+// Define associations
 Product.belongsTo(Category, { foreignKey: 'categoryId', as: 'category' });
 Category.hasMany(Product, { foreignKey: 'categoryId', as: 'products' });
-
 Product.belongsTo(User, { foreignKey: 'userId', as: 'user' });
 User.hasMany(Product, { foreignKey: 'userId', as: 'products' });
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Set view engine FIRST
+// ============================================
+// 1. VIEW ENGINE & STATIC FILES (FIRST)
+// ============================================
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
-
-// ============================================
-// CRITICAL: Serve static files FIRST with proper MIME types
-// ============================================
 app.use(express.static('public'));
 app.use('/uploads', express.static(path.join(__dirname, 'public/uploads')));
 

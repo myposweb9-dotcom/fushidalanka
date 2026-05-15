@@ -1,36 +1,8 @@
-# FushidaLanka - Hardware Shop Admin Management
+# TODO
 
-## Overview
-Convert the admin dashboard to hardware shop management interface by ensuring all product-related functionality is properly configured.
+- [ ] Fix logo type mismatch: routes/index.js (`logobar` -> `logo`) so `/products` shows same logos as global middleware.
+- [ ] Clean up routes/index.js: remove in-handler `require('../models/Content')` (avoid shadowing) and use top-level import.
+- [ ] Fix password reset raw SQL table name in routes/user.js (use correct Sequelize table name instead of hardcoding `users`).
+- [ ] Validate EJS partial `views/partials/header_new.ejs` encoding/contents (file appears corrupted). Replace with a correct version if needed.
+- [ ] Run server and hit: `/products` and `/user/reset-password/:token` to confirm runtime errors are gone.
 
-## Tasks
-
-### 1. Update User Routes (routes/user.js)
-- [ ] Remove all product-related routes (/products/*)
-- [ ] Update dashboard route to remove product data fetching
-- [ ] Keep only authentication and profile routes
-
-### 2. Update Dashboard View (views/user/dashboard.ejs)
-- [ ] Remove product stats cards (Total Products, Active Products, Pending Review)
-- [ ] Remove "My Products" section and product table
-- [ ] Remove "Add Product" modal
-- [ ] Replace with FushidaLanka-focused content:
-  - Company information cards
-  - Services overview
-  - Recent news/updates
-  - Quick links to company pages
-
-### 3. Update Navigation and Links
-- [ ] Check and update any navigation menus that link to product pages
-- [ ] Update quick action buttons to FushidaLanka-relevant actions
-
-### 4. Testing
-- [ ] Test dashboard loads without errors
-- [ ] Verify user authentication still works
-- [ ] Check that no product-related functionality remains accessible
-
-## Implementation Order
-1. Update routes/user.js first
-2. Update views/user/dashboard.ejs
-3. Update any navigation components
-4. Test the changes

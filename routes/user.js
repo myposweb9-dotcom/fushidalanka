@@ -233,10 +233,12 @@ router.post('/reset-password/:token', async (req, res) => {
     // Hash the new password
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    // Update password and clear reset token using direct SQL to avoid beforeUpdate hook
-    const { sequelize } = require('../config/database');
-    await sequelize.query('UPDATE users SET password = ?, resetToken = NULL, resetTokenExpiry = NULL WHERE id = ?', {
-      replacements: [hashedPassword, user.id]
+    // Update password and clear reset token.
+    // Using Sequelize model update avoids hardcoding the physical table name (e.g. `users` vs `User`).
+    await user.update({
+      password: hashedPassword,
+      resetToken: null,
+      resetTokenExpiry: null
     });
 
     req.flash('success', 'Password reset successful! Please log in with your new password.');

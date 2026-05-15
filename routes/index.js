@@ -99,7 +99,7 @@ router.get('/products', async (req, res) => {
     });
 
     const logos = await Content.findAll({
-      where: { type: 'logobar' },
+      where: { type: 'logo' },
       order: [['order', 'ASC']]
     });
 

@@ -35,6 +35,15 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.static('public'));
 app.use('/uploads', express.static(path.join(__dirname, 'public/uploads')));
 
+// ============================================
+// 2. FORCE UTF-8 CHARSET ON ALL RESPONSES (SECOND)
+// ============================================
+app.use((req, res, next) => {
+  res.set('Content-Type', 'text/html; charset=utf-8');
+  res.set('X-Content-Type-Options', 'nosniff');
+  next();
+});
+
 // Test database connection and sync models
 async function initializeDatabase() {
   try {
@@ -135,19 +144,6 @@ app.use(fileUpload({
 // Body parsing middleware (after file upload)
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
-// ============================================
-// UTF-8 charset middleware for HTML responses only
-// ============================================
-app.use((req, res, next) => {
-  // Wrap the render method to add charset
-  const originalRender = res.render;
-  res.render = function(view, options, callback) {
-    res.set('Content-Type', 'text/html; charset=utf-8');
-    return originalRender.call(this, view, options, callback);
-  };
-  next();
-});
 
 // Session configuration
 const isProduction = process.env.NODE_ENV === 'production';

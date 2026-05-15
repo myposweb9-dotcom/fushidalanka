@@ -1,0 +1,351 @@
+<!-- Mobile Navbar Sidebar -->
+<div class="mobile-navbar-sidebar" id="mobileNavbarSidebar" style="position: fixed; top: 0; left: -100%; width: 280px; height: 100vh; background: white; box-shadow: 2px 0 10px rgba(0,0,0,0.1); z-index: 1044; transition: left 0.3s ease; overflow-y: auto;">
+  <div class="sidebar-header" style="padding: 20px; border-bottom: 2px solid #f0f0f0; display: flex; justify-content: space-between; align-items: center;">
+    <h5 class="mb-0" style="font-weight: 600;">Menu</h5>
+    <button style="background: none; border: none; font-size: 24px; cursor: pointer; padding: 0;" onclick="closeMobileNav()">
+      <i class="fas fa-times"></i>
+    </button>
+  </div>
+  
+  <div class="sidebar-content" style="padding: 0;">
+    <a class="mobile-nav-item" href="/" style="display: flex; align-items: center; padding: 15px 20px; color: #333; text-decoration: none; border-bottom: 1px solid #f0f0f0;">
+      <i class="fas fa-home me-3"></i>Home
+    </a>
+    <a class="mobile-nav-item" href="/about" style="display: flex; align-items: center; padding: 15px 20px; color: #333; text-decoration: none; border-bottom: 1px solid #f0f0f0;">
+      <i class="fas fa-building me-3"></i>About
+    </a>
+    <a class="mobile-nav-item" href="/services" style="display: flex; align-items: center; padding: 15px 20px; color: #333; text-decoration: none; border-bottom: 1px solid #f0f0f0;">
+      <i class="fas fa-cog me-3"></i>Services
+    </a>
+    <a class="mobile-nav-item" href="/contact" style="display: flex; align-items: center; padding: 15px 20px; color: #333; text-decoration: none; border-bottom: 1px solid #f0f0f0;">
+      <i class="fas fa-envelope me-3"></i>Contact
+    </a>
+    <a class="mobile-nav-item" href="/products" style="display: flex; align-items: center; padding: 15px 20px; color: #667eea; text-decoration: none; border-bottom: 1px solid #f0f0f0; font-weight: 600;">
+      <i class="fas fa-search me-3"></i>Explore Products
+    </a>
+    <a class="mobile-nav-item" href="/admin/login" style="display: flex; align-items: center; padding: 15px 20px; color: #ff6b6b; text-decoration: none; border-bottom: 1px solid #f0f0f0; font-weight: 600;">
+      <i class="fas fa-lock me-3"></i>Admin Login
+    </a>
+  </div>
+
+  <% if (typeof user !== 'undefined' && user) { %>
+    <div style="padding: 15px 20px; border-top: 2px solid #f0f0f0;">
+      <a class="mobile-nav-item" href="/user/dashboard" style="color: #333; text-decoration: none;">
+        <i class="fas fa-tachometer-alt me-2"></i>Dashboard
+      </a>
+      <a class="mobile-nav-item" href="/user/logout" style="color: #ff6b6b; text-decoration: none; margin-top: 10px; display: inline-block;">
+        <i class="fas fa-sign-out-alt me-2"></i>Logout
+      </a>
+    </div>
+  <% } %>
+</div>
+
+<div class="mobile-navbar-overlay" id="mobileNavbarOverlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1043; display: none;"></div>
+
+<!-- Premium Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-light premium-navbar sticky-top" style="background: linear-gradient(135deg, #ffffff 0%, #f8fafb 50%, #f0f4f8 100%); backdrop-filter: blur(15px); border-bottom: 2px solid rgba(102, 126, 234, 0.15); box-shadow: 0 2px 20px rgba(0,0,0,0.06);">
+  <div class="container-fluid px-4 px-lg-5">
+    <!-- Mobile Menu Toggle Button -->
+    <button class="navbar-mobile-toggle" id="mobileNavToggle" aria-label="Toggle mobile navigation" onclick="openMobileNav()">
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Logo Section -->
+    <a class="navbar-brand d-flex align-items-center fw-bold logo-section" href="/">
+      <img src="/images/FushidaLankaLogo.png" alt="FushidaLanka Logo" class="navbar-logo me-3" style="height: 55px; width: auto; max-width: 350px; object-fit: contain; transition: transform 0.3s ease;">
+      <span class="text-dark d-none d-xl-inline" style="font-size: 18px; letter-spacing: 0.5px;">FUSHIDA LANKA</span>
+    </a>
+
+    <!-- Navigation Menu -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav mx-auto gap-2">
+        <li class="nav-item">
+          <a class="nav-link nav-item-enhanced px-3 py-2 rounded-3 text-dark fw-600 d-flex align-items-center <%= currentPath === '/' ? 'active' : '' %>" href="/">
+            <i class="fas fa-home me-2 nav-icon"></i>Home
+          </a>
+        </li>
+        <li class="nav-item nav-submenu">
+          <a class="nav-link nav-item-enhanced px-3 py-2 rounded-3 text-dark fw-600 d-flex align-items-center <%= currentPath === '/about' || currentPath === '/our-partners' || currentPath === '/awards-recognition' ? 'active' : '' %>" href="#">
+            <i class="fas fa-building me-2 nav-icon"></i>About <i class="fas fa-chevron-down submenu-arrow ms-1" style="font-size: 12px;"></i>
+          </a>
+          <ul class="submenu-items premium-submenu">
+            <li><a class="submenu-item premium-submenu-item" href="/about"><i class="fas fa-info-circle me-2 text-primary"></i><span>About Us</span><i class="fas fa-arrow-right ms-2 text-muted"></i></a></li>
+            <li><a class="submenu-item premium-submenu-item" href="/our-partners"><i class="fas fa-handshake me-2 text-primary"></i><span>Our Partners</span><i class="fas fa-arrow-right ms-2 text-muted"></i></a></li>
+            <li><a class="submenu-item premium-submenu-item" href="/awards-recognition"><i class="fas fa-trophy me-2 text-primary"></i><span>Awards & Recognition</span><i class="fas fa-arrow-right ms-2 text-muted"></i></a></li>
+          </ul>
+        </li>
+        <li class="nav-item nav-submenu">
+          <a class="nav-link nav-item-enhanced px-3 py-2 rounded-3 text-dark fw-600 d-flex align-items-center <%= currentPath === '/services' ? 'active' : '' %>" href="#">
+            <i class="fas fa-cog me-2 nav-icon"></i>Services <i class="fas fa-chevron-down submenu-arrow ms-1" style="font-size: 12px;"></i>
+          </a>
+          <ul class="submenu-items premium-submenu">
+            <li><a class="submenu-item premium-submenu-item" href="/services#assessment"><i class="fas fa-map-marker-alt me-2 text-primary"></i><span>Site Assessment</span><i class="fas fa-arrow-right ms-2 text-muted"></i></a></li>
+            <li><a class="submenu-item premium-submenu-item" href="/services#design"><i class="fas fa-drafting-compass me-2 text-primary"></i><span>System Design</span><i class="fas fa-arrow-right ms-2 text-muted"></i></a></li>
+            <li><a class="submenu-item premium-submenu-item" href="/services#installation"><i class="fas fa-tools me-2 text-primary"></i><span>Installation</span><i class="fas fa-arrow-right ms-2 text-muted"></i></a></li>
+            <li><a class="submenu-item premium-submenu-item" href="/services#support"><i class="fas fa-headset me-2 text-primary"></i><span>Support & Maintenance</span><i class="fas fa-arrow-right ms-2 text-muted"></i></a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link nav-item-enhanced px-3 py-2 rounded-3 text-dark fw-600 d-flex align-items-center <%= currentPath === '/contact' ? 'active' : '' %>" href="/contact">
+            <i class="fas fa-envelope me-2 nav-icon"></i>Contact
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Action Buttons (Right Side) -->
+    <ul class="navbar-nav d-flex gap-2 align-items-center ms-auto">
+      <li class="nav-item d-none d-lg-block">
+        <a class="nav-link action-btn explore-btn text-white fw-bold px-4 py-2 rounded-pill d-flex align-items-center" href="/products" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); white-space: nowrap;">
+          <i class="fas fa-search me-2"></i>Explore Products
+        </a>
+      </li>
+      <% if (typeof user !== 'undefined' && user) { %>
+        <li class="nav-item dropdown d-none d-lg-block">
+          <a class="nav-link dropdown-toggle user-dropdown-btn px-3 py-2 rounded-pill d-flex align-items-center text-dark fw-600" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <div class="user-avatar me-2 d-flex align-items-center justify-content-center" style="width: 36px; height: 36px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 50%; color: white; font-size: 14px; font-weight: bold; box-shadow: 0 2px 8px rgba(102, 126, 234, 0.4);">
+              <%= user.name.charAt(0).toUpperCase() %>
+            </div>
+            <span class="d-none d-xl-inline"><%= user.name %></span>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end border-0 shadow-lg mt-2 premium-dropdown">
+            <li class="dropdown-header px-3 py-2 bg-light rounded-top-2"><strong><%= user.name %></strong></li>
+            <li><hr class="dropdown-divider my-1"></li>
+            <li><a class="dropdown-item py-2 px-3 premium-dropdown-item" href="/user/dashboard"><i class="fas fa-tachometer-alt me-2 text-primary"></i>Dashboard</a></li>
+            <% if (user.role === 'admin') { %>
+              <li><a class="dropdown-item py-2 px-3 premium-dropdown-item" href="/admin/dashboard"><i class="fas fa-cog me-2 text-primary"></i>Admin Panel</a></li>
+            <% } %>
+            <li><hr class="dropdown-divider my-1"></li>
+            <li><a class="dropdown-item py-2 px-3 text-danger premium-dropdown-item logout-item" href="/user/logout"><i class="fas fa-sign-out-alt me-2"></i>Logout</a></li>
+          </ul>
+        </li>
+      <% } %>
+    </ul>
+  </div>
+</nav>
+
+<!-- Navigation Styles and Scripts -->
+<style>
+/* Reset all BS defaults for underlines */
+a.nav-link {
+  text-decoration: none !important;
+  border-bottom: none !important;
+  outline: none !important;
+}
+
+a.nav-link:hover,
+a.nav-link:active,
+a.nav-link:focus {
+  text-decoration: none !important;
+  border-bottom: none !important;
+  outline: none !important;
+}
+
+/* Premium Navbar Styling */
+.premium-navbar {
+  padding: 12px 0;
+}
+
+.logo-section {
+  transition: all 0.3s ease;
+}
+
+.logo-section:hover img {
+  transform: scale(1.08);
+}
+
+/* Enhanced Navigation Items */
+.nav-item-enhanced {
+  position: relative;
+  padding: 8px 16px !important;
+  margin: 0 4px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  color: #2c3e50 !important;
+  text-decoration: none !important;
+  display: inline-flex !important;
+  align-items: center;
+  background: transparent;
+  border: 2px solid transparent;
+}
+
+.nav-item-enhanced::before {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+  border-radius: 2px;
+  transition: width 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.nav-item-enhanced:hover::before {
+  width: 100%;
+}
+
+.nav-item-enhanced .nav-icon {
+  font-size: 18px;
+  margin-right: 8px !important;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  color: #667eea;
+}
+
+.nav-item-enhanced:hover {
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.15) 0%, rgba(118, 75, 162, 0.08) 100%) !important;
+  color: #667eea !important;
+  transform: translateY(-2px);
+  text-decoration: none !important;
+  border: 2px solid rgba(102, 126, 234, 0.2) !important;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
+}
+
+.nav-item-enhanced:hover .nav-icon {
+  transform: scale(1.2) rotate(8deg);
+  color: #667eea;
+}
+
+.nav-item-enhanced.active {
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.2) 0%, rgba(118, 75, 162, 0.12) 100%) !important;
+  color: #667eea !important;
+  border: 2px solid #667eea !important;
+  box-shadow: 0 4px 16px rgba(102, 126, 234, 0.25);
+}
+
+.nav-item-enhanced.active::before {
+  width: 100%;
+}
+
+/* Submenu Styling */
+.nav-submenu {
+  position: relative;
+}
+
+.submenu-arrow {
+  transition: transform 0.3s ease;
+}
+
+.nav-submenu:hover .submenu-arrow {
+  transform: rotate(180deg);
+  color: #667eea !important;
+}
+
+.premium-submenu {
+  background: white;
+  border: 2px solid #667eea;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(102, 126, 234, 0.2);
+  padding: 10px 0;
+  min-width: 240px;
+  list-style: none;
+  margin: 0;
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+}
+
+.nav-submenu:hover .premium-submenu {
+  display: block;
+}
+
+.premium-submenu-item {
+  display: flex !important;
+  align-items: center !important;
+  padding: 12px 16px !important;
+  color: #2c3e50 !important;
+  text-decoration: none !important;
+  border-radius: 6px;
+  margin: 4px 8px;
+  transition: all 0.3s ease !important;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.premium-submenu-item:hover {
+  background: rgba(102, 126, 234, 0.1) !important;
+  color: #667eea !important;
+  padding-left: 20px !important;
+}
+
+/* Action Buttons */
+.action-btn {
+  transition: all 0.3s ease !important;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+  border: none !important;
+}
+
+.action-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+/* Mobile Toggle */
+.navbar-mobile-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #333;
+  cursor: pointer;
+  padding: 8px 12px;
+  transition: all 0.3s ease;
+}
+
+.navbar-mobile-toggle:hover {
+  color: #667eea;
+  transform: scale(1.1);
+}
+
+/* Desktop: Show navbar */
+@media (min-width: 992px) {
+  .navbar-collapse {
+    display: flex !important;
+  }
+
+  .navbar-mobile-toggle {
+    display: none !important;
+  }
+
+  .mobile-navbar-sidebar,
+  .mobile-navbar-overlay {
+    display: none !important;
+  }
+}
+
+/* Mobile: Hide navbar */
+@media (max-width: 991.98px) {
+  .navbar-collapse {
+    display: none !important;
+  }
+
+  .navbar-mobile-toggle {
+    display: block !important;
+  }
+}
+</style>
+
+<script>
+function openMobileNav() {
+  document.getElementById('mobileNavbarSidebar').style.left = '0';
+  document.getElementById('mobileNavbarOverlay').style.display = 'block';
+  document.body.style.overflow = 'hidden';
+}
+
+function closeMobileNav() {
+  document.getElementById('mobileNavbarSidebar').style.left = '-100%';
+  document.getElementById('mobileNavbarOverlay').style.display = 'none';
+  document.body.style.overflow = 'auto';
+}
+
+// Close sidebar when overlay is clicked
+document.addEventListener('DOMContentLoaded', function() {
+  const overlay = document.getElementById('mobileNavbarOverlay');
+  if (overlay) {
+    overlay.addEventListener('click', closeMobileNav);
+  }
+});
+</script>

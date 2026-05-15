@@ -44,27 +44,24 @@
 </div>
 
 <!-- Premium Navigation Bar -->
-<nav class="navbar navbar-expand-lg navbar-light premium-navbar sticky-top" style="background: linear-gradient(135deg, #ffffff 0%, #f8fafb 50%, #f0f4f8 100%); backdrop-filter: blur(15px); border-bottom: 2px solid rgba(102, 126, 234, 0.15); box-shadow: 0 2px 20px rgba(0,0,0,0.06);">
-  <div class="container-fluid px-4 px-lg-5">
+<nav class="navbar navbar-expand-lg navbar-light premium-navbar sticky-top" style="background: linear-gradient(135deg, #ffffff 0%, #f8fafb 50%, #f0f4f8 100%); backdrop-filter: blur(15px); border-bottom: 2px solid rgba(102, 126, 234, 0.15); box-shadow: 0 2px 20px rgba(0,0,0,0.06); display: flex; align-items: center;">
+  <div class="container-fluid px-4 px-lg-5" style="display: flex !important; align-items: center !important; width: 100% !important; gap: 1rem; flex-wrap: nowrap; justify-content: space-between;">
     <!-- Mobile Menu Toggle Button -->
-    <button class="navbar-mobile-toggle" id="mobileNavToggle" aria-label="Toggle mobile navigation">
+    <button class="navbar-mobile-toggle" id="mobileNavToggle" aria-label="Toggle mobile navigation" style="order: 1; margin-right: auto;">
       <i class="fas fa-bars"></i>
     </button>
 
     <!-- Logo Section -->
-    <a class="navbar-brand d-flex align-items-center fw-bold logo-section" href="/">
+    <a class="navbar-brand d-flex align-items-center fw-bold logo-section" href="/" style="order: 0; flex-shrink: 0;">
       <img src="/images/FushidaLankaLogo.png" alt="FushidaLanka Logo" class="navbar-logo me-3" style="height: 55px; width: auto; max-width: 350px; object-fit: contain; transition: transform 0.3s ease;">
       <span class="text-dark d-none d-xl-inline" style="font-size: 18px; letter-spacing: 0.5px;">FUSHIDA LANKA</span>
     </a>
 
-    <!-- Traditional Navbar Toggle Button (Hidden on Mobile via CSS) -->
-    <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+
 
     <!-- Navigation Menu -->
-    <div class="collapse navbar-collapse" id="navbarNav" style="display: flex !important; flex-basis: auto !important;">
-      <ul class="navbar-nav mx-auto gap-2" style="display: flex !important; flex-direction: row !important; align-items: center !important;">
+    <div class="collapse navbar-collapse" id="navbarNav" style="display: flex !important; flex-basis: auto !important; justify-content: center; flex-grow: 0;">
+      <ul class="navbar-nav mx-auto gap-2" style="display: flex !important; flex-direction: row !important; align-items: center !important; justify-content: center; flex-wrap: nowrap; margin: 0;">
         <li class="nav-item">
           <a class="nav-link nav-item-enhanced px-3 py-2 rounded-3 text-dark fw-600 d-flex align-items-center <%= currentPath === '/' ? 'active' : '' %>" href="/">
             <i class="fas fa-home me-2 nav-icon"></i>Home
@@ -100,7 +97,7 @@
     </div>
 
     <!-- Action Buttons (Right Side) -->
-    <ul class="navbar-nav d-flex gap-2 align-items-center" style="display: flex !important; flex-direction: row !important; align-items: center !important; margin-left: auto !important;">
+    <ul class="navbar-nav d-flex gap-2 align-items-center" style="display: flex !important; flex-direction: row !important; align-items: center !important; flex-shrink: 0; margin-left: 0 !important;">
       <li class="nav-item d-none d-lg-block">
         <a class="nav-link action-btn explore-btn text-white fw-bold px-4 py-2 rounded-pill d-flex align-items-center" href="/products" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); white-space: nowrap;">
           <i class="fas fa-search me-2"></i>Explore Products

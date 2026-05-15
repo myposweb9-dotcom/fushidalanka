@@ -129,6 +129,13 @@ app.use(fileUpload({
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+// Force UTF-8 encoding and content-type headers
+app.use((req, res, next) => {
+  res.setHeader('Content-Type', 'text/html; charset=utf-8');
+  res.setHeader('X-Content-Type-Options', 'nosniff');
+  next();
+});
+
 // Session configuration
 const isProduction = process.env.NODE_ENV === 'production';
 

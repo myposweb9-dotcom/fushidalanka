@@ -28,6 +28,19 @@ User.hasMany(Product, { foreignKey: 'userId', as: 'products' });
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// ============================================
+// CRITICAL: Set UTF-8 charset FIRST
+// ============================================
+app.use((req, res, next) => {
+  res.header('Content-Type', 'text/html; charset=utf-8');
+  res.header('X-Content-Type-Options', 'nosniff');
+  next();
+});
+
+// Set view engine IMMEDIATELY after headers
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
+
 // Test database connection and sync models
 async function initializeDatabase() {
   try {
@@ -128,13 +141,6 @@ app.use(fileUpload({
 // Body parsing middleware (after file upload)
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
-// Force UTF-8 encoding and content-type headers
-app.use((req, res, next) => {
-  res.setHeader('Content-Type', 'text/html; charset=utf-8');
-  res.setHeader('X-Content-Type-Options', 'nosniff');
-  next();
-});
 
 // Session configuration
 const isProduction = process.env.NODE_ENV === 'production';

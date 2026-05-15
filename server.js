@@ -36,11 +36,17 @@ app.use(express.static('public'));
 app.use('/uploads', express.static(path.join(__dirname, 'public/uploads')));
 
 // ============================================
-// 2. FORCE UTF-8 CHARSET ON ALL RESPONSES (SECOND)
+// 2. PROPER UTF-8 CHARSET MIDDLEWARE
 // ============================================
+// Middleware to set UTF-8 charset explicitly
 app.use((req, res, next) => {
-  res.set('Content-Type', 'text/html; charset=utf-8');
-  res.set('X-Content-Type-Options', 'nosniff');
+  // Wrap the original render to set charset before rendering
+  const originalRender = res.render;
+  res.render = function(view, options, callback) {
+    res.charset = 'utf-8';
+    res.set('Content-Type', 'text/html; charset=utf-8');
+    return originalRender.call(this, view, options, callback);
+  };
   next();
 });
 

@@ -3478,17 +3478,21 @@ section {
   }
 }
 
-/* Hide mobile sidebar on large screens */
+/* Show desktop navbar on large screens */
 @media (min-width: 992px) {
+  .navbar-collapse {
+    display: flex !important;
+  }
+
+  .navbar-mobile-toggle {
+    display: none !important;
+  }
+
   .mobile-navbar-sidebar {
     display: none !important;
   }
   
   .mobile-navbar-overlay {
-    display: none !important;
-  }
-  
-  .navbar-mobile-toggle {
     display: none !important;
   }
 }

@@ -3997,3 +3997,88 @@ section {
 }
 /* Small Screens (576px - 767px) */
 @media (max-width: 767.98px) {
+}
+
+/* ===== CRITICAL DESKTOP NAVBAR FIXES ===== */
+/* Force navbar to display horizontally ONLY on desktop */
+@media (min-width: 992px) {
+  /* Ensure navbar container is full width flex */
+  .navbar {
+    display: flex !important;
+    align-items: center;
+  }
+
+  /* Container fluid must be flex */
+  .navbar .container-fluid {
+    display: flex !important;
+    align-items: center;
+    width: 100% !important;
+  }
+
+  /* Collapse div MUST display as flex on desktop */
+  .navbar-collapse {
+    display: flex !important;
+    flex-basis: auto !important;
+    flex-grow: 0 !important;
+    order: 3;
+  }
+
+  /* Navbar nav list must be horizontal flex */
+  .navbar-nav {
+    display: flex !important;
+    flex-direction: row !important; 
+    align-items: center !important;
+    justify-content: center !important;
+    list-style: none !important;
+    margin-bottom: 0 !important;
+    gap: 0.5rem !important;
+  }
+
+  /* Each nav item must display as flex */
+  .navbar-nav .nav-item {
+    display: flex !important;
+    align-items: center !important;
+    margin: 0 !important;
+  }
+
+  /* Nav links visible and flex */
+  .navbar-nav .nav-link {
+    display: flex !important;
+    align-items: center !important;
+    flex-wrap: nowrap !important;
+    white-space: nowrap !important;
+    padding: 0.5rem 0.75rem !important;
+    color: #2c3e50 !important;
+    font-weight: 500;
+    transition: all 0.3s ease !important;
+  }
+
+  /* Ensure toggler is hidden on desktop */
+  .navbar-toggler,
+  .navbar-mobile-toggle {
+    display: none !important;
+  }
+
+  /* Right side buttons visible on desktop */
+  .navbar-nav.ms-auto,  
+  .navbar-nav.d-flex {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+  }
+}
+
+/* CRITICAL: Ensure collapse is hidden ONLY on mobile */
+@media (max-width: 991.98px) {
+  .navbar-collapse {
+    display: none !important;
+  }
+
+  .navbar-nav {
+    display: none !important;
+  }
+
+  .navbar-mobile-toggle {
+    display: block !important;
+  }
+}

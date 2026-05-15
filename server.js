@@ -28,18 +28,15 @@ User.hasMany(Product, { foreignKey: 'userId', as: 'products' });
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// ============================================
-// CRITICAL: Set UTF-8 charset FIRST
-// ============================================
-app.use((req, res, next) => {
-  res.header('Content-Type', 'text/html; charset=utf-8');
-  res.header('X-Content-Type-Options', 'nosniff');
-  next();
-});
-
-// Set view engine IMMEDIATELY after headers
+// Set view engine FIRST
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
+
+// ============================================
+// CRITICAL: Serve static files FIRST with proper MIME types
+// ============================================
+app.use(express.static('public'));
+app.use('/uploads', express.static(path.join(__dirname, 'public/uploads')));
 
 // Test database connection and sync models
 async function initializeDatabase() {
@@ -142,6 +139,19 @@ app.use(fileUpload({
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+// ============================================
+// UTF-8 charset middleware for HTML responses only
+// ============================================
+app.use((req, res, next) => {
+  // Wrap the render method to add charset
+  const originalRender = res.render;
+  res.render = function(view, options, callback) {
+    res.set('Content-Type', 'text/html; charset=utf-8');
+    return originalRender.call(this, view, options, callback);
+  };
+  next();
+});
+
 // Session configuration
 const isProduction = process.env.NODE_ENV === 'production';
 
@@ -218,10 +228,6 @@ app.use('/admin', require('./routes/admin'));
 // Admin Data API Routes (for fetching JSON data in admin panel) - SECURED
 app.use('/api/admin/categories', require('./routes/categories'));
 app.use('/api/admin/products', require('./routes/products'));
-
-// Static files - AFTER routes so routes take precedence
-app.use(express.static('public'));
-app.use('/uploads', express.static(path.join(__dirname, 'public/uploads')));
 
 app.use('/user', require('./routes/user'));
 app.use('/api', require('./routes/api'));

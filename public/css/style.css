@@ -4084,3 +4084,62 @@ section {
     display: block !important;
   }
 }
+
+/* ===== Quick fixes / overrides ===== */
+/* Ensure the mobile navbar toggle is visible on small screens */
+.navbar-toggler {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0.2rem 0.5rem !important;
+  border: none !important;
+  background: transparent !important;
+}
+
+@media (min-width: 992px) {
+  .navbar-toggler {
+    display: none !important;
+  }
+}
+
+/* Hero: consistent spacing and readable content */
+.hero-section {
+  padding: 60px 0 !important;
+  min-height: 50vh !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background-size: cover !important;
+  background-position: center !important;
+}
+
+.hero-section .container {
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+}
+
+/* Make sure images and cards align properly inside containers */
+.container, .container-fluid {
+  max-width: 100% !important;
+  padding-left: 16px !important;
+  padding-right: 16px !important;
+}
+
+/* Floating WhatsApp button layering and touch target */
+.whatsapp-float {
+  right: 18px !important;
+  bottom: 18px !important;
+  z-index: 9999 !important;
+}
+.whatsapp-float .whatsapp-btn {
+  width: 60px !important;
+  height: 60px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* Prevent unexpected horizontal scroll from overflowing elements */
+html, body {
+  overflow-x: hidden !important;
+}

@@ -1,6 +1,16 @@
 // RushidaLanka Hardware Shop - Main JavaScript
 
 document.addEventListener('DOMContentLoaded', function() {
+  const isAdminLogin = document.body.classList.contains('admin-login-page');
+
+  // For the admin login page we only initialize minimal scripts to avoid
+  // interfering with the centered layout and to prevent mobile-nav errors.
+  if (isAdminLogin) {
+    initFormValidation();
+    enhanceFormInteractions();
+    return;
+  }
+
   // Initialize theme
   initTheme();
 
@@ -697,10 +707,15 @@ function closeMobileSidebar() {
 
 // Initialize on page load
 window.addEventListener('load', () => {
+  const isAdminLogin = document.body.classList.contains('admin-login-page');
+
   enhanceFormInteractions();
-  // Trigger any animations that might be missed
-  observeElements();
-  // Initialize admin menu toggle if on admin page
-  initAdminMobileMenu();
-  // Initialize mobile navigation
-  initMobileNavigation();});
+  // Trigger any animations that might be missed (skip heavy observers on login)
+  if (!isAdminLogin) observeElements();
+
+  // Initialize admin menu toggle if on admin pages (skip on public login)
+  if (!isAdminLogin) {
+    initAdminMobileMenu();
+    initMobileNavigation();
+  }
+});

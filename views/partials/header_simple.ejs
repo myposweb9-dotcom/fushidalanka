@@ -14,18 +14,24 @@
     <a class="mobile-nav-item" href="/about" style="display: flex; align-items: center; padding: 15px 20px; color: #333; text-decoration: none; border-bottom: 1px solid #f0f0f0;">
       <i class="fas fa-building me-3"></i>About
     </a>
-    <a class="mobile-nav-item" href="/services" style="display: flex; align-items: center; padding: 15px 20px; color: #333; text-decoration: none; border-bottom: 1px solid #f0f0f0;">
-      <i class="fas fa-cog me-3"></i>Services
-    </a>
+    <% if (categories && categories.length) { %>
+      <% categories.forEach(function(cat) { %>
+        <a class="mobile-nav-item" href="/products?category=<%= cat.slug %>" style="display: flex; align-items: center; padding: 15px 20px; color: #333; text-decoration: none; border-bottom: 1px solid #f0f0f0;">
+          <i class="fas fa-tags me-3"></i><%= cat.name %>
+        </a>
+      <% }) %>
+    <% } else { %>
+      <a class="mobile-nav-item" href="/admin/categories" style="display: flex; align-items: center; padding: 15px 20px; color: #333; text-decoration: none; border-bottom: 1px solid #f0f0f0;">
+        <i class="fas fa-tags me-3"></i>Categories
+      </a>
+    <% } %>
     <a class="mobile-nav-item" href="/contact" style="display: flex; align-items: center; padding: 15px 20px; color: #333; text-decoration: none; border-bottom: 1px solid #f0f0f0;">
       <i class="fas fa-envelope me-3"></i>Contact
     </a>
     <a class="mobile-nav-item" href="/products" style="display: flex; align-items: center; padding: 15px 20px; color: #667eea; text-decoration: none; border-bottom: 1px solid #f0f0f0; font-weight: 600;">
       <i class="fas fa-search me-3"></i>Explore Products
     </a>
-    <a class="mobile-nav-item" href="/admin/login" style="display: flex; align-items: center; padding: 15px 20px; color: #ff6b6b; text-decoration: none; border-bottom: 1px solid #f0f0f0; font-weight: 600;">
-      <i class="fas fa-lock me-3"></i>Admin Login
-    </a>
+    <!-- Admin Login removed -->
   </div>
 
   <% if (typeof user !== 'undefined' && user) { %>
@@ -75,14 +81,17 @@
           </ul>
         </li>
         <li class="nav-item nav-submenu">
-          <a class="nav-link nav-item-enhanced px-3 py-2 rounded-3 text-dark fw-600 d-flex align-items-center <%= currentPath === '/services' ? 'active' : '' %>" href="#">
-            <i class="fas fa-cog me-2 nav-icon"></i>Services <i class="fas fa-chevron-down submenu-arrow ms-1" style="font-size: 12px;"></i>
+          <a class="nav-link nav-item-enhanced px-3 py-2 rounded-3 text-dark fw-600 d-flex align-items-center <%= currentPath === '/categories' ? 'active' : '' %>" href="#">
+            <i class="fas fa-tags me-2 nav-icon"></i>Categories <i class="fas fa-chevron-down submenu-arrow ms-1" style="font-size: 12px;"></i>
           </a>
           <ul class="submenu-items premium-submenu">
-            <li><a class="submenu-item premium-submenu-item" href="/services#assessment"><i class="fas fa-map-marker-alt me-2 text-primary"></i><span>Site Assessment</span><i class="fas fa-arrow-right ms-2 text-muted"></i></a></li>
-            <li><a class="submenu-item premium-submenu-item" href="/services#design"><i class="fas fa-drafting-compass me-2 text-primary"></i><span>System Design</span><i class="fas fa-arrow-right ms-2 text-muted"></i></a></li>
-            <li><a class="submenu-item premium-submenu-item" href="/services#installation"><i class="fas fa-tools me-2 text-primary"></i><span>Installation</span><i class="fas fa-arrow-right ms-2 text-muted"></i></a></li>
-            <li><a class="submenu-item premium-submenu-item" href="/services#support"><i class="fas fa-headset me-2 text-primary"></i><span>Support & Maintenance</span><i class="fas fa-arrow-right ms-2 text-muted"></i></a></li>
+            <% if (categories && categories.length) { %>
+              <% categories.forEach(function(cat) { %>
+                <li><a class="submenu-item premium-submenu-item" href="/products?category=<%= cat.slug %>"><i class="fas fa-tags me-2 text-primary"></i><span><%= cat.name %></span><i class="fas fa-arrow-right ms-2 text-muted"></i></a></li>
+              <% }) %>
+            <% } else { %>
+              <li><a class="submenu-item premium-submenu-item" href="/admin/categories"><i class="fas fa-tags me-2 text-primary"></i><span>Add Categories</span><i class="fas fa-arrow-right ms-2 text-muted"></i></a></li>
+            <% } %>
           </ul>
         </li>
         <li class="nav-item">

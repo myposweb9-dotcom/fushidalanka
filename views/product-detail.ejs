@@ -36,7 +36,7 @@
         <% if (product.images && product.images.length > 0) { %>
           <img src="<%= product.images[0] %>" alt="<%= product.name %>" class="img-fluid rounded shadow">
         <% } else { %>
-          <img src="https://via.placeholder.com/600x400/28a745/ffffff?text=<%= encodeURIComponent(product.name) %>" alt="<%= product.name %>" class="img-fluid rounded shadow">
+          <img src="/images/product-placeholder.svg" alt="<%= product.name %>" class="img-fluid rounded shadow">
         <% } %>
       </div>
     </div>

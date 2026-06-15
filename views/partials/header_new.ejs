@@ -30,17 +30,20 @@
       </ul>
     </li>
 
-    <!-- Services/Products -->
+    <!-- Categories (replacing Services) -->
     <li class="mobile-menu-item has-submenu">
-      <button class="mobile-menu-link" data-submenu="services">
-        <i class="fas fa-flask"></i> Services
+      <button class="mobile-menu-link" data-submenu="categories">
+        <i class="fas fa-tags"></i> Categories
         <i class="fas fa-chevron-right"></i>
       </button>
-      <ul class="mobile-submenu" id="submenu-services">
-        <li><a href="/services" class="mobile-submenu-link">All Services</a></li>
-        <li><a href="/services" class="mobile-submenu-link">Consulting</a></li>
-        <li><a href="/services" class="mobile-submenu-link">Installation</a></li>
-        <li><a href="/services" class="mobile-submenu-link">Maintenance</a></li>
+      <ul class="mobile-submenu" id="submenu-categories">
+        <% if (categories && categories.length) { %>
+          <% categories.forEach(function(cat) { %>
+            <li><a href="/products?category=<%= cat.slug %>" class="mobile-submenu-link"><i class="fas fa-tag me-2"></i> <%= cat.name %></a></li>
+          <% }) %>
+        <% } else { %>
+          <li><a href="/admin/categories" class="mobile-submenu-link">Add Categories</a></li>
+        <% } %>
       </ul>
     </li>
 
@@ -61,12 +64,7 @@
     <!-- Separator -->
     <li class="mobile-menu-divider"></li>
 
-    <!-- Admin Login -->
-    <li class="mobile-menu-item">
-      <a href="/admin/login" class="mobile-menu-link admin-login-link">
-        <i class="fas fa-lock"></i> Admin Login
-      </a>
-    </li>
+    <!-- Admin Login removed -->
 
     <!-- Dashboard/Logout (Conditional) -->
     <% if (user && user.role === 'admin') { %>
@@ -97,6 +95,7 @@
 
     <!-- Mobile Toggle Button (Custom) -->
     <button class="navbar-mobile-toggle" id="mobileNavToggle" type="button" aria-label="Toggle navigation">
+      <i class="fas fa-bars mobile-toggle-icon" aria-hidden="true"></i>
       <span class="hamburger-line"></span>
       <span class="hamburger-line"></span>
       <span class="hamburger-line"></span>
@@ -119,13 +118,17 @@
           </ul>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link px-3 py-2 mx-2 rounded-pill fw-500 dropdown-toggle <%= currentPath === '/services' ? 'active' : '' %>" href="#" id="servicesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Services <i class="fas fa-chevron-down ms-1" style="font-size: 0.75em;"></i>
+          <a class="nav-link px-3 py-2 mx-2 rounded-pill fw-500 dropdown-toggle <%= currentPath === '/categories' ? 'active' : '' %>" href="#" id="categoriesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Categories <i class="fas fa-chevron-down ms-1" style="font-size: 0.75em;"></i>
           </a>
-          <ul class="dropdown-menu premium-dropdown-menu" aria-labelledby="servicesDropdown" style="border: 1px solid rgba(102, 126, 234, 0.2); border-radius: 12px; box-shadow: 0 8px 24px rgba(102, 126, 234, 0.15); background: linear-gradient(135deg, rgba(255,255,255,0.98) 0%, rgba(248,250,255,0.98) 100%); backdrop-filter: blur(10px);">
-            <li><a class="dropdown-item" href="/services" style="padding: 10px 20px; border-radius: 8px; transition: all 0.3s ease; margin: 5px 8px;"><i class="fas fa-flask me-2 text-primary"></i>All Services</a></li>
-            <li><a class="dropdown-item" href="/services" style="padding: 10px 20px; border-radius: 8px; transition: all 0.3s ease; margin: 5px 8px;"><i class="fas fa-briefcase me-2 text-primary"></i>Consulting</a></li>
-            <li><a class="dropdown-item" href="/services" style="padding: 10px 20px; border-radius: 8px; transition: all 0.3s ease; margin: 5px 8px;"><i class="fas fa-wrench me-2 text-primary"></i>Installation</a></li>
+          <ul class="dropdown-menu premium-dropdown-menu" aria-labelledby="categoriesDropdown" style="border: 1px solid rgba(102, 126, 234, 0.2); border-radius: 12px; box-shadow: 0 8px 24px rgba(102, 126, 234, 0.15); background: linear-gradient(135deg, rgba(255,255,255,0.98) 0%, rgba(248,250,255,0.98) 100%); backdrop-filter: blur(10px);">
+            <% if (categories && categories.length) { %>
+              <% categories.forEach(function(cat) { %>
+                <li><a class="dropdown-item" href="/products?category=<%= cat.slug %>" style="padding: 10px 20px; border-radius: 8px; transition: all 0.3s ease; margin: 5px 8px;"><i class="fas fa-tags me-2 text-primary"></i><%= cat.name %></a></li>
+              <% }) %>
+            <% } else { %>
+              <li><a class="dropdown-item" href="/admin/categories" style="padding: 10px 20px; border-radius: 8px; transition: all 0.3s ease; margin: 5px 8px;"><i class="fas fa-tags me-2 text-primary"></i>Add Categories</a></li>
+            <% } %>
           </ul>
         </li>
         <li class="nav-item">
@@ -141,13 +144,7 @@
           <i class="fas fa-cube me-2"></i>Explore Products
         </a>
       </li>
-      <% if (!user) { %>
-        <li class="nav-item">
-          <a class="nav-link btn-admin-login" href="/admin/login">
-            <i class="fas fa-lock me-1"></i>Admin Login
-          </a>
-        </li>
-      <% } else { %>
+      <% if (user) { %>
         <li class="nav-item dropdown">
           <a class="nav-link px-3 py-2" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             <i class="fas fa-user-circle" style="font-size: 1.5em; color: #667eea;"></i>
@@ -476,80 +473,4 @@
   }
 </style>
 
-<!-- JavaScript for Mobile Navigation -->
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    // Get elements
-    const mobileNavToggle = document.getElementById('mobileNavToggle');
-    const mobileNavClose = document.getElementById('mobileNavClose');
-    const mobileNavbarSidebar = document.getElementById('mobileNavbarSidebar');
-    const mobileNavbarOverlay = document.getElementById('mobileNavbarOverlay');
-
-    // Toggle sidebar visibility
-    if (mobileNavToggle) {
-      mobileNavToggle.addEventListener('click', function() {
-        mobileNavbarSidebar.classList.toggle('show');
-        mobileNavbarOverlay.classList.toggle('show');
-        document.body.style.overflow = mobileNavbarSidebar.classList.contains('show') ? 'hidden' : 'auto';
-      });
-    }
-
-    // Close sidebar on close button
-    if (mobileNavClose) {
-      mobileNavClose.addEventListener('click', function() {
-        mobileNavbarSidebar.classList.remove('show');
-        mobileNavbarOverlay.classList.remove('show');
-        document.body.style.overflow = 'auto';
-      });
-    }
-
-    // Close sidebar on overlay click
-    if (mobileNavbarOverlay) {
-      mobileNavbarOverlay.addEventListener('click', function() {
-        mobileNavbarSidebar.classList.remove('show');
-        mobileNavbarOverlay.classList.remove('show');
-        document.body.style.overflow = 'auto';
-      });
-    }
-
-    // Close sidebar when clicking a link
-    const mobileMenuLinks = document.querySelectorAll('.mobile-menu-link:not([data-submenu])');
-    mobileMenuLinks.forEach(link => {
-      link.addEventListener('click', function() {
-        mobileNavbarSidebar.classList.remove('show');
-        mobileNavbarOverlay.classList.remove('show');
-        document.body.style.overflow = 'auto';
-      });
-    });
-
-    // Submenu toggle functionality
-    const submenuToggleButtons = document.querySelectorAll('[data-submenu]');
-    submenuToggleButtons.forEach(button => {
-      button.addEventListener('click', function(e) {
-        e.preventDefault();
-        const submenuId = this.getAttribute('data-submenu');
-        const submenu = document.getElementById(`submenu-${submenuId}`);
-        const isOpen = submenu.classList.contains('show');
-
-        // Close all other submenus
-        document.querySelectorAll('.mobile-submenu').forEach(menu => {
-          menu.classList.remove('show');
-        });
-
-        // Toggle current submenu
-        if (!isOpen) {
-          submenu.classList.add('show');
-          const chevron = this.querySelector('.fa-chevron-right');
-          if (chevron) {
-            chevron.style.transform = 'rotate(90deg)';
-          }
-        } else {
-          const chevron = this.querySelector('.fa-chevron-right');
-          if (chevron) {
-            chevron.style.transform = 'rotate(0deg)';
-          }
-        }
-      });
-    });
-  });
-</script>
+<!-- Mobile navigation script removed (centralized in public/js/main.js) -->

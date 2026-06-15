@@ -75,7 +75,7 @@
                   <div class="row">
                     <% product.images.forEach((image, index) => { %>
                       <div class="col-md-6 mb-3">
-                        <img src="<%= image %>" alt="<%= product.name %> - Image <%= index + 1 %>" class="img-fluid rounded shadow" onerror="this.onerror=null;this.src='https://via.placeholder.com/300x200?text=No+Image';">
+                        <img src="<%= image %>" alt="<%= product.name %> - Image <%= index + 1 %>" class="img-fluid rounded shadow" onerror="this.onerror=null;this.src='/images/product-placeholder.svg';">
                       </div>
                     <% }); %>
                   </div>

@@ -196,6 +196,15 @@ app.use(async (req, res, next) => {
       console.error('Error fetching logos:', error);
       res.locals.logos = [];
     }
+    // Fetch categories for templates (so header can render dynamic categories)
+    try {
+      const categories = await Category.findAll({ where: {}, order: [['name', 'ASC']] });
+      res.locals.categories = categories;
+      console.log(`Fetched ${categories.length} categories for templates.`);
+    } catch (error) {
+      console.error('Error fetching categories:', error);
+      res.locals.categories = [];
+    }
     console.log('Global middleware completed successfully');
 
     next();

@@ -3539,6 +3539,35 @@ section {
   .navbar-collapse {
     display: none !important;
   }
+
+  /* Ensure mobile toggle is visible and positioned above the logo */
+  .navbar-mobile-toggle {
+    display: flex !important;
+    position: absolute !important;
+    right: 18px !important;
+    top: 12px !important;
+    z-index: 2000 !important;
+    padding: 8px !important;
+  }
+
+  /* Reduce logo size on small screens to avoid overlap with toggle */
+  .navbar-logo {
+    height: 44px !important;
+    max-height: 44px !important;
+  }
+
+  /* Make FontAwesome icon visible inside toggle and keep hamburger lines as backup */
+  .navbar-mobile-toggle .mobile-toggle-icon {
+    display: inline-block;
+    font-size: 22px;
+    color: var(--dark-color, #333);
+    line-height: 1;
+    margin-right: 6px;
+  }
+
+  .navbar-mobile-toggle .hamburger-line {
+    background: var(--dark-color, #333) !important;
+  }
 }
 
 /* Show desktop navbar on large screens */

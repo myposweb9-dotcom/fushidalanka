@@ -109,30 +109,7 @@
 </section>
 
 <!-- Logos Bar Section -->
-<% if (logos && logos.length > 0) { %>
-<section style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); border-top: 1px solid #dee2e6; border-bottom: 1px solid #dee2e6; padding: 2rem 0; overflow: hidden;">
-  <div class="container-fluid">
-    <div style="display: flex; animation: scrollLogos 30s linear infinite;">
-      <% logos.forEach(logo => { %>
-      <div style="flex-shrink: 0; padding: 0 20px; display: flex; align-items: center; justify-content: center; min-width: 200px;">
-        <img src="<%= logo.image %>" alt="<%= logo.title || 'Partner Logo' %>" style="height: 60px; width: auto; max-width: 150px; object-fit: contain; filter: grayscale(100%) brightness(0.7); transition: all 0.3s ease;">
-      </div>
-      <% }); %>
-      <% logos.forEach(logo => { %>
-      <div style="flex-shrink: 0; padding: 0 20px; display: flex; align-items: center; justify-content: center; min-width: 200px;">
-        <img src="<%= logo.image %>" alt="<%= logo.title || 'Partner Logo' %>" style="height: 60px; width: auto; max-width: 150px; object-fit: contain; filter: grayscale(100%) brightness(0.7); transition: all 0.3s ease;">
-      </div>
-      <% }); %>
-    </div>
-  </div>
-  <style>
-    @keyframes scrollLogos {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
-  </style>
-</section>
-<% } %>
+<!-- logos-bar removed -->
 
 <%- include('partials/footer') %>
 

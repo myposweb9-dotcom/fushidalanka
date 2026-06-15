@@ -52,7 +52,7 @@
 <nav class="navbar navbar-expand-lg navbar-light premium-navbar sticky-top" style="background: linear-gradient(135deg, #ffffff 0%, #f8fafb 50%, #f0f4f8 100%); backdrop-filter: blur(15px); border-bottom: 2px solid rgba(102, 126, 234, 0.15); box-shadow: 0 2px 20px rgba(0,0,0,0.06);">
   <div class="container-fluid px-4 px-lg-5">
     <!-- Mobile Menu Toggle Button -->
-    <button class="navbar-mobile-toggle" id="mobileNavToggle" aria-label="Toggle mobile navigation" onclick="openMobileNav()">
+    <button class="navbar-mobile-toggle" id="mobileNavToggle" aria-label="Toggle mobile navigation">
       <i class="fas fa-bars"></i>
     </button>
 
@@ -337,24 +337,10 @@ a.nav-link:focus {
 }
 </style>
 
-<script>
-function openMobileNav() {
-  document.getElementById('mobileNavbarSidebar').style.left = '0';
-  document.getElementById('mobileNavbarOverlay').style.display = 'block';
-  document.body.style.overflow = 'hidden';
-}
+<!-- Mobile nav inline script removed; centralized in /js/main.js -->
 
-function closeMobileNav() {
-  document.getElementById('mobileNavbarSidebar').style.left = '-100%';
-  document.getElementById('mobileNavbarOverlay').style.display = 'none';
-  document.body.style.overflow = 'auto';
-}
-
-// Close sidebar when overlay is clicked
-document.addEventListener('DOMContentLoaded', function() {
-  const overlay = document.getElementById('mobileNavbarOverlay');
-  if (overlay) {
-    overlay.addEventListener('click', closeMobileNav);
-  }
-});
-</script>
+<style>
+  /* Ensure main.js .show toggle works for this header (left-based sidebar) */
+  .mobile-navbar-sidebar.show { left: 0 !important; }
+  .mobile-navbar-overlay.show { display: block !important; opacity: 1 !important; visibility: visible !important; }
+</style>

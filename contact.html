@@ -464,82 +464,7 @@
 </style>
 
 <!-- JavaScript for Mobile Navigation -->
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    // Get elements
-    const mobileNavToggle = document.getElementById('mobileNavToggle');
-    const mobileNavClose = document.getElementById('mobileNavClose');
-    const mobileNavbarSidebar = document.getElementById('mobileNavbarSidebar');
-    const mobileNavbarOverlay = document.getElementById('mobileNavbarOverlay');
-
-    // Toggle sidebar visibility
-    if (mobileNavToggle) {
-      mobileNavToggle.addEventListener('click', function() {
-        mobileNavbarSidebar.classList.toggle('show');
-        mobileNavbarOverlay.classList.toggle('show');
-        document.body.style.overflow = mobileNavbarSidebar.classList.contains('show') ? 'hidden' : 'auto';
-      });
-    }
-
-    // Close sidebar on close button
-    if (mobileNavClose) {
-      mobileNavClose.addEventListener('click', function() {
-        mobileNavbarSidebar.classList.remove('show');
-        mobileNavbarOverlay.classList.remove('show');
-        document.body.style.overflow = 'auto';
-      });
-    }
-
-    // Close sidebar on overlay click
-    if (mobileNavbarOverlay) {
-      mobileNavbarOverlay.addEventListener('click', function() {
-        mobileNavbarSidebar.classList.remove('show');
-        mobileNavbarOverlay.classList.remove('show');
-        document.body.style.overflow = 'auto';
-      });
-    }
-
-    // Close sidebar when clicking a link
-    const mobileMenuLinks = document.querySelectorAll('.mobile-menu-link:not([data-submenu])');
-    mobileMenuLinks.forEach(link => {
-      link.addEventListener('click', function() {
-        mobileNavbarSidebar.classList.remove('show');
-        mobileNavbarOverlay.classList.remove('show');
-        document.body.style.overflow = 'auto';
-      });
-    });
-
-    // Submenu toggle functionality
-    const submenuToggleButtons = document.querySelectorAll('[data-submenu]');
-    submenuToggleButtons.forEach(button => {
-      button.addEventListener('click', function(e) {
-        e.preventDefault();
-        const submenuId = this.getAttribute('data-submenu');
-        const submenu = document.getElementById(`submenu-${submenuId}`);
-        const isOpen = submenu.classList.contains('show');
-
-        // Close all other submenus
-        document.querySelectorAll('.mobile-submenu').forEach(menu => {
-          menu.classList.remove('show');
-        });
-
-        // Toggle current submenu
-        if (!isOpen) {
-          submenu.classList.add('show');
-          const chevron = this.querySelector('.fa-chevron-right');
-          if (chevron) {
-            chevron.style.transform = 'rotate(90deg)';
-          }
-        } else {
-          const chevron = this.querySelector('.fa-chevron-right');
-          if (chevron) {
-            chevron.style.transform = 'rotate(0deg)';
-          }
-        }
-      });
-    });
-  });
-</script>
+<!-- mobile nav JS removed (handled centrally by /js/main.js) -->
 
 
   <!-- Hero Section -->
@@ -684,52 +609,7 @@
     </div>
   </section>
 
-  <!-- Scrolling Logos Bar -->
-  <!-- logos-bar removed -->
-              <img src="/uploads/Logobar/Jinko_Solar_logo.svg.png" alt="Jinko Solar" class="logo-image">
-            
-          </div>
-        
-          <div class="logo-item">
-            
-              <img src="/uploads/Logobar/trina-solar-logo-png_seeklogo-434428-removebg-preview.png" alt="Trina Solar" class="logo-image">
-            
-          </div>
-        
-          <div class="logo-item">
-            
-              <img src="/uploads/Logobar/projoy_electric_logo-removebg-preview.png" alt="Projoy Electric" class="logo-image">
-            
-          </div>
-        
-          <div class="logo-item">
-            
-              <img src="/uploads/Logobar/kbe_berlin8-removebg-preview.png" alt="KBE Berlin" class="logo-image">
-            
-          </div>
-        
-          <div class="logo-item">
-            
-              <img src="/uploads/Logobar/png-clipart-solar-panels-xi-an-longi-silicon-materials-solar-power-monocrystalline-silicon-monocrystalline-silicon.png" alt="Longi Solar" class="logo-image">
-            
-          </div>
-        
-          <div class="logo-item">
-            
-              <img src="/uploads/Logobar/file-removebg-preview (1).png" alt="Solar Partner" class="logo-image">
-            
-          </div>
-        
-          <div class="logo-item">
-            
-              <img src="/uploads/Logobar/images__3_-removebg-preview.png" alt="Solar Partner 2" class="logo-image">
-            
-          </div>
-        
-      </div>
-    </div>
-  </div>
-</div>
+    <!-- logos-bar removed -->
 
 
 

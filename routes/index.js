@@ -13,11 +13,13 @@ console.log('Routes/index.js loaded successfully');
 router.get('/', async (req, res) => {
   try {
     console.log('Homepage route called');
+    res.set('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
     // Fetch data for homepage
     let [featuredProducts, testimonials, news, projects, logos] = await Promise.all([
       Product.findAll({
         where: { status: 'active', featured: true },
         include: [{ model: Category, as: 'category', attributes: ['id', 'name', 'slug'] }],
+        order: [['updatedAt', 'DESC'], ['createdAt', 'DESC']],
         limit: 12
       }),
       Content.findAll({ where: { type: 'testimonial' }, limit: 3 }),
@@ -31,7 +33,7 @@ router.get('/', async (req, res) => {
       featuredProducts = await Product.findAll({
         where: { status: 'active' },
         include: [{ model: Category, as: 'category', attributes: ['id', 'name', 'slug'] }],
-        order: [['createdAt', 'DESC']],
+        order: [['updatedAt', 'DESC'], ['createdAt', 'DESC']],
         limit: 8
       });
     }

@@ -87,7 +87,7 @@
           <ul class="submenu-items premium-submenu">
             <% if (categories && categories.length) { %>
               <% categories.forEach(function(cat) { %>
-                <li><a class="submenu-item premium-submenu-item" href="/products?category=<%= cat.slug %>"><i class="fas fa-tags me-2 text-primary"></i><span><%= cat.name %></span><i class="fas fa-arrow-right ms-2 text-muted"></i></a></li>
+                <li><a class="submenu-item premium-submenu-item" href="/products?category=<%= cat.slug || cat.id %>"><i class="fas fa-tags me-2 text-primary"></i><span><%= cat.name %></span><i class="fas fa-arrow-right ms-2 text-muted"></i></a></li>
               <% }) %>
             <% } else { %>
               <li><a class="submenu-item premium-submenu-item" href="/admin/categories"><i class="fas fa-tags me-2 text-primary"></i><span>Add Categories</span><i class="fas fa-arrow-right ms-2 text-muted"></i></a></li>

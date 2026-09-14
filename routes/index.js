@@ -96,19 +96,25 @@ router.get('/awards-recognition', async (req, res) => {
 router.get('/products', async (req, res) => {
   try {
     const Content = require('../models/Content');
+    const categoryQuery = String(req.query.category || '').trim();
+    const categoryInclude = {
+      model: Category,
+      as: 'category',
+      attributes: ['id', 'name', 'slug'],
+      ...(categoryQuery ? {
+        required: true,
+        where: Number.isNaN(Number(categoryQuery)) ? { slug: categoryQuery } : { id: Number(categoryQuery) }
+      } : {})
+    };
     const products = await Product.findAll({
       where: { status: 'active' },
-      include: [{
-        model: Category,
-        as: 'category',
-        attributes: ['id', 'name']
-      }],
+      include: [categoryInclude],
       order: [['createdAt', 'DESC']],
       limit: 50
     });
 
     const categories = await Category.findAll({
-      attributes: ['id', 'name'],
+      attributes: ['id', 'name', 'slug'],
       order: [['name', 'ASC']]
     });
 
@@ -173,6 +179,19 @@ router.get('/contact', (req, res) => {
     res.render('contact', { title: 'Contact Us - FushidaLanka' });
 });
 
+// Services and legal pages
+router.get('/services', (req, res) => {
+  res.render('services', { title: 'Services - FushidaLanka' });
+});
+
+router.get('/privacy', (req, res) => {
+  res.render('legal', { title: 'Privacy Policy - FushidaLanka', pageTitle: 'Privacy Policy', kind: 'privacy' });
+});
+
+router.get('/terms', (req, res) => {
+  res.render('legal', { title: 'Terms of Service - FushidaLanka', pageTitle: 'Terms of Service', kind: 'terms' });
+});
+
 // Projects page
 router.get('/projects', async (req, res) => {
   try {
@@ -224,6 +243,18 @@ router.get('/team', async (req, res) => {
       title: 'Our Team - FushidaLanka',
       team: []
     });
+  }
+});
+
+router.get('/news/:slug', async (req, res) => {
+  try {
+    const where = /^\d+$/.test(req.params.slug) ? { id: Number(req.params.slug) } : { slug: req.params.slug };
+    const item = await News.findOne({ where });
+    if (!item) return res.status(404).send('<!doctype html><html lang="en"><head><meta charset="utf-8"><title>News Not Found - FushidaLanka</title><meta name="viewport" content="width=device-width, initial-scale=1"></head><body style="font-family:Arial,sans-serif;max-width:720px;margin:80px auto;padding:20px"><h1>News item not found</h1><p>The update you requested is no longer available.</p><a href="/news">Back to news</a></body></html>');
+    res.render('news-detail', { title: `${item.title} - FushidaLanka`, item });
+  } catch (error) {
+    console.error('Error fetching news item:', error);
+    res.status(500).render('error', { title: 'Error', message: 'Failed to load news item' });
   }
 });
 

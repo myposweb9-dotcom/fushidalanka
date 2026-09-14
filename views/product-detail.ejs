@@ -4,9 +4,10 @@
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <title><%= product.name %> — FushidaLanka</title>
   <meta name="description" content="<%= product.description || 'High-quality hardware from FushidaLanka.' %>">
+  <link rel="stylesheet" href="/css/home-redesign.css">
   <link rel="stylesheet" href="/css/subpages-redesign.css">
 </head>
-<body class="sp-page">
+<body class="home-redesign sp-page">
   <%- include('./partials/modern-header') %>
   <% const whatsappMessage = encodeURIComponent(`Hi, I'm interested in the ${product.name}. Can you provide more details?\nProduct: ${product.name}\nPrice: LKR ${product.price || 'Contact for pricing'}`); const whatsappUrl = `https://wa.me/94757505820?text=${whatsappMessage}`; %>
   <main>

@@ -1,0 +1,18 @@
+<div class="modern-utility"><div class="modern-inner"><span>Colombo 12 · Islandwide service</span><span>Professional supply · Expert support · Since 2010</span><a href="https://wa.me/94757505820" target="_blank" rel="noreferrer">WhatsApp us ↗</a></div></div>
+<nav class="modern-nav" id="modernNav">
+  <div class="modern-inner modern-nav-inner">
+    <a href="/" class="modern-brand"><img src="/images/FushidaLankaLogo.png" alt="FushidaLanka Hardware"></a>
+    <div class="modern-links"><a href="/">Home</a><a href="/products">Products</a><a href="/about">About us</a><a href="/contact">Contact</a></div>
+    <div class="modern-actions"><a class="modern-nav-cta" href="/products">Explore products ↗</a><button class="modern-menu-btn" id="modernMenuToggle" type="button" aria-label="Toggle navigation">☰</button></div>
+  </div>
+  <div class="modern-mobile-nav" id="modernMobileNav"><a href="/">Home</a><a href="/products">Products</a><a href="/about">About us</a><a href="/contact">Contact</a></div>
+</nav>
+<script>
+(function(){
+  const nav=document.getElementById('modernNav'), toggle=document.getElementById('modernMenuToggle'), menu=document.getElementById('modernMobileNav');
+  if(!nav) return;
+  window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>20),{passive:true});
+  if(toggle) toggle.addEventListener('click',()=>menu.classList.toggle('open'));
+  if(menu) menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>menu.classList.remove('open')));
+})();
+</script>

@@ -14,13 +14,27 @@ router.get('/', async (req, res) => {
   try {
     console.log('Homepage route called');
     // Fetch data for homepage
-    const [featuredProducts, testimonials, news, projects, logos] = await Promise.all([
-      Product.findAll({ where: { status: 'active', featured: true }, limit: 12 }),
+    let [featuredProducts, testimonials, news, projects, logos] = await Promise.all([
+      Product.findAll({
+        where: { status: 'active', featured: true },
+        include: [{ model: Category, as: 'category', attributes: ['id', 'name', 'slug'] }],
+        limit: 12
+      }),
       Content.findAll({ where: { type: 'testimonial' }, limit: 3 }),
       News.findAll({ limit: 3, order: [['createdAt', 'DESC']] }),
       Project.findAll({ limit: 3, order: [['createdAt', 'DESC']] }),
       Content.findAll({ where: { type: 'logo', isActive: true } })
     ]);
+
+    // Keep the homepage populated from the real catalog even when no products are flagged as featured.
+    if (!featuredProducts.length) {
+      featuredProducts = await Product.findAll({
+        where: { status: 'active' },
+        include: [{ model: Category, as: 'category', attributes: ['id', 'name', 'slug'] }],
+        order: [['createdAt', 'DESC']],
+        limit: 8
+      });
+    }
 
     res.render('index', {
       title: 'FushidaLanka - Hardware Shop',

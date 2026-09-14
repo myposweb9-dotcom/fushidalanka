@@ -146,6 +146,22 @@ router.get('/products', async (req, res) => {
   }
 });
 
+// Standalone categories page
+router.get('/categories', async (req, res) => {
+  try {
+    const categories = await Category.findAll({ attributes: ['id', 'name', 'slug'], order: [['name', 'ASC']] });
+    res.render('categories', { title: 'Categories - FushidaLanka', categories });
+  } catch (error) {
+    console.error('Error fetching categories page:', error);
+    res.render('categories', { title: 'Categories - FushidaLanka', categories: [] });
+  }
+});
+
+// Standalone bulk order and trade supply page
+router.get('/bulk-order', (req, res) => {
+  res.render('bulk-order', { title: 'Bulk Order & Trade Supply - FushidaLanka' });
+});
+
 // Product detail page - use params for cleaner URLs
 router.get('/products/:id', async (req, res) => {
   try {

@@ -11,6 +11,11 @@
 (function(){
   const nav=document.getElementById('siteNav'), toggle=document.getElementById('menuToggle'), menu=document.getElementById('mobileNav');
   if(!nav) return;
+  const currentPath=window.location.pathname.replace(/\/$/,'')||'/';
+  nav.querySelectorAll('.nav-links a,.mobile-nav a').forEach(link=>{
+    const target=new URL(link.href,window.location.origin).pathname.replace(/\/$/,'')||'/';
+    if(target===currentPath || (target!=='/' && currentPath.startsWith(target+'/'))) link.classList.add('active');
+  });
   window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>20),{passive:true});
   if(toggle) toggle.addEventListener('click',()=>menu.classList.toggle('open'));
   if(menu) menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>menu.classList.remove('open')));

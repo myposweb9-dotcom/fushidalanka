@@ -1,186 +1,23 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><%= title %></title>
-  <link rel="stylesheet" href="/css/home-redesign.css" rel="stylesheet"><link rel="stylesheet" href="/css/style.css">
-  <meta name="description" content="FushidaLanka Hardware - Premium tools, building materials, electrical supplies, and safety equipment. Shop quality products online.">
-  <meta name="keywords" content="hardware shop, tools, building materials, electrical, safety gear, home improvement">
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><%= title || 'Products - FushidaLanka' %></title>
+  <meta name="description" content="Browse premium tools, building materials, electrical supplies and safety equipment from FushidaLanka.">
+  <link rel="stylesheet" href="/css/home-redesign.css">
+  <link rel="stylesheet" href="/css/subpages-redesign.css">
 </head>
-<body class="home-redesign">
-<%- include('partials/header_new') %>
-
-<!-- Hero Section with Video -->
-<section class="hero-section">
-  <video muted playsinline class="hero-background-video" id="heroVideo">
-    <source src="/images/vdo1234.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
-  <div class="hero-overlay" style="background-color: rgba(0, 0, 0, 0.2);"></div>
-  <div class="container position-relative">
-    <div class="row align-items-center justify-content-center">
-      <div class="col-lg-8 text-center">
-        <h1 class="display-3 fw-bold text-white mb-3">Our Products</h1>
-        <p class="lead text-white-75">Explore our complete collection of premium tools, building materials, and hardware solutions.</p>
-        <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center mt-4">
-          <a href="#products-section" class="btn btn-hero btn-lg">Browse Products</a>
-          <a href="/contact" class="btn btn-outline-light btn-lg">Get Help</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Category Filter Section -->
-<section style="background: white; padding: 50px 0; border-bottom: 1px solid rgba(31, 61, 36, 0.1);">
-  <div class="container">
-    <div class="text-center mb-4">
-      <h3 class="fw-bold mb-3" style="font-size: 1.8rem; color: #2c3e50;">Filter by Category</h3>
-      <p class="text-muted">Select a category to view products</p>
-    </div>
-
-    <!-- Category Buttons -->
-    <div class="d-flex flex-wrap justify-content-center gap-3 mb-3">
-      <button class="btn category-filter-btn active" data-category="all" onclick="filterProducts('all', event)" style="padding: 10px 25px; font-weight: 600; border: 2px solid #1F3D24; color: white; background: #1F3D24; transition: all 0.3s ease; cursor: pointer; border-radius: 25px;">
-        <i class="fas fa-th-large me-2"></i>All Products
-      </button>
-      <% if (categories && categories.length > 0) { %>
-        <% categories.forEach(category => { %>
-          <button class="btn category-filter-btn" data-category="<%= category.id %>" onclick="filterProducts('<%= category.id %>', event)" style="padding: 10px 25px; font-weight: 600; border: 2px solid #1F3D24; color: #1F3D24; background: white; transition: all 0.3s ease; cursor: pointer; border-radius: 25px;">
-            <i class="fas fa-tag me-2"></i><%= category.name %>
-          </button>
-        <% }); %>
-      <% } %>
-    </div>
-  </div>
-</section>
-
-<!-- Products Section -->
-<section id="products-section" class="py-5" style="background: white;">
-  <div class="container">
-    <div class="text-center mb-5">
-      <h2 class="section-title" style="font-size: 2.5rem;">All Products</h2>
-      <p class="text-muted" style="font-size: 1.1rem;">Browse our wide selection of quality products from FushidaLanka</p>
-    </div>
-    
-    <div class="row" id="products-grid">
-      <% if (products && products.length > 0) { %>
-        <% products.forEach((product, index) => { %>
-          <div class="col-lg-4 col-md-6 mb-4 product-item" data-category="<%= product.categoryId || 'all' %>">
-            <div class="card h-100 shadow-sm border-light product-card" style="border: 1px solid rgba(31, 61, 36, 0.1); transition: all 0.3s ease; cursor: pointer; overflow: hidden;">
-              <div class="position-relative overflow-hidden" style="height: 220px; background: linear-gradient(135deg, #e8f1eb 0%, #d4e8dc 100%);">
-                <% if (product.images && product.images.length > 0) { %>
-                  <img src="<%= product.images[0] %>" class="card-img-top" alt="<%= product.name %>" style="height: 100%; width: 100%; object-fit: cover; transition: transform 0.4s ease;">
-                <% } else { %>
-                  <div style="height: 100%; width: 100%; display: flex; align-items: center; justify-content: center; font-size: 3rem; color: rgba(31, 61, 36, 0.3);"><i class="fas fa-cube"></i></div>
-                <% } %>
-                <div class="position-absolute top-0 end-0 m-3">
-                  <span class="badge" style="background: linear-gradient(135deg, #1F3D24, #ffffff); padding: 8px 12px; color: white; font-weight: 600;">NEW</span>
-                </div>
-              </div>
-              <div class="card-body d-flex flex-column" style="padding: 1.5rem;">
-                <h5 class="card-title fw-bold mb-2" style="color: #2c3e50; font-size: 1.1rem;"><%= product.name %></h5>
-                <% if (product.category) { %>
-                  <span class="badge mb-2" style="width: fit-content; background: rgba(31, 61, 36, 0.1); color: #1F3D24; font-weight: 600; font-size: 0.85rem;">
-                    <i class="fas fa-tag me-1"></i><%= product.category.name %>
-                  </span>
-                <% } %>
-                <p class="card-text text-muted small" style="line-height: 1.5; flex-grow: 1;"><%= product.description ? product.description.substring(0, 80) + '...' : 'Premium quality product' %></p>
-                <div class="d-flex justify-content-between align-items-center mt-auto pt-3">
-                  <span style="font-size: 1.2rem; font-weight: 700; color: #1F3D24;">LKR <%= product.price ? parseInt(product.price).toLocaleString('en-US') : 'Contact' %></span>
-                </div>
-                <a href="/products/<%= product.id %>" class="product-view-btn" style="width: 100%;">
-                  <i class="fas fa-eye me-2"></i>View Details
-                </a>
-              </div>
-            </div>
-          </div>
-        <% }); %>
-      <% } else { %>
-        <div class="col-12 text-center py-5">
-          <i class="fas fa-box-open fa-5x text-muted mb-4" style="opacity: 0.5;"></i>
-          <h3 class="text-muted mb-2">No Products Found</h3>
-          <p class="text-muted">Please check back soon for more products!</p>
-        </div>
-      <% } %>
-    </div>
-  </div>
-</section>
-
-<!-- Logos Bar Section -->
-<!-- logos-bar removed -->
-
-<%- include('partials/footer') %>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-<script>
-  // Product Filtering and Smooth Scrolling
-  function filterProducts(categoryId, event) {
-    event.preventDefault();
-
-    // Update active button state
-    document.querySelectorAll('.category-filter-btn').forEach(btn => {
-      btn.style.background = 'white';
-      btn.style.color = '#1F3D24';
-      btn.classList.remove('active');
-    });
-    
-    event.target.closest('button').style.background = '#1F3D24';
-    event.target.closest('button').style.color = 'white';
-    event.target.closest('button').classList.add('active');
-
-    // Filter products
-    const productItems = document.querySelectorAll('.product-item');
-    let visibleCount = 0;
-
-    productItems.forEach((item, index) => {
-      const itemCategory = item.getAttribute('data-category');
-      if (categoryId === 'all' || itemCategory === categoryId) {
-        item.style.display = 'block';
-        item.classList.add('animate-on-scroll', 'animate-slide-in-up-smooth', `animate-delay-${(index % 4) + 1}`);
-        visibleCount++;
-      } else {
-        item.style.display = 'none';
-      }
-    });
-
-    // Smooth scroll to products section
-    setTimeout(() => {
-      const productsSection = document.getElementById('products-section');
-      if (productsSection) {
-        productsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    }, 100);
-  }
-
-  // Add hover effect to product cards
-  document.querySelectorAll('.product-card').forEach(card => {
-    card.addEventListener('mouseenter', function() {
-      this.style.transform = 'translateY(-8px)';
-      this.style.boxShadow = '0 15px 40px rgba(31, 61, 36, 0.2)';
-    });
-    
-    card.addEventListener('mouseleave', function() {
-      this.style.transform = 'translateY(0)';
-      this.style.boxShadow = '';
-    });
-  });
-
-  // Auto-play hero video
-  document.addEventListener('DOMContentLoaded', function() {
-    const heroVideo = document.getElementById('heroVideo');
-    if (heroVideo) {
-      heroVideo.autoplay = true;
-      heroVideo.play().catch(err => {
-        console.log('Video autoplay prevented:', err);
-        document.addEventListener('click', () => {
-          heroVideo.play().catch(e => console.log('Play failed:', e));
-        }, { once: true });
-      });
-    }
-  });
-</script>
-<script src="/js/main.js"></script>
+<body class="home-redesign sp-page">
+  <%- include('partials/modern-header') %>
+  <main>
+    <section class="sp-hero catalog-hero"><div class="modern-inner sp-hero-inner"><p class="sp-eyebrow">Curated for the job</p><h1>Find the right<br><span>gear.</span></h1><p>Explore dependable tools, building materials and hardware solutions for every kind of build.</p></div></section>
+    <section class="sp-section" id="products-section"><div class="modern-inner"><div class="section-heading"><div><p class="sp-eyebrow">Our catalogue</p><h2>Products, <span>sorted.</span></h2></div><p class="sp-lead" style="max-width:390px">Search by product, category or specification. Need something specific? Our team can help you find it.</p></div><div class="catalog-tools"><label class="catalog-search">⌕ <input id="productSearch" type="search" placeholder="Search product name, code, brand or specification"></label><div class="catalog-tabs" id="productTabs"><button class="active" data-filter="all" type="button">All products</button><% (categories || []).forEach(category => { %><button data-filter="<%= category.id %>" type="button"><%= category.name %></button><% }) %></div></div><div class="catalog-grid" id="productGrid"><% if (products && products.length) { products.forEach(product => { %><article class="catalog-card" data-category="<%= product.categoryId || '' %>" data-search="<%= [product.name,product.code,product.brand,product.description,product.category && product.category.name].filter(Boolean).join(' ') %>"><div class="catalog-card-image"><% if (product.images && product.images.length) { %><img src="<%= product.images[0] %>" alt="<%= product.name %>" loading="lazy"><% } else { %><img src="/images/product-placeholder.svg" alt="<%= product.name %>" loading="lazy"><% } %><span class="catalog-card-badge"><%= product.status === 'active' ? 'Available' : 'New' %></span></div><div class="catalog-card-body"><span class="catalog-card-category"><%= product.category ? product.category.name : 'Hardware' %></span><h3><%= product.name %></h3><p><%= product.description ? product.description.substring(0,100) : 'Premium quality product for your next project.' %></p><div class="catalog-card-footer"><span class="catalog-price"><%= product.price ? 'LKR '+parseInt(product.price).toLocaleString('en-LK') : 'Contact us' %></span><a class="catalog-view" href="/products/<%= product.id %>">View details ↗</a></div></div></article><% }) } else { %><div class="sp-card" style="grid-column:1/-1;text-align:center"><h3>The catalogue is being refreshed.</h3><p>Contact our team for help sourcing what you need.</p><a class="modern-cta" href="/contact">Get help →</a></div><% } %></div></div></section>
+    <section class="sp-section alt"><div class="modern-inner sp-grid-2"><div><p class="sp-eyebrow">Need a recommendation?</p><h2>Talk to the <span>team.</span></h2></div><div><p class="sp-lead">Tell us what you’re building and we’ll help you choose the right products, quantities and delivery plan.</p><a class="modern-cta" href="/bulk-order">Request a bulk quote →</a></div></div></section>
+  </main>
+  <%- include('partials/modern-footer') %>
+  <a class="sp-whatsapp" href="https://wa.me/94757505820" target="_blank" rel="noreferrer">◔ WhatsApp</a>
+  <script>
+  const search=document.getElementById('productSearch'),cards=[...document.querySelectorAll('.catalog-card')],tabs=[...document.querySelectorAll('#productTabs button')];let active='all';function applyFilters(){const term=(search.value||'').toLowerCase();cards.forEach(card=>{const matchesText=!term||(card.dataset.search||'').toLowerCase().includes(term);const matchesCategory=active==='all'||card.dataset.category===active;card.style.display=matchesText&&matchesCategory?'flex':'none'})}search.addEventListener('input',applyFilters);tabs.forEach(tab=>tab.addEventListener('click',()=>{tabs.forEach(item=>item.classList.remove('active'));tab.classList.add('active');active=tab.dataset.filter;applyFilters()}));
+  </script>
 </body>
 </html>

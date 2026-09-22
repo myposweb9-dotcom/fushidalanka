@@ -1,1 +1,28 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Categories — FushidaLanka</title><meta name="description" content="Browse FushidaLanka hardware categories."><link rel="stylesheet" href="/css/home-redesign.css"><link rel="stylesheet" href="/css/subpages-redesign.css"></head><body class="home-redesign sp-page"><%- include('partials/modern-header') %><main><section class="sp-hero"><div class="modern-inner sp-hero-inner"><p class="sp-eyebrow">Find the right section</p><h1>Shop by<br><span>discipline.</span></h1><p>Explore dependable tools, materials and hardware solutions for every kind of build.</p></div></section><section class="sp-section"><div class="modern-inner"><p class="sp-eyebrow">Our categories</p><h2>Everything for the <span>job.</span></h2><div class="sp-grid-3" style="margin-top:34px"><% const cards=[['Tools & Equipment','Complete range of professional and everyday tools.','tools'],['Building Materials','Reliable materials for every stage of the build.','materials'],['Electrical','Safe, dependable electrical supplies and accessories.','electrical'],['Safety Gear','Work protected with practical safety equipment.','safety']]; cards.forEach(card=>{ %><article class="sp-card"><span class="sp-number">0<%= cards.indexOf(card)+1 %></span><h3><%= card[0] %></h3><p><%= card[1] %></p><a class="modern-cta" href="/products?category=<%= card[2] %>">Explore range →</a></article><% }) %></div></div></section></main><%- include('partials/modern-footer') %><a class="sp-whatsapp" href="https://wa.me/94757505820" target="_blank" rel="noreferrer">◔ WhatsApp</a></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Categories — FushidaLanka</title>
+  <meta name="description" content="Browse FushidaLanka hardware categories.">
+  <link rel="stylesheet" href="/css/home-redesign.css">
+  <link rel="stylesheet" href="/css/subpages-redesign.css">
+</head>
+<body class="home-redesign sp-page">
+  <%- include('partials/modern-header') %>
+  <main>
+    <section class="sp-hero"><div class="modern-inner sp-hero-inner"><p class="sp-eyebrow">Find the right section</p><h1>Shop by<br><span>discipline.</span></h1><p>Explore dependable tools, materials and hardware solutions for every kind of build.</p></div></section>
+    <section class="sp-section"><div class="modern-inner"><p class="sp-eyebrow">Our categories</p><h2>Everything for the <span>job.</span></h2><div class="sp-grid-3" style="margin-top:34px">
+      <% if (categories && categories.length) { %>
+        <% categories.forEach((category, index) => { %>
+          <article class="sp-card"><span class="sp-number"><%= String(index + 1).padStart(2, '0') %></span><h3><%= category.name %></h3><p><%= category.description || `Browse products in ${category.name}.` %></p><a class="modern-cta" href="/products?category=<%= encodeURIComponent(category.slug || category.name) %>">Explore range →</a></article>
+        <% }) %>
+      <% } else { %>
+        <article class="sp-card"><h3>No categories yet</h3><p>Products will appear here when categories are added from the admin dashboard.</p></article>
+      <% } %>
+    </div></div></section>
+  </main>
+  <%- include('partials/modern-footer') %>
+  <a class="sp-whatsapp" href="https://wa.me/94757505820" target="_blank" rel="noreferrer">◔ WhatsApp</a>
+</body>
+</html>

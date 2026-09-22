@@ -99,13 +99,28 @@ router.get('/products', async (req, res) => {
   try {
     const Content = require('../models/Content');
     const categoryQuery = String(req.query.category || '').trim();
+    let matchedCategoryId = null;
+    if (categoryQuery) {
+      if (!Number.isNaN(Number(categoryQuery))) {
+        matchedCategoryId = Number(categoryQuery);
+      } else {
+        const normalizedQuery = categoryQuery.toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+        const categoryMatches = await Category.findAll({ attributes: ['id', 'name', 'slug'] });
+        const matchedCategory = categoryMatches.find(category => {
+          const normalizedName = String(category.name || '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+          const normalizedSlug = String(category.slug || '').toLowerCase().trim();
+          return normalizedSlug === categoryQuery.toLowerCase() || normalizedName === normalizedQuery;
+        });
+        matchedCategoryId = matchedCategory ? matchedCategory.id : -1;
+      }
+    }
     const categoryInclude = {
       model: Category,
       as: 'category',
       attributes: ['id', 'name', 'slug'],
       ...(categoryQuery ? {
         required: true,
-        where: Number.isNaN(Number(categoryQuery)) ? { slug: categoryQuery } : { id: Number(categoryQuery) }
+        where: { id: matchedCategoryId }
       } : {})
     };
     const products = await Product.findAll({

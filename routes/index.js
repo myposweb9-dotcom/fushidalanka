@@ -109,7 +109,7 @@ router.get('/products', async (req, res) => {
         const matchedCategory = categoryMatches.find(category => {
           const normalizedName = String(category.name || '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
           const normalizedSlug = String(category.slug || '').toLowerCase().trim();
-          return normalizedSlug === categoryQuery.toLowerCase() || normalizedName === normalizedQuery;
+          return normalizedSlug === categoryQuery.toLowerCase() || normalizedName === normalizedQuery || normalizedName.split(' ').includes(normalizedQuery);
         });
         matchedCategoryId = matchedCategory ? matchedCategory.id : -1;
       }

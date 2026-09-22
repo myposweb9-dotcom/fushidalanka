@@ -1,6 +1,9 @@
 (function(){
   const reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const targets=document.querySelectorAll('main section:not(.hero):not(.sp-hero), main .category-card, main .product-card, main .catalog-card, main .sp-card, main .benefit, main .faq-item, main .contact-details > div');
+  // The catalogue section contains independently animated cards. Do not hide the
+  // parent section itself, otherwise the cards can be visible but remain invisible
+  // behind the parent's opacity: 0 until an intersection callback fires.
+  const targets=document.querySelectorAll('main section:not(.hero):not(.sp-hero):not(#products-section), main .category-card, main .product-card, main .catalog-card, main .sp-card, main .benefit, main .faq-item, main .contact-details > div');
   if(!targets.length) return;
   targets.forEach((element,index)=>{element.classList.add('scroll-reveal');element.style.setProperty('--reveal-delay',`${Math.min(index%6,5)*70}ms`)});
   if(reduceMotion){targets.forEach(element=>element.classList.add('is-visible'));return;}
